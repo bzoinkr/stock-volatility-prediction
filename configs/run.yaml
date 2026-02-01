@@ -1,0 +1,18 @@
+project:
+  name: stock-volatility-prediction
+  timezone: America/New_York
+  seed: 42
+
+universe:
+  tickers: ["AAPL", "MSFT", "NVDA", "TSLA"]
+  start_date: "2022-01-01"
+  end_date: "2025-12-31"
+
+frequency:
+  base: "1D"               # daily base timeline
+  market_close_time: "16:00:00"
+
+output:
+  processed_dir: "data/processed"
+  artifacts_dir: "artifacts"
+  overwrite: false

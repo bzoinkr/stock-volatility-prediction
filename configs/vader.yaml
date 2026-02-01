@@ -1,0 +1,21 @@
+vader:
+  input:
+    raw_dir: "data/raw/social"
+    interim_dir: "data/interim"
+  output:
+    processed_dir: "data/processed/vader"
+    feature_table: "vader_features.parquet"
+
+  data:
+    platforms: ["reddit"]            # can expand later
+    subreddits: ["wallstreetbets", "stocks", "investing"]
+    language: "en"
+
+  aggregation:
+    time_bucket: "1D"
+    join_keys: ["ticker", "date"]
+    sentiment_fields: ["compound", "pos", "neu", "neg"]
+
+  routing:
+    cache_enabled: true
+    cache_file: "data/interim/vader_cache.parquet"

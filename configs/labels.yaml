@@ -1,0 +1,17 @@
+label:
+  name: "rv_1d"
+  horizon_days: 1
+
+source:
+  market_data: "data/raw/market"    # where OHLCV lives
+
+definition:
+  type: "realized_volatility"
+  method: "close_to_close"          # simplest: vol from log returns of close
+  window_days: 20                   # rolling window used to compute realized vol
+  annualize: true
+  trading_days_per_year: 252
+
+alignment:
+  index_keys: ["ticker", "date"]    # your universal join keys
+  date_column: "date"

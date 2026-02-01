@@ -1,0 +1,24 @@
+finbert:
+  input:
+    raw_dir: "data/raw/news"
+    interim_dir: "data/interim"
+  output:
+    processed_dir: "data/processed/finbert"
+    feature_table: "finbert_features.parquet"
+
+  data:
+    sources: ["newsapi"]             # placeholder; replace later
+    language: "en"
+
+  text:
+    max_articles_per_day_per_ticker: 200
+    fields_used: ["title", "description"]   # keep consistent
+
+  aggregation:
+    time_bucket: "1D"
+    join_keys: ["ticker", "date"]
+    outputs: ["sentiment_score"]     # could later be probs or embeddings
+
+  routing:
+    cache_enabled: true
+    cache_file: "data/interim/finbert_cache.parquet"

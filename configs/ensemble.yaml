@@ -1,0 +1,15 @@
+ensemble:
+  enabled: true
+  inputs:
+    vader_features: "data/processed/vader/vader_features.parquet"
+    finbert_features: "data/processed/finbert/finbert_features.parquet"
+    labels: "data/processed/labels/labels.parquet"
+
+  output:
+    merged_dir: "data/processed/merged"
+    merged_table: "merged_features.parquet"
+    predictions_dir: "artifacts/predictions"
+
+  join:
+    keys: ["ticker", "date"]
+    how: "inner"

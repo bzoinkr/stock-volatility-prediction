@@ -16,3 +16,5 @@ output:
   processed_dir: "data/processed"
   artifacts_dir: "artifacts"
   overwrite: false
+
+keyword_count: 15

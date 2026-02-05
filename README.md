@@ -84,6 +84,7 @@ Examples:
 - market data
 - news data
 - social media data
+- ollama keywords
 
 Keeps API logic out of pipelines.
 
@@ -97,6 +98,7 @@ End-to-end dataset construction.
 - `vader_pipeline.py`
 - `finbert_pipeline.py`
 - `merge_features.py`
+- `keywords_pipeline.py`
 
 Each pipeline reads raw/interim data and writes a processed table.
 
@@ -124,11 +126,13 @@ Each model is owned by one contributor.
 
 `scripts/`
 
+
 Scripts are the only files you execute.
 
 Examples:
 
 ```text
+04_build_keywords.py
 10_make_labels.py
 11_build_vader_features.py
 12_build_finbert_features.py
@@ -152,7 +156,7 @@ No heavy logic inside scripts.
 
 All settings live in `configs/`:
 
-- `run.yaml` → tickers, dates, seeds
+- `run.yaml` → tickers, dates, seeds, keyword_count
 - `labels.yaml` → volatility target definition
 - `vader.yaml` → VADER pipeline settings
 - `finbert.yaml` → FinBERT pipeline settings
@@ -182,12 +186,46 @@ This guarantees painless merging and ensembling.
 
 ---
 
+## Local LLM Keyword Generation (Ollama)
+
+This project can optionally use a locally running LLM (via Ollama) to generate
+single-word finance-related keywords per ticker for text filtering and feature engineering.
+
+Environment variables:
+
+```
+OLLAMA_URL=http://localhost:11434/api/generate
+OLLAMA_MODEL=llama3.2:1b
+```
+
+Example `run.yaml` additions:
+
+```yaml
+universe:
+  tickers: ["AAPL", "MSFT", "NVDA", "TSLA"]
+keyword_count: 15
+```
+
+Run once:
+
+```bash
+python scripts/04_build_keywords.py
+```
+
+Creates:
+
+- `data/interim/keywords.json` — cached keywords per ticker
+
+---
+
 ## Typical Workflow
 
 ```bash
 python scripts/01_fetch_social.py
 python scripts/02_fetch_news.py
 python scripts/03_fetch_market.py
+
+python scripts/04_build_keywords.py
 
 python scripts/10_make_labels.py
 python scripts/11_build_vader_features.py
@@ -216,11 +254,3 @@ Expected:
 IMPORTS OK
 PIPELINE ROUTES OK
 ```
-
-
-
-
-
-
-
-

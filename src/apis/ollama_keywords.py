@@ -6,7 +6,7 @@ import os, re, time, requests
 # ---------------------------------------------------------
 # Allows overriding via environment variables if desired
 URL = os.getenv("OLLAMA_URL", "http://localhost:11434/api/generate")
-MODEL = os.getenv("OLLAMA_MODEL", "llama3.2:1b")
+MODEL = os.getenv("OLLAMA_MODEL", "phi4")
 
 
 # ---------------------------------------------------------

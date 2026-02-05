@@ -37,7 +37,7 @@ def _parse_time(it):
     return pd.to_datetime(ts, utc=True, errors="coerce")
 
 # The main function to pull raw info of the news and turns the data into tabluar
-def yahoo_news_unh(count=50, tab="news", days_back=None):
+def yahoo_news(count=50, tab="news", days_back=None):
     items = yf.Ticker("UNH").get_news(count=count, tab=tab)
     if not items:
         return pd.DataFrame()
@@ -78,7 +78,7 @@ def yahoo_news_unh(count=50, tab="news", days_back=None):
     return df
 # This function runs if the file is ran directly
 if __name__ == "__main__":
-    df = yahoo_news_unh(count=50, tab="news", days_back=14)
+    df = yahoo_news(count=50, tab="news", days_back=14)
 
     if df.empty:
         print("No news returned (try tab='all' or increase count).")

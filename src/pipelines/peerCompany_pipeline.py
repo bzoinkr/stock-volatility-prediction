@@ -1,5 +1,5 @@
 from apis.ollama_data import get_peer_tickers
-from common.paths import NEWS_RAW_DATA_DIR  # Base path for interim (cached) data artifacts
+from common.paths import INTERIM_DATA_DIR  # Base path for interim (cached) data artifacts
 import json, os
 
 
@@ -17,7 +17,7 @@ def save_keywords(
     peer_tickers: dict[str, list[str]],
     filename: str = "peertickers.json"
 ):
-    outpath = os.path.join(NEWS_RAW_DATA_DIR, filename)
+    outpath = os.path.join(INTERIM_DATA_DIR, filename)
 
     with open(outpath, "w", encoding="utf-8") as f:
         json.dump(peer_tickers, f, indent=2)

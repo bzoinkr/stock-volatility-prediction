@@ -2,9 +2,9 @@
   "AAPL": [
     "MSFT",
     "GOOGL",
+    "AMZN",
+    "CSCO",
     "INTC",
-    "NVDA",
-    "AMD",
-    "TXN"
+    "QCOM"
   ]
 }

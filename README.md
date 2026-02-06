@@ -209,7 +209,7 @@ keyword_count: 15
 Run once:
 
 ```bash
-python scripts/04_build_keywords.py
+python scripts/01_build_keywords.py
 ```
 
 Creates:
@@ -221,11 +221,11 @@ Creates:
 ## Typical Workflow
 
 ```bash
-python scripts/01_fetch_social.py
+python scripts/04_fetch_social.py
 python scripts/02_fetch_news.py
 python scripts/03_fetch_market.py
 
-python scripts/04_build_keywords.py
+python scripts/01_build_keywords.py
 
 python scripts/10_make_labels.py
 python scripts/11_build_vader_features.py

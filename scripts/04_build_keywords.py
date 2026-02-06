@@ -8,7 +8,7 @@ def main():
     # Load run configuration
     run = load_config("run.yaml")
 
-    # Try common key names for tickers
+    # Fetch main ticker
     tickers = run["universe"]["tickers"]
 
     # Fail fast if no tickers were found

@@ -67,3 +67,40 @@ def get_keywords(stock: str, k: int = 15, retries: int = 2) -> list[str]:
 
     # Final fallback if everything fails
     return []
+
+
+def get_peer_tickers(ticker: str, k: int = 6, retries: int = 2) -> list[str]:
+
+    prompt = f"""
+        Give {k} US stock TICKERS of companies operating in the same industry as {ticker}.
+        Output ONLY tickers separated by spaces or newlines.
+        No punctuation, no bullets, no numbering, no extra text.
+        """.strip()
+
+    for _ in range(retries + 1):
+        try:
+            r = requests.post(URL, json={"model": MODEL, "stream": False, "prompt": prompt}, timeout=60)
+            r.raise_for_status()
+            text = r.json().get("response", "")
+
+            # Extract uppercase-ish tickers (1-5 chars, allow dot for BRK.B etc.)
+            raw = re.findall(r"\b[A-Z]{1,5}(?:\.[A-Z])?\b", text)
+            out, seen = [], set()
+
+            for t in raw:
+                if t == ticker.upper():
+                    continue
+                if t in seen:
+                    continue
+                seen.add(t)
+                out.append(t)
+                if len(out) == k:
+                    break
+
+            if len(out) >= max(2, k // 2):
+                return out
+
+        except Exception:
+            time.sleep(1)
+
+    return []

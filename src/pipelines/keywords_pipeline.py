@@ -1,4 +1,4 @@
-from apis.ollama_keywords import get_keywords
+from apis.ollama_data import get_keywords
 from common.paths import INTERIM_DATA_DIR  # Base path for interim (cached) data artifacts
 import json, os
 

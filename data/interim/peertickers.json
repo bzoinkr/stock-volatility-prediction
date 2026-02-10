@@ -1,10 +1,9 @@
 {
-  "AAPL": [
-    "MSFT",
-    "GOOGL",
-    "AMZN",
-    "CSCO",
+  "NVDA": [
+    "AMAT",
+    "ASML",
+    "CREE",
     "INTC",
-    "QCOM"
+    "LRCX"
   ]
 }

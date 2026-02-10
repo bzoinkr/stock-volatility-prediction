@@ -1,19 +1,19 @@
 {
-  "AAPL": [
-    "apple",
-    "iphone",
-    "ipad",
-    "macintosh",
-    "ios",
-    "siri",
-    "app",
-    "store",
-    "wearable",
-    "ipod",
-    "airpods",
-    "watch",
-    "tim",
-    "cook",
-    "silicon"
+  "NVDA": [
+    "nvda",
+    "nvidia",
+    "graphics",
+    "gaming",
+    "gpus",
+    "raytracing",
+    "ai",
+    "deeplearning",
+    "cuda",
+    "compute",
+    "silicon",
+    "rtx",
+    "super",
+    "driver",
+    "cloud"
   ]
 }

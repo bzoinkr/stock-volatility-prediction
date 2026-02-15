@@ -24,8 +24,7 @@ def main() -> None:
         run_cfg,
         keywords_path="data/interim/keywords.json",
         raw_dir="data/raw/social",
-        processed_dir="data/processed/social",
-        verbose_print_urls=True,  # requirement: print list of links being scraped
+        verbose_print_urls=True,
     )
 
 

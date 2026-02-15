@@ -1,19 +1,9 @@
 {
-  "NVDA": [
-    "nvda",
-    "nvidia",
+  "Nvidia": [
     "graphics",
-    "gaming",
-    "gpus",
-    "raytracing",
     "ai",
-    "deeplearning",
+    "raytracing",
     "cuda",
-    "compute",
-    "silicon",
-    "rtx",
-    "super",
-    "driver",
-    "cloud"
+    "gaming"
   ]
 }

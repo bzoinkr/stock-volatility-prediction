@@ -7,3 +7,5 @@ requests>=2.31
 pyyaml
 yfinance
 vaderSentiment>=3.3.2
+torch
+transformers

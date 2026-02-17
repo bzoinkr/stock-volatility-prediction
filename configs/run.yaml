@@ -5,8 +5,8 @@ project:
 
 universe:
   tickers: ["Nvidia"]
-  start_date: "2025-01-01"
-  end_date: "2026-02-10"
+  start_date: "2026-02-10"
+  end_date: "2026-02-17"
 
 frequency:
   base: "1D"               # daily base timeline

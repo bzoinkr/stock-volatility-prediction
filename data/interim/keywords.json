@@ -1,9 +1,9 @@
 {
   "Nvidia": [
     "graphics",
-    "ai",
-    "raytracing",
     "cuda",
-    "gaming"
+    "raytracing",
+    "ai",
+    "driver"
   ]
 }

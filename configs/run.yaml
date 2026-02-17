@@ -4,7 +4,7 @@ project:
   seed: 42
 
 universe:
-  tickers: ["NVDA"]
+  tickers: ["Nvidia"]
   start_date: "2025-01-01"
   end_date: "2026-02-10"
 
@@ -17,6 +17,6 @@ output:
   artifacts_dir: "artifacts"
   overwrite: false
 
-keyword_count: 15          # number of keywords per ticker
+keyword_count: 5          # number of keywords per ticker
 peer_count: 6              # number of peer companies per base ticker
 news_limit_per_ticker: 200 # max Yahoo news articles per ticker

@@ -1,11 +1,30 @@
-# Core
+# ================================
+# Core Data & Utilities
+# ================================
 pandas>=2.1
 numpy>=1.26
 pyyaml>=6.0
+pyyaml
 python-dotenv>=1.0
 requests>=2.31
-pyyaml
 yfinance
+
+# ================================
+# NLP & Sentiment Models
+# ================================
 vaderSentiment>=3.3.2
-torch
 transformers
+torch
+
+# ================================
+# Required by Transformers / FinBERT (implicit but should be explicit)
+# ================================
+tqdm
+huggingface-hub
+tokenizers
+safetensors
+
+# ================================
+# Torch Common Dependencies (CPU inference stability)
+# ================================
+typing-extensions

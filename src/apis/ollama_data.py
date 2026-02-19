@@ -16,10 +16,17 @@ def get_keywords(stock: str, k: int = 15, retries: int = 2) -> list[str]:
 
     # Prompt instructing the model to output only single-word keywords
     prompt = f"""
-        Give {k} single-word keywords for {stock}.
-        Output ONLY the words separated by spaces or newlines.
-        No numbering, no bullets, no extra text.
-        No generic words like stock price market trading investing.
+        # Role
+        Expert Financial Research Agent.
+        
+        # Task
+        Generate {k} high-signal search keywords for: {stock}
+        
+        # Strategy
+        Focus on operational catalysts: supply chain, regulatory filings, patent activity, C-suite changes, and macro-sector drivers. 
+        
+        # Output Format
+        Return ONLY the keywords separated by spaces. No numbering, no bullets, no preamble.
         """.strip()
 
     # Words we never want returned as keywords

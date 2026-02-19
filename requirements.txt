@@ -4,10 +4,14 @@
 pandas>=2.1
 numpy>=1.26
 pyyaml>=6.0
-pyyaml
 python-dotenv>=1.0
 requests>=2.31
 yfinance
+
+# ================================
+# Visualization (Sentiment Reports)
+# ================================
+matplotlib>=3.8
 
 # ================================
 # NLP & Sentiment Models
@@ -17,7 +21,7 @@ transformers
 torch
 
 # ================================
-# Required by Transformers / FinBERT (implicit but should be explicit)
+# Required by Transformers / FinBERT
 # ================================
 tqdm
 huggingface-hub

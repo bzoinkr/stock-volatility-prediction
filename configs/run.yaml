@@ -18,5 +18,7 @@ output:
   overwrite: false
 
 keyword_count: 5          # number of keywords per ticker
+llm_run_count: 30         # number of times to run the llm
+
 peer_count: 6              # number of peer companies per base ticker
 news_limit_per_ticker: 200 # max Yahoo news articles per ticker

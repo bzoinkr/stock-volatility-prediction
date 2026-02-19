@@ -25,7 +25,8 @@ def main():
     # 1) Build peer-company universe via Ollama
     # --------------------------------------------------
     peer_k = run.get("peer_count", 5)  # number of peers per ticker
-    pC = build_peerCompanies(tickers, k=peer_k)
+    llm_runs = run.get("llm_run_count", 30)   # Number of times to run the llm
+    pC = build_peerCompanies(tickers, k=peer_k, runs=llm_runs)
 
     # Persist peers for reproducibility/debugging
     path = save_keywords(pC)

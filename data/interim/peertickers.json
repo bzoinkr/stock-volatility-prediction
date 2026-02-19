@@ -1,10 +1,10 @@
 {
   "Nvidia": [
-    "AMD",
     "INTC",
+    "AMD",
     "QCOM",
     "AVGO",
-    "ALTR",
-    "MU"
+    "MRVL",
+    "TER"
   ]
 }

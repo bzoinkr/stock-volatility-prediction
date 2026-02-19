@@ -38,12 +38,16 @@ def run_vader_on_reddit_posts() -> Dict[str, Any]:
         for row in _iter_jsonl(INPUT_PATH):
             text = row.get("text", "")
             row_id = row.get("id")
+            match_term = row.get("matched_term")
+            date = row.get("date_utc")
             permalink = row.get("permalink")
 
             scores = score_vader(text)
 
             yield {
                 "id": row_id,
+                "match_term": match_term,
+                "date": date,
                 "neg": scores["neg"],
                 "neu": scores["neu"],
                 "pos": scores["pos"],

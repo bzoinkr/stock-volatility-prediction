@@ -20,9 +20,11 @@ def main():
 
     # Number of keywords per ticker (default = 15)
     k = run.get("keyword_count", 15)
+    # Number of times to run the llm
+    llm_runs = run.get("llm_run_count", 30)
 
     # Build and save keywords
-    kw = build_keywords(tickers, k=k)
+    kw = build_keywords(tickers, k=k, runs=llm_runs)
     path = save_keywords(kw)
 
     print("Saved:", path)

@@ -31,9 +31,13 @@ def _write_jsonl(path: Path, rows: Iterable[Dict[str, Any]]) -> int:
 
 
 def _latest_yahoo_jsonl(raw_dir: Path) -> Path:
+    # Prefer single consolidated file from Finnhub pipeline (yahoo_news.jsonl)
+    single = raw_dir / "yahoo_news.jsonl"
+    if single.exists():
+        return single
     files = sorted(raw_dir.glob("yahoo_news_*.jsonl"))
     if not files:
-        raise FileNotFoundError(f"No yahoo_news_*.jsonl found in {raw_dir.resolve()}")
+        raise FileNotFoundError(f"No yahoo_news.jsonl or yahoo_news_*.jsonl found in {raw_dir.resolve()}")
     return files[-1]
 
 
@@ -87,3 +91,8 @@ def run_finbert_on_yahoo_news(input_path: Optional[Path] = None) -> Dict[str, An
 
     n_written = _write_jsonl(OUTPUT_PATH, scored_rows())
     return {"input": str(input_path), "output": str(OUTPUT_PATH), "rows_written": n_written}
+
+
+def build_finbert_features() -> None:
+    """Run FinBERT on news (yahoo_news_finbert_scored.jsonl); used by script 12 and test routing."""
+    run_finbert_on_yahoo_news()

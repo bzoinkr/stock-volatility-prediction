@@ -4,7 +4,7 @@ from datetime import date, timedelta
 
 from common.config import load_config
 from pipelines.peerCompany_pipeline import build_peerCompanies, save_keywords
-from pipelines.yahoo_news_pipeline import fetch_and_save_yahoo_news
+from pipelines.finnhub_news_pipeline import fetch_and_save_finnhub_news
 
 
 def main():
@@ -33,21 +33,20 @@ def main():
     print("Saved:", path)
 
     # --------------------------------------------------
-    # 2) Fetch Yahoo news for the base ticker + peers
+    # 2) Fetch news for the base ticker + peers (saved to yahoo_news.jsonl)
     # --------------------------------------------------
     end_date = run["universe"]["end_date"] or date.today().isoformat()
     start_date = run["universe"]["start_date"] or (date.fromisoformat(end_date) - timedelta(days=7)).isoformat()
     limit_per_ticker = int(run.get("news_limit_per_ticker", 200))
+    peer_list = pC[tickers[0]]
 
-    # Fetch and save news (single-ticker peer lookup based on tickers[0])
-    path, tickers_used = fetch_and_save_yahoo_news(
+    path, tickers_used = fetch_and_save_finnhub_news(
         tickers,
-        peer_tickers=pC[tickers[0]],
+        peer_tickers=peer_list,
         start_date=start_date,
         end_date=end_date,
         limit_per_ticker=limit_per_ticker,
     )
-
     print("Saved:", path)
     print("Tickers used:", tickers_used)
 

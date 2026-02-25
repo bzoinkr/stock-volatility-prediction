@@ -1,10 +1,10 @@
 {
   "Nvidia": [
-    "INTC",
-    "AMD",
-    "QCOM",
-    "AVGO",
-    "MRVL",
-    "TER"
+    "MSFT",
+    "GOOGL",
+    "AMZN",
+    "FB",
+    "AAPL",
+    "TSLA"
   ]
 }

@@ -5,6 +5,7 @@ project:
 
 universe:
   tickers: ["Nvidia"]
+  ticker_symbols: ["NVDA"]
   start_date: "2026-02-10"
   end_date: "2026-02-17"
 

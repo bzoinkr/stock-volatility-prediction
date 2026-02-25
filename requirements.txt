@@ -32,3 +32,13 @@ safetensors
 # Torch Common Dependencies (CPU inference stability)
 # ================================
 typing-extensions
+
+# ================================
+# Excel Output
+# ================================
+openpyxl>=3.1
+
+# ================================
+# Search API (Tavily)
+# ================================
+tavily-python

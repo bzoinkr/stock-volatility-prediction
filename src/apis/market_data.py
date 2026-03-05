@@ -1,19 +1,29 @@
+import os
 import requests
 
 headers = {
     'Content-Type': 'application/json'
 }
 
-def get_ticker_daily(ticker='NVDA',
+
+def get_ticker_daily(
+    ticker='NVDA',
     start_date='2026-01-02',
     end_date='2030-01-01',
     resample_freq='daily',
     columns=None,
-    token='3d657ef651a029d6e8e71f6670282dfdb8877f8d'):
+    token=None,
+):
     """
-        Fetches ticker data from Tiingo for specific tickers or tags.
-        Returns raw JSON data (list of dicts) from the API.
+    Fetches ticker data from Tiingo for specific tickers or tags.
+    Returns raw JSON data (list of dicts) from the API.
+
+    API key: set TIINGO_TOKEN in .env or pass token=.
     """
+    token = token or os.environ.get("TIINGO_TOKEN")
+    if not token:
+        raise ValueError("Tiingo API token required: set TIINGO_TOKEN in .env or pass token=")
+
     if columns is None:
         columns = ['adjOpen', 'adjHigh', 'adjLow', 'adjClose', 'adjVolume']
 

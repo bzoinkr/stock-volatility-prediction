@@ -17,7 +17,7 @@ def run_market_pipeline(
     ticker_symbol: str,
     start_date: str,
     end_date: str,
-    token: str = "3d657ef651a029d6e8e71f6670282dfdb8877f8d",
+    token: str | None = None,
 ) -> Dict[str, Any]:
     """
     Fetches stock and VIX data, then writes each to a separate Excel file.

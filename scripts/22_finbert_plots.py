@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from _bootstrap import *
 
-from common.config import load_config
 from evaluation.sentiment_plots import make_sentiment_report
 
 if __name__ == "__main__":

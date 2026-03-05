@@ -1,10 +1,10 @@
 {
   "Nvidia": [
     "MSFT",
-    "GOOGL",
     "AMZN",
-    "FB",
     "AAPL",
-    "TSLA"
+    "FB",
+    "GOOG",
+    "GOOGL"
   ]
 }

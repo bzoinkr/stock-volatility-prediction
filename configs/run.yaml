@@ -5,8 +5,9 @@ project:
 
 universe:
   tickers: ["Nvidia"]
-  start_date: "2026-02-17"
-  end_date: "2026-02-24"
+  ticker_symbols: ["NVDA"]
+  start_date: "2026-02-10"
+  end_date: "2026-02-17"
 
 frequency:
   base: "1D"               # daily base timeline

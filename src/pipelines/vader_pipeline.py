@@ -8,8 +8,6 @@ from models.vader.model import score_vader
 
 
 # ---------- FIXED PATHS ----------
-INPUT_PATH = Path("data/raw/social/reddit_posts.jsonl")
-OUTPUT_PATH = Path("data/processed/social/reddit_posts_vader_scored.jsonl")
 
 
 def _iter_jsonl(path: Path) -> Iterator[Dict[str, Any]]:
@@ -32,27 +30,30 @@ def _write_jsonl(path: Path, rows: Iterable[Dict[str, Any]]) -> int:
     return n
 
 
-def run_vader_on_reddit_posts() -> Dict[str, Any]:
+def run_vader_on_reddit_posts(INPUT_PATH, OUTPUT_PATH) -> Dict[str, Any]:
 
     def scored_rows() -> Iterator[Dict[str, Any]]:
         for row in _iter_jsonl(INPUT_PATH):
             text = row.get("text", "")
-            row_id = row.get("id")
+            row_id = row.get("source_id")
+            ticker = row.get("ticker")
             match_term = row.get("matched_term")
-            date = row.get("date_utc")
+            date = row.get("created_utc")
             permalink = row.get("permalink")
+            impressions = row.get("num_comments")
 
             scores = score_vader(text)
 
             yield {
                 "id": row_id,
+                "ticker": ticker,
                 "match_term": match_term,
                 "date": date,
                 "neg": scores["neg"],
                 "neu": scores["neu"],
                 "pos": scores["pos"],
                 "compound": scores["compound"],
-                "permalink": permalink,
+                "impressions": impressions
             }
 
     n_written = _write_jsonl(OUTPUT_PATH, scored_rows())

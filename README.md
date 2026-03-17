@@ -234,8 +234,8 @@ python scripts/12_build_finbert_features.py
 python scripts/20_train_vader.py
 python scripts/21_train_finbert.py
 
-python scripts/30_predict.py
-python scripts/40_evaluate.py
+python scripts/40_predict.py
+python scripts/41_evaluate.py
 ```
 
 ---

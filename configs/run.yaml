@@ -5,7 +5,7 @@ project:
 
 universe:
   tickers: ["Nvidia"]
-  ticker_symbols: ["NVDA"]
+  ticker_symbols: ["PSA", "ULTA"]
   start_date: "2026-02-26"
   end_date: "2026-03-04"
 
@@ -19,7 +19,7 @@ output:
   overwrite: false
 
 keyword_count: 5          # number of keywords per ticker
-llm_run_count: 10          # number of times to run the llm
+llm_run_count: 1          # number of times to run the llm
 
 peer_count: 6              # number of peer companies per base ticker
 news_limit_per_ticker: 10000 # max news articles per ticker (Yahoo and Finnhub)

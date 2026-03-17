@@ -54,7 +54,14 @@ def save_keywords(
 ):
     outpath = os.path.join(INTERIM_DATA_DIR, filename)
 
+
+    with open(outpath, "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    for tick in keywords_by_ticker:
+        data.append({"ticker": tick, "keywords": keywords_by_ticker[tick]})
+
     with open(outpath, "w", encoding="utf-8") as f:
-        json.dump(keywords_by_ticker, f, indent=2)
+        json.dump(data, f, indent=2)
 
     return outpath

@@ -1,9 +1,1032 @@
-{
-  "Nvidia": [
-    "patent",
-    "filings",
-    "regulatory",
-    "supply",
-    "chain"
-  ]
-}
+[
+  {
+    "ticker": "WMT",
+    "keywords": [
+      "supercenter",
+      "samsclub",
+      "walmartplus",
+      "greatvalue",
+      "marketplace"
+    ]
+  },
+  {
+    "ticker": "AMZN",
+    "keywords": [
+      "aws",
+      "prime",
+      "kindle",
+      "alexa",
+      "fulfillment"
+    ]
+  },
+  {
+    "ticker": "UNH",
+    "keywords": [
+      "optum",
+      "unitedhealthcare",
+      "optumrx",
+      "medicareadvantage",
+      "claims"
+    ]
+  },
+  {
+    "ticker": "AAPL",
+    "keywords": [
+      "iphone",
+      "mac",
+      "ipad",
+      "appstore",
+      "icloud"
+    ]
+  },
+  {
+    "ticker": "CVS",
+    "keywords": [
+      "cvspharmacy",
+      "minuteclinic",
+      "caremark",
+      "aetna",
+      "extracare"
+    ]
+  },
+  {
+    "ticker": "BRK.B",
+    "keywords": [
+      "geico",
+      "bnsf",
+      "berkshireenergy",
+      "dairyqueen",
+      "seescandies"
+    ]
+  },
+  {
+    "ticker": "GOOGL",
+    "keywords": [
+      "googlesearch",
+      "youtube",
+      "android",
+      "googlecloud",
+      "googleads"
+    ]
+  },
+  {
+    "ticker": "XOM",
+    "keywords": [
+      "exxon",
+      "mobil",
+      "permian",
+      "lng",
+      "refining"
+    ]
+  },
+  {
+    "ticker": "MCK",
+    "keywords": [
+      "wholesale",
+      "distribution",
+      "oncology",
+      "specialty",
+      "medicalsurgical"
+    ]
+  },
+  {
+    "ticker": "COR",
+    "keywords": [
+      "cencora",
+      "worldcourier",
+      "specialty",
+      "distribution",
+      "patientservices"
+    ]
+  },
+  {
+    "ticker": "JPM",
+    "keywords": [
+      "chase",
+      "investmentbanking",
+      "creditcards",
+      "wealthmanagement",
+      "trading"
+    ]
+  },
+  {
+    "ticker": "COST",
+    "keywords": [
+      "kirkland",
+      "membership",
+      "warehouse",
+      "foodcourt",
+      "gasoline"
+    ]
+  },
+  {
+    "ticker": "CI",
+    "keywords": [
+      "cigna",
+      "evernorth",
+      "expressscripts",
+      "pharmacybenefits",
+      "behavioral"
+    ]
+  },
+  {
+    "ticker": "MSFT",
+    "keywords": [
+      "windows",
+      "azure",
+      "office",
+      "xbox",
+      "github"
+    ]
+  },
+  {
+    "ticker": "CAH",
+    "keywords": [
+      "distribution",
+      "medicalproducts",
+      "nuclearpharmacy",
+      "supplychain",
+      "athome"
+    ]
+  },
+  {
+    "ticker": "CVX",
+    "keywords": [
+      "texaco",
+      "permian",
+      "upstream",
+      "refining",
+      "techron"
+    ]
+  },
+  {
+    "ticker": "BAC",
+    "keywords": [
+      "merrill",
+      "zelle",
+      "preferredrewards",
+      "mortgage",
+      "commercial"
+    ]
+  },
+  {
+    "ticker": "GM",
+    "keywords": [
+      "chevrolet",
+      "gmc",
+      "cadillac",
+      "onstar",
+      "ultium"
+    ]
+  },
+  {
+    "ticker": "F",
+    "keywords": [
+      "f150",
+      "mustang",
+      "bronco",
+      "fordpro",
+      "bluecruise"
+    ]
+  },
+  {
+    "ticker": "ELV",
+    "keywords": [
+      "anthem",
+      "carelon",
+      "medicaid",
+      "pharmacy",
+      "providers"
+    ]
+  },
+  {
+    "ticker": "C",
+    "keywords": [
+      "citibank",
+      "tresurytrade",
+      "ibanking",
+      "creditcards",
+      "institutional"
+    ]
+  },
+  {
+    "ticker": "META",
+    "keywords": [
+      "facebook",
+      "instagram",
+      "whatsapp",
+      "realitylabs",
+      "threads"
+    ]
+  },
+  {
+    "ticker": "CNC",
+    "keywords": [
+      "ambetter",
+      "medicaid",
+      "marketplace",
+      "managedcare",
+      "medicare"
+    ]
+  },
+  {
+    "ticker": "HD",
+    "keywords": [
+      "husky",
+      "pro",
+      "toolrental",
+      "installation",
+      "prosupply"
+    ]
+  },
+  {
+    "ticker": "FNMA",
+    "keywords": [
+      "mortgagebacked",
+      "conforming",
+      "desktopunderwriter",
+      "multifamily",
+      "creditrisk"
+    ]
+  },
+  {
+    "ticker": "WBA",
+    "keywords": [
+      "walgreens",
+      "boots",
+      "mywalgreens",
+      "prescriptions",
+      "healthclinic"
+    ]
+  },
+  {
+    "ticker": "KR",
+    "keywords": [
+      "fredmeyer",
+      "harristeeter",
+      "simpletruth",
+      "grocery",
+      "delivery"
+    ]
+  },
+  {
+    "ticker": "PSX",
+    "keywords": [
+      "refining",
+      "midstream",
+      "cpc",
+      "pipelines",
+      "marketing"
+    ]
+  },
+  {
+    "ticker": "MPC",
+    "keywords": [
+      "refining",
+      "marathon",
+      "midstream",
+      "mplx",
+      "terminals"
+    ]
+  },
+  {
+    "ticker": "VZ",
+    "keywords": [
+      "verizonwireless",
+      "5g",
+      "fios",
+      "broadband",
+      "network"
+    ]
+  },
+  {
+    "ticker": "NVDA",
+    "keywords": [
+      "cuda",
+      "geforce",
+      "h100",
+      "tensorcores",
+      "nvlink"
+    ]
+  },
+  {
+    "ticker": "GS",
+    "keywords": [
+      "ibanking",
+      "trading",
+      "assetmanagement",
+      "primebrokerage",
+      "goldman"
+    ]
+  },
+  {
+    "ticker": "WFC",
+    "keywords": [
+      "retailbank",
+      "mortgage",
+      "commercial",
+      "wealth",
+      "payments"
+    ]
+  },
+  {
+    "ticker": "VLO",
+    "keywords": [
+      "refining",
+      "ethanol",
+      "renewables",
+      "logistics",
+      "fuels"
+    ]
+  },
+  {
+    "ticker": "CMCSA",
+    "keywords": [
+      "xfinity",
+      "nbcuniversal",
+      "peacock",
+      "broadband",
+      "cable"
+    ]
+  },
+  {
+    "ticker": "STATEFARM_PRIVATE",
+    "keywords": [
+      "autoinsurance",
+      "homeowners",
+      "agents",
+      "claims",
+      "bundling"
+    ]
+  },
+  {
+    "ticker": "T",
+    "keywords": [
+      "wireless",
+      "fiber",
+      "5g",
+      "broadband",
+      "telecom"
+    ]
+  },
+  {
+    "ticker": "FMCC",
+    "keywords": [
+      "mortgagebacked",
+      "conforming",
+      "multifamily",
+      "creditrisk",
+      "loanadvisor"
+    ]
+  },
+  {
+    "ticker": "HUM",
+    "keywords": [
+      "medicareadvantage",
+      "centerwell",
+      "pharmacy",
+      "primarycare",
+      "homehealth"
+    ]
+  },
+  {
+    "ticker": "MS",
+    "keywords": [
+      "wealthmanagement",
+      "etrade",
+      "ibanking",
+      "trading",
+      "assetmanagement"
+    ]
+  },
+  {
+    "ticker": "TGT",
+    "keywords": [
+      "targetcircle",
+      "driveup",
+      "pickup",
+      "goodgather",
+      "upup"
+    ]
+  },
+  {
+    "ticker": "SNEX",
+    "keywords": [
+      "commodities",
+      "fx",
+      "clearing",
+      "execution",
+      "risk"
+    ]
+  },
+  {
+    "ticker": "TSLA",
+    "keywords": [
+      "model3",
+      "modely",
+      "supercharger",
+      "gigafactory",
+      "autopilot"
+    ]
+  },
+  {
+    "ticker": "DELL",
+    "keywords": [
+      "poweredge",
+      "powerstore",
+      "alienware",
+      "latitude",
+      "precision"
+    ]
+  },
+  {
+    "ticker": "PEP",
+    "keywords": [
+      "pepsi",
+      "fritolay",
+      "gatorade",
+      "quaker",
+      "mountaindew"
+    ]
+  },
+  {
+    "ticker": "DIS",
+    "keywords": [
+      "disneyplus",
+      "espn",
+      "marvel",
+      "pixar",
+      "themeparks"
+    ]
+  },
+  {
+    "ticker": "UPS",
+    "keywords": [
+      "ground",
+      "air",
+      "worldship",
+      "lastmile",
+      "logistics"
+    ]
+  },
+  {
+    "ticker": "JNJ",
+    "keywords": [
+      "tylenol",
+      "bandaid",
+      "neutrogena",
+      "medtech",
+      "oncology"
+    ]
+  },
+  {
+    "ticker": "FDX",
+    "keywords": [
+      "express",
+      "ground",
+      "freight",
+      "shipmanager",
+      "logistics"
+    ]
+  },
+  {
+    "ticker": "ADM",
+    "keywords": [
+      "oilseeds",
+      "ethanol",
+      "milling",
+      "nutrition",
+      "trading"
+    ]
+  },
+  {
+    "ticker": "PG",
+    "keywords": [
+      "tide",
+      "pampers",
+      "gillette",
+      "oralb",
+      "dawn"
+    ]
+  },
+  {
+    "ticker": "LOW",
+    "keywords": [
+      "lowes",
+      "installation",
+      "pro",
+      "appliances",
+      "tools"
+    ]
+  },
+  {
+    "ticker": "ET",
+    "keywords": [
+      "pipelines",
+      "midstream",
+      "ngl",
+      "storage",
+      "terminals"
+    ]
+  },
+  {
+    "ticker": "RTX",
+    "keywords": [
+      "prattwhitney",
+      "collins",
+      "raytheon",
+      "missiles",
+      "radar"
+    ]
+  },
+  {
+    "ticker": "ACI",
+    "keywords": [
+      "safeway",
+      "vons",
+      "jewelosco",
+      "pharmacy",
+      "grocery"
+    ]
+  },
+  {
+    "ticker": "SYY",
+    "keywords": [
+      "foodservice",
+      "distribution",
+      "restaurants",
+      "produce",
+      "supplies"
+    ]
+  },
+  {
+    "ticker": "PGR",
+    "keywords": [
+      "snapshot",
+      "claims",
+      "autopolicy",
+      "commercialauto",
+      "underwriting"
+    ]
+  },
+  {
+    "ticker": "AXP",
+    "keywords": [
+      "platinum",
+      "membershiprewards",
+      "centurionlounge",
+      "merchant",
+      "chargecard"
+    ]
+  },
+  {
+    "ticker": "LMT",
+    "keywords": [
+      "f35",
+      "aegis",
+      "sikorsky",
+      "missiles",
+      "spacesystems"
+    ]
+  },
+  {
+    "ticker": "MET",
+    "keywords": [
+      "lifeinsurance",
+      "annuities",
+      "groupbenefits",
+      "dental",
+      "retirement"
+    ]
+  },
+  {
+    "ticker": "HCA",
+    "keywords": [
+      "hospitals",
+      "emergency",
+      "surgery",
+      "clinics",
+      "healthsystems"
+    ]
+  },
+  {
+    "ticker": "PRU",
+    "keywords": [
+      "pgim",
+      "annuities",
+      "lifeinsurance",
+      "retirement",
+      "assetmanagement"
+    ]
+  },
+  {
+    "ticker": "BA",
+    "keywords": [
+      "737",
+      "787",
+      "defense",
+      "aerospace",
+      "services"
+    ]
+  },
+  {
+    "ticker": "CAT",
+    "keywords": [
+      "excavators",
+      "bulldozers",
+      "mining",
+      "dieselengines",
+      "equipment"
+    ]
+  },
+  {
+    "ticker": "MRK",
+    "keywords": [
+      "keytruda",
+      "gardasil",
+      "vaccines",
+      "animalhealth",
+      "oncology"
+    ]
+  },
+  {
+    "ticker": "ALL",
+    "keywords": [
+      "drivewise",
+      "claims",
+      "autoinsurance",
+      "homeowners",
+      "agents"
+    ]
+  },
+  {
+    "ticker": "PFE",
+    "keywords": [
+      "comirnaty",
+      "paxlovid",
+      "prevnar",
+      "vaccines",
+      "oncology"
+    ]
+  },
+  {
+    "ticker": "IBM",
+    "keywords": [
+      "ibmz",
+      "redhat",
+      "mainframe",
+      "consulting",
+      "watsonx"
+    ]
+  },
+  {
+    "ticker": "NYL_PRIVATE",
+    "keywords": [
+      "wholelife",
+      "annuities",
+      "retirement",
+      "agents",
+      "planning"
+    ]
+  },
+  {
+    "ticker": "DAL",
+    "keywords": [
+      "skymiles",
+      "deltaone",
+      "hubs",
+      "fleet",
+      "alliances"
+    ]
+  },
+  {
+    "ticker": "PUBLIX_PRIVATE",
+    "keywords": [
+      "grocery",
+      "deli",
+      "bakery",
+      "subs",
+      "pharmacy"
+    ]
+  },
+  {
+    "ticker": "NATIONWIDE_PRIVATE",
+    "keywords": [
+      "autoinsurance",
+      "commercial",
+      "claims",
+      "retirement",
+      "petinsurance"
+    ]
+  },
+  {
+    "ticker": "SNX",
+    "keywords": [
+      "distribution",
+      "cloud",
+      "channel",
+      "devices",
+      "vendors"
+    ]
+  },
+  {
+    "ticker": "UAL",
+    "keywords": [
+      "mileageplus",
+      "polaris",
+      "hubs",
+      "fleet",
+      "network"
+    ]
+  },
+  {
+    "ticker": "COP",
+    "keywords": [
+      "alaska",
+      "permian",
+      "lng",
+      "upstream",
+      "shale"
+    ]
+  },
+  {
+    "ticker": "TJX",
+    "keywords": [
+      "tjmaxx",
+      "marshalls",
+      "homegoods",
+      "offprice",
+      "discount"
+    ]
+  },
+  {
+    "ticker": "ABBV",
+    "keywords": [
+      "skyrizi",
+      "rinvoq",
+      "immunology",
+      "oncology",
+      "humira"
+    ]
+  },
+  {
+    "ticker": "EPD",
+    "keywords": [
+      "ngl",
+      "fractionation",
+      "pipelines",
+      "storage",
+      "midstream"
+    ]
+  },
+  {
+    "ticker": "CHTR",
+    "keywords": [
+      "spectrum",
+      "broadband",
+      "mobile",
+      "wifi",
+      "cable"
+    ]
+  },
+  {
+    "ticker": "PFGC",
+    "keywords": [
+      "foodservice",
+      "vistar",
+      "distribution",
+      "restaurants",
+      "convenience"
+    ]
+  },
+  {
+    "ticker": "AAL",
+    "keywords": [
+      "aadvantage",
+      "hubs",
+      "fleet",
+      "oneworld",
+      "premium"
+    ]
+  },
+  {
+    "ticker": "COF",
+    "keywords": [
+      "venture",
+      "creditcards",
+      "autoloans",
+      "cafes",
+      "digitalbank"
+    ]
+  },
+  {
+    "ticker": "CSCO",
+    "keywords": [
+      "catalyst",
+      "webex",
+      "meraki",
+      "switches",
+      "security"
+    ]
+  },
+  {
+    "ticker": "HPQ",
+    "keywords": [
+      "laserjet",
+      "instantink",
+      "pavilion",
+      "omen",
+      "print"
+    ]
+  },
+  {
+    "ticker": "TSN",
+    "keywords": [
+      "tyson",
+      "jimmydean",
+      "hillshire",
+      "chicken",
+      "preparedfoods"
+    ]
+  },
+  {
+    "ticker": "INTC",
+    "keywords": [
+      "core",
+      "xeon",
+      "foundry",
+      "arc",
+      "x86"
+    ]
+  },
+  {
+    "ticker": "ORCL",
+    "keywords": [
+      "oracledatabase",
+      "java",
+      "oci",
+      "fusion",
+      "netsuite"
+    ]
+  },
+  {
+    "ticker": "AVGO",
+    "keywords": [
+      "vmware",
+      "broadcom",
+      "switching",
+      "semiconductor",
+      "software"
+    ]
+  },
+  {
+    "ticker": "DE",
+    "keywords": [
+      "johndeere",
+      "tractors",
+      "combines",
+      "precisionag",
+      "jdlink"
+    ]
+  },
+  {
+    "ticker": "NKE",
+    "keywords": [
+      "airjordan",
+      "airmax",
+      "driFit",
+      "snkrs",
+      "runclub"
+    ]
+  },
+  {
+    "ticker": "LMG_PRIVATE",
+    "keywords": [
+      "autoinsurance",
+      "homeowners",
+      "commercial",
+      "claims",
+      "underwriting"
+    ]
+  },
+  {
+    "ticker": "PAGP",
+    "keywords": [
+      "plains",
+      "crude",
+      "pipelines",
+      "storage",
+      "midstream"
+    ]
+  },
+  {
+    "ticker": "USAA_PRIVATE",
+    "keywords": [
+      "military",
+      "autoinsurance",
+      "banking",
+      "homeowners",
+      "claims"
+    ]
+  },
+  {
+    "ticker": "BMY",
+    "keywords": [
+      "opdivo",
+      "eliquis",
+      "celltherapy",
+      "oncology",
+      "immunology"
+    ]
+  },
+  {
+    "ticker": "INGR",
+    "keywords": [
+      "distribution",
+      "logistics",
+      "cloud",
+      "channel",
+      "itservices"
+    ]
+  },
+  {
+    "ticker": "GD",
+    "keywords": [
+      "gulfstream",
+      "submarines",
+      "abrams",
+      "defense",
+      "itservices"
+    ]
+  },
+  {
+    "ticker": "KO",
+    "keywords": [
+      "cocacola",
+      "sprite",
+      "fanta",
+      "minutemaid",
+      "bottling"
+    ]
+  },
+  {
+    "ticker": "TIAA_PRIVATE",
+    "keywords": [
+      "retirement",
+      "annuities",
+      "pensions",
+      "assetmanagement",
+      "advisors"
+    ]
+  },
+  {
+    "ticker": "TRV",
+    "keywords": [
+      "propertycasualty",
+      "umbrella",
+      "surety",
+      "riskcontrol",
+      "claims"
+    ]
+  },
+  {
+    "ticker": "LLY",
+    "keywords": [
+      "mounjaro",
+      "zepbound",
+      "trulicity",
+      "humalog",
+      "oncology"
+    ]
+  },
+  {
+    "ticker": "UBER",
+    "keywords": [
+      "rideshare",
+      "ubereats",
+      "freight",
+      "drivers",
+      "marketplace"
+    ]
+  },
+  {
+    "ticker": "PSA",
+    "keywords": [
+      "operational",
+      "supply",
+      "chain",
+      "psa",
+      "efficiency"
+    ]
+  },
+  {
+    "ticker": "ULTA",
+    "keywords": [
+      "optimization",
+      "ulta",
+      "supply",
+      "chain",
+      "ultra"
+    ]
+  }
+]

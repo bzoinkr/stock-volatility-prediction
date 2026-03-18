@@ -30,9 +30,6 @@ def build_sentiment_stats(
     end_date: str | date,
 ) -> None:
     """
-    News version of build_sentiment_stats with the SAME OUTPUT SCHEMA as social.
-
-    Assumptions to parallel social fields:
       - impressions = 1 per article
       - match_term  = permalink domain (e.g., finance.yahoo.com)
       - date        = already "YYYY-MM-DD" in input
@@ -166,7 +163,7 @@ def build_sentiment_stats(
             "bullish_ratio": round(bullish_ratio, 6),
             "bearish_ratio": round(bearish_ratio, 6),
             "neutral_ratio": round(neutral_ratio, 6),
-            # Match term (same key names as social)
+            # Match term 
             "term_diversity": term_diversity,
             "top_term_ratio": round(top_term_ratio, 6),
         })

@@ -12,1021 +12,3911 @@
   {
     "ticker": "AMZN",
     "keywords": [
-      "aws",
-      "prime",
-      "kindle",
-      "alexa",
-      "fulfillment"
+      "amazoncom",
+      "jeff",
+      "amazon",
+      "bezos",
+      "aws"
     ]
   },
   {
     "ticker": "UNH",
     "keywords": [
-      "optum",
+      "health",
       "unitedhealthcare",
-      "optumrx",
-      "medicareadvantage",
-      "claims"
+      "expansion",
+      "optum",
+      "unitedhealth"
     ]
   },
   {
     "ticker": "AAPL",
     "keywords": [
+      "vision",
       "iphone",
-      "mac",
-      "ipad",
-      "appstore",
-      "icloud"
-    ]
-  },
-  {
-    "ticker": "CVS",
-    "keywords": [
-      "cvspharmacy",
-      "minuteclinic",
-      "caremark",
-      "aetna",
-      "extracare"
-    ]
-  },
-  {
-    "ticker": "BRK.B",
-    "keywords": [
-      "geico",
-      "bnsf",
-      "berkshireenergy",
-      "dairyqueen",
-      "seescandies"
+      "apple",
+      "pro",
+      "issues"
     ]
   },
   {
     "ticker": "GOOGL",
     "keywords": [
-      "googlesearch",
-      "youtube",
-      "android",
-      "googlecloud",
-      "googleads"
+      "investigation",
+      "alphabet",
+      "google",
+      "antitrust",
+      "cloud"
     ]
   },
   {
-    "ticker": "XOM",
+    "ticker": "CVS",
     "keywords": [
-      "exxon",
-      "mobil",
-      "permian",
-      "lng",
-      "refining"
+      "health",
+      "acquires",
+      "integrates",
+      "signify",
+      "cvs"
     ]
   },
   {
     "ticker": "MCK",
     "keywords": [
-      "wholesale",
       "distribution",
-      "oncology",
-      "specialty",
-      "medicalsurgical"
+      "deal",
+      "mckesson",
+      "rxts",
+      "pharmaceutical"
+    ]
+  },
+  {
+    "ticker": "BRK-B",
+    "keywords": [
+      "warren",
+      "acquisition",
+      "recent",
+      "berkshire",
+      "buffett"
+    ]
+  },
+  {
+    "ticker": "XOM",
+    "keywords": [
+      "permian",
+      "exxonmobil",
+      "expansion",
+      "upstream",
+      "exxon"
     ]
   },
   {
     "ticker": "COR",
     "keywords": [
+      "product",
       "cencora",
-      "worldcourier",
-      "specialty",
-      "distribution",
-      "patientservices"
-    ]
-  },
-  {
-    "ticker": "JPM",
-    "keywords": [
-      "chase",
-      "investmentbanking",
-      "creditcards",
-      "wealthmanagement",
-      "trading"
-    ]
-  },
-  {
-    "ticker": "COST",
-    "keywords": [
-      "kirkland",
-      "membership",
-      "warehouse",
-      "foodcourt",
-      "gasoline"
-    ]
-  },
-  {
-    "ticker": "CI",
-    "keywords": [
-      "cigna",
-      "evernorth",
-      "expressscripts",
-      "pharmacybenefits",
-      "behavioral"
+      "healthcare",
+      "expansion",
+      "solutions"
     ]
   },
   {
     "ticker": "MSFT",
     "keywords": [
-      "windows",
       "azure",
-      "office",
-      "xbox",
-      "github"
+      "expansion",
+      "cloud",
+      "lawsuit",
+      "microsoft"
+    ]
+  },
+  {
+    "ticker": "COST",
+    "keywords": [
+      "sinegal",
+      "jim",
+      "costco",
+      "retirement",
+      "strategic"
+    ]
+  },
+  {
+    "ticker": "CI",
+    "keywords": [
+      "health",
+      "services",
+      "the",
+      "cigna",
+      "evernorth"
     ]
   },
   {
     "ticker": "CAH",
     "keywords": [
-      "distribution",
-      "medicalproducts",
-      "nuclearpharmacy",
-      "supplychain",
-      "athome"
-    ]
-  },
-  {
-    "ticker": "CVX",
-    "keywords": [
-      "texaco",
-      "permian",
-      "upstream",
-      "refining",
-      "techron"
-    ]
-  },
-  {
-    "ticker": "BAC",
-    "keywords": [
-      "merrill",
-      "zelle",
-      "preferredrewards",
-      "mortgage",
-      "commercial"
-    ]
-  },
-  {
-    "ticker": "GM",
-    "keywords": [
-      "chevrolet",
-      "gmc",
-      "cadillac",
-      "onstar",
-      "ultium"
-    ]
-  },
-  {
-    "ticker": "F",
-    "keywords": [
-      "f150",
-      "mustang",
-      "bronco",
-      "fordpro",
-      "bluecruise"
+      "investigation",
+      "denton",
+      "cardinal",
+      "cfo",
+      "david"
     ]
   },
   {
     "ticker": "ELV",
     "keywords": [
-      "anthem",
-      "carelon",
-      "medicaid",
-      "pharmacy",
-      "providers"
+      "elevance",
+      "health",
+      "bluecross",
+      "mergers",
+      "blueshield"
     ]
   },
   {
-    "ticker": "C",
+    "ticker": "F",
     "keywords": [
-      "citibank",
-      "tresurytrade",
-      "ibanking",
-      "creditcards",
-      "institutional"
+      "production",
+      "ford",
+      "mustang",
+      "mach",
+      "ramp"
     ]
   },
   {
     "ticker": "META",
     "keywords": [
+      "reality",
+      "labs",
+      "oversight",
       "facebook",
-      "instagram",
-      "whatsapp",
-      "realitylabs",
-      "threads"
+      "meta"
     ]
   },
   {
-    "ticker": "CNC",
+    "ticker": "CVX",
     "keywords": [
-      "ambetter",
-      "medicaid",
-      "marketplace",
-      "managedcare",
-      "medicare"
+      "permian",
+      "energy",
+      "acquisition",
+      "chevron",
+      "noble"
     ]
   },
   {
-    "ticker": "HD",
+    "ticker": "GM",
     "keywords": [
-      "husky",
-      "pro",
-      "toolrental",
-      "installation",
-      "prosupply"
-    ]
-  },
-  {
-    "ticker": "FNMA",
-    "keywords": [
-      "mortgagebacked",
-      "conforming",
-      "desktopunderwriter",
-      "multifamily",
-      "creditrisk"
-    ]
-  },
-  {
-    "ticker": "WBA",
-    "keywords": [
-      "walgreens",
-      "boots",
-      "mywalgreens",
-      "prescriptions",
-      "healthclinic"
-    ]
-  },
-  {
-    "ticker": "KR",
-    "keywords": [
-      "fredmeyer",
-      "harristeeter",
-      "simpletruth",
-      "grocery",
-      "delivery"
-    ]
-  },
-  {
-    "ticker": "PSX",
-    "keywords": [
-      "refining",
-      "midstream",
-      "cpc",
-      "pipelines",
-      "marketing"
-    ]
-  },
-  {
-    "ticker": "MPC",
-    "keywords": [
-      "refining",
-      "marathon",
-      "midstream",
-      "mplx",
-      "terminals"
-    ]
-  },
-  {
-    "ticker": "VZ",
-    "keywords": [
-      "verizonwireless",
-      "5g",
-      "fios",
-      "broadband",
-      "network"
+      "buick",
+      "plan",
+      "electrification",
+      "financial",
+      "general"
     ]
   },
   {
     "ticker": "NVDA",
     "keywords": [
-      "cuda",
-      "geforce",
-      "h100",
-      "tensorcores",
-      "nvlink"
+      "ampere",
+      "advancements",
+      "architecture",
+      "hopper",
+      "nvidia"
     ]
   },
   {
-    "ticker": "GS",
+    "ticker": "CNC",
     "keywords": [
-      "ibanking",
-      "trading",
-      "assetmanagement",
-      "primebrokerage",
-      "goldman"
+      "centene",
+      "medicare",
+      "expansion",
+      "medicaid",
+      "lawsuit"
     ]
   },
   {
-    "ticker": "WFC",
+    "ticker": "JPM",
     "keywords": [
-      "retailbank",
+      "jamie",
+      "dimon",
+      "jpmorgan",
+      "chase",
+      "community"
+    ]
+  },
+  {
+    "ticker": "HD",
+    "keywords": [
+      "nate",
+      "executive",
+      "chief",
+      "the",
+      "nesser"
+    ]
+  },
+  {
+    "ticker": "FNMA",
+    "keywords": [
+      "securitization",
+      "single",
       "mortgage",
-      "commercial",
-      "wealth",
-      "payments"
+      "transactions",
+      "federal"
     ]
   },
   {
-    "ticker": "VLO",
+    "ticker": "KR",
     "keywords": [
-      "refining",
-      "ethanol",
-      "renewables",
-      "logistics",
+      "kelley",
+      "kroger",
+      "the",
+      "ceo",
+      "joe"
+    ]
+  },
+  {
+    "ticker": "VZ",
+    "keywords": [
+      "media",
+      "acquisition",
+      "verizon",
+      "ultra",
+      "oath"
+    ]
+  },
+  {
+    "ticker": "MPC",
+    "keywords": [
+      "diesel",
+      "renewable",
+      "expansion",
+      "marathon",
+      "petroleum"
+    ]
+  },
+  {
+    "ticker": "PSX",
+    "keywords": [
+      "midstream",
+      "phillips",
+      "renewable",
+      "expansion",
       "fuels"
-    ]
-  },
-  {
-    "ticker": "CMCSA",
-    "keywords": [
-      "xfinity",
-      "nbcuniversal",
-      "peacock",
-      "broadband",
-      "cable"
-    ]
-  },
-  {
-    "ticker": "STATEFARM_PRIVATE",
-    "keywords": [
-      "autoinsurance",
-      "homeowners",
-      "agents",
-      "claims",
-      "bundling"
-    ]
-  },
-  {
-    "ticker": "T",
-    "keywords": [
-      "wireless",
-      "fiber",
-      "5g",
-      "broadband",
-      "telecom"
-    ]
-  },
-  {
-    "ticker": "FMCC",
-    "keywords": [
-      "mortgagebacked",
-      "conforming",
-      "multifamily",
-      "creditrisk",
-      "loanadvisor"
-    ]
-  },
-  {
-    "ticker": "HUM",
-    "keywords": [
-      "medicareadvantage",
-      "centerwell",
-      "pharmacy",
-      "primarycare",
-      "homehealth"
-    ]
-  },
-  {
-    "ticker": "MS",
-    "keywords": [
-      "wealthmanagement",
-      "etrade",
-      "ibanking",
-      "trading",
-      "assetmanagement"
-    ]
-  },
-  {
-    "ticker": "TGT",
-    "keywords": [
-      "targetcircle",
-      "driveup",
-      "pickup",
-      "goodgather",
-      "upup"
     ]
   },
   {
     "ticker": "SNEX",
     "keywords": [
-      "commodities",
-      "fx",
-      "clearing",
-      "execution",
-      "risk"
+      "segment",
+      "expansion",
+      "stonex",
+      "group",
+      "commercial"
     ]
   },
   {
-    "ticker": "TSLA",
+    "ticker": "HUM",
     "keywords": [
-      "model3",
-      "modely",
-      "supercharger",
-      "gigafactory",
-      "autopilot"
+      "advantage",
+      "medicare",
+      "updates",
+      "medicaresynergy",
+      "humana"
+    ]
+  },
+  {
+    "ticker": "T",
+    "keywords": [
+      "stephenson",
+      "randall",
+      "att",
+      "warnermedia",
+      "merger"
+    ]
+  },
+  {
+    "ticker": "CMCSA",
+    "keywords": [
+      "sky",
+      "internet",
+      "outage",
+      "comcast",
+      "xfinity"
+    ]
+  },
+  {
+    "ticker": "FMCC",
+    "keywords": [
+      "purchase",
+      "fannie",
+      "mortgage",
+      "federal",
+      "mae"
+    ]
+  },
+  {
+    "ticker": "VLO",
+    "keywords": [
+      "diesel",
+      "renewable",
+      "expansion",
+      "valero",
+      "california"
+    ]
+  },
+  {
+    "ticker": "TGT",
+    "keywords": [
+      "shipt",
+      "target",
+      "expansion",
+      "service",
+      "delivery"
     ]
   },
   {
     "ticker": "DELL",
     "keywords": [
+      "michael",
+      "acquisition",
       "poweredge",
-      "powerstore",
-      "alienware",
-      "latitude",
-      "precision"
+      "dell",
+      "strategic"
     ]
   },
   {
-    "ticker": "PEP",
+    "ticker": "BAC",
     "keywords": [
-      "pepsi",
-      "fritolay",
-      "gatorade",
-      "quaker",
-      "mountaindew"
+      "management",
+      "merrill",
+      "lynch",
+      "wealth",
+      "bank"
+    ]
+  },
+  {
+    "ticker": "TSLA",
+    "keywords": [
+      "musk",
+      "model",
+      "tesla",
+      "elon",
+      "update"
     ]
   },
   {
     "ticker": "DIS",
     "keywords": [
-      "disneyplus",
-      "espn",
-      "marvel",
-      "pixar",
-      "themeparks"
+      "studios",
+      "launch",
+      "disney",
+      "the",
+      "marvel"
     ]
   },
   {
-    "ticker": "UPS",
+    "ticker": "PEP",
     "keywords": [
-      "ground",
-      "air",
-      "worldship",
-      "lastmile",
-      "logistics"
+      "acquisitions",
+      "ramon",
+      "tropicana",
+      "ceo",
+      "pepsico"
     ]
   },
   {
     "ticker": "JNJ",
     "keywords": [
-      "tylenol",
-      "bandaid",
-      "neutrogena",
-      "medtech",
+      "approval",
+      "johnson",
+      "remsima",
+      "drug",
       "oncology"
+    ]
+  },
+  {
+    "ticker": "UPS",
+    "keywords": [
+      "expansion",
+      "service",
+      "freight",
+      "united",
+      "ground"
     ]
   },
   {
     "ticker": "FDX",
     "keywords": [
+      "fedex",
+      "expansion",
+      "service",
       "express",
-      "ground",
-      "freight",
-      "shipmanager",
-      "logistics"
-    ]
-  },
-  {
-    "ticker": "ADM",
-    "keywords": [
-      "oilseeds",
-      "ethanol",
-      "milling",
-      "nutrition",
-      "trading"
-    ]
-  },
-  {
-    "ticker": "PG",
-    "keywords": [
-      "tide",
-      "pampers",
-      "gillette",
-      "oralb",
-      "dawn"
-    ]
-  },
-  {
-    "ticker": "LOW",
-    "keywords": [
-      "lowes",
-      "installation",
-      "pro",
-      "appliances",
-      "tools"
-    ]
-  },
-  {
-    "ticker": "ET",
-    "keywords": [
-      "pipelines",
-      "midstream",
-      "ngl",
-      "storage",
-      "terminals"
+      "ground"
     ]
   },
   {
     "ticker": "RTX",
     "keywords": [
-      "prattwhitney",
+      "acquisition",
       "collins",
-      "raytheon",
-      "missiles",
-      "radar"
-    ]
-  },
-  {
-    "ticker": "ACI",
-    "keywords": [
-      "safeway",
-      "vons",
-      "jewelosco",
-      "pharmacy",
-      "grocery"
-    ]
-  },
-  {
-    "ticker": "SYY",
-    "keywords": [
-      "foodservice",
-      "distribution",
-      "restaurants",
-      "produce",
-      "supplies"
+      "aerospace",
+      "update",
+      "rtx"
     ]
   },
   {
     "ticker": "PGR",
     "keywords": [
-      "snapshot",
       "claims",
-      "autopolicy",
-      "commercialauto",
-      "underwriting"
+      "the",
+      "genie",
+      "technology",
+      "progressive"
     ]
   },
   {
-    "ticker": "AXP",
+    "ticker": "PG",
     "keywords": [
-      "platinum",
-      "membershiprewards",
-      "centurionlounge",
-      "merchant",
-      "chargecard"
+      "beauty",
+      "launch",
+      "the",
+      "innovation",
+      "procter"
     ]
   },
   {
-    "ticker": "LMT",
+    "ticker": "LOW",
     "keywords": [
-      "f35",
-      "aegis",
-      "sikorsky",
-      "missiles",
-      "spacesystems"
+      "ceo",
+      "lowes",
+      "carolyn",
+      "everson",
+      "lowe"
     ]
   },
   {
-    "ticker": "MET",
+    "ticker": "ADM",
     "keywords": [
-      "lifeinsurance",
-      "annuities",
-      "groupbenefits",
-      "dental",
-      "retirement"
+      "liocell",
+      "bunge",
+      "deal",
+      "fallout",
+      "archerdanielsmidland"
     ]
   },
   {
-    "ticker": "HCA",
+    "ticker": "SYY",
     "keywords": [
-      "hospitals",
-      "emergency",
-      "surgery",
-      "clinics",
-      "healthsystems"
+      "operations",
+      "foodservice",
+      "expansion",
+      "sygma",
+      "sysco"
     ]
   },
   {
-    "ticker": "PRU",
+    "ticker": "ACI",
     "keywords": [
-      "pgim",
-      "annuities",
-      "lifeinsurance",
-      "retirement",
-      "assetmanagement"
+      "albertsons",
+      "executive",
+      "safeway",
+      "merger",
+      "update"
     ]
   },
   {
     "ticker": "BA",
     "keywords": [
-      "737",
-      "787",
-      "defense",
-      "aerospace",
-      "services"
+      "boeing",
+      "the",
+      "max",
+      "certification",
+      "update"
     ]
   },
   {
-    "ticker": "CAT",
+    "ticker": "ET",
     "keywords": [
-      "excavators",
-      "bulldozers",
-      "mining",
-      "dieselengines",
-      "equipment"
+      "partnership",
+      "sunoco",
+      "energy",
+      "announcement",
+      "strategic"
     ]
   },
   {
-    "ticker": "MRK",
+    "ticker": "WFC",
     "keywords": [
-      "keytruda",
-      "gardasil",
-      "vaccines",
-      "animalhealth",
-      "oncology"
+      "fargo",
+      "account",
+      "mortgage",
+      "scandal",
+      "wells"
+    ]
+  },
+  {
+    "ticker": "C",
+    "keywords": [
+      "citigroup",
+      "management",
+      "citi",
+      "global",
+      "wealth"
+    ]
+  },
+  {
+    "ticker": "HCA",
+    "keywords": [
+      "thomas",
+      "hca",
+      "giulianni",
+      "merger",
+      "cfo"
+    ]
+  },
+  {
+    "ticker": "LMT",
+    "keywords": [
+      "lockheed",
+      "joint",
+      "martin",
+      "fighter",
+      "strike"
+    ]
+  },
+  {
+    "ticker": "MET",
+    "keywords": [
+      "metlife",
+      "group",
+      "legal",
+      "settlement",
+      "benefits"
+    ]
+  },
+  {
+    "ticker": "MS",
+    "keywords": [
+      "stanley",
+      "morgan",
+      "gorman",
+      "james",
+      "ceo"
     ]
   },
   {
     "ticker": "ALL",
     "keywords": [
-      "drivewise",
-      "claims",
-      "autoinsurance",
-      "homeowners",
-      "agents"
-    ]
-  },
-  {
-    "ticker": "PFE",
-    "keywords": [
-      "comirnaty",
-      "paxlovid",
-      "prevnar",
-      "vaccines",
-      "oncology"
+      "protection",
+      "the",
+      "allstate",
+      "changes",
+      "policy"
     ]
   },
   {
     "ticker": "IBM",
     "keywords": [
-      "ibmz",
-      "redhat",
-      "mainframe",
-      "consulting",
-      "watsonx"
+      "international",
+      "krishna",
+      "arvind",
+      "ceo",
+      "strategy"
     ]
   },
   {
-    "ticker": "NYL_PRIVATE",
+    "ticker": "AXP",
     "keywords": [
-      "wholelife",
-      "annuities",
-      "retirement",
-      "agents",
-      "planning"
+      "partnership",
+      "card",
+      "american",
+      "amex",
+      "centurion"
+    ]
+  },
+  {
+    "ticker": "CAT",
+    "keywords": [
+      "launch",
+      "jim",
+      "ceo",
+      "umpleby",
+      "caterpillar"
+    ]
+  },
+  {
+    "ticker": "MRK",
+    "keywords": [
+      "approval",
+      "keytruda",
+      "fda",
+      "expansion",
+      "merck"
     ]
   },
   {
     "ticker": "DAL",
     "keywords": [
-      "skymiles",
-      "deltaone",
-      "hubs",
-      "fleet",
-      "alliances"
+      "delta",
+      "atlanta",
+      "hub",
+      "expansion",
+      "air"
     ]
   },
   {
-    "ticker": "PUBLIX_PRIVATE",
+    "ticker": "PFE",
     "keywords": [
-      "grocery",
-      "deli",
-      "bakery",
-      "subs",
-      "pharmacy"
+      "eliquis",
+      "pfizer",
+      "ignite",
+      "updates",
+      "cardiovascular"
     ]
   },
   {
-    "ticker": "NATIONWIDE_PRIVATE",
+    "ticker": "PFGC",
     "keywords": [
-      "autoinsurance",
-      "commercial",
-      "claims",
-      "retirement",
-      "petinsurance"
-    ]
-  },
-  {
-    "ticker": "SNX",
-    "keywords": [
-      "distribution",
-      "cloud",
-      "channel",
-      "devices",
-      "vendors"
-    ]
-  },
-  {
-    "ticker": "UAL",
-    "keywords": [
-      "mileageplus",
-      "polaris",
-      "hubs",
-      "fleet",
-      "network"
+      "food",
+      "john",
+      "performance",
+      "group",
+      "kline"
     ]
   },
   {
     "ticker": "COP",
     "keywords": [
-      "alaska",
-      "permian",
       "lng",
-      "upstream",
-      "shale"
+      "canada",
+      "project",
+      "alaska",
+      "conocophillips"
     ]
   },
   {
-    "ticker": "TJX",
+    "ticker": "ORCL",
     "keywords": [
-      "tjmaxx",
-      "marshalls",
-      "homegoods",
-      "offprice",
-      "discount"
+      "oracle",
+      "erp",
+      "health",
+      "cloud",
+      "fusion"
+    ]
+  },
+  {
+    "ticker": "SNX",
+    "keywords": [
+      "synnex",
+      "td",
+      "acquisition",
+      "endpoint",
+      "solutions"
+    ]
+  },
+  {
+    "ticker": "AVGO",
+    "keywords": [
+      "mikitani",
+      "deal",
+      "broadcom",
+      "qualcomm",
+      "hiroshi"
     ]
   },
   {
     "ticker": "ABBV",
     "keywords": [
-      "skyrizi",
+      "approval",
       "rinvoq",
-      "immunology",
-      "oncology",
-      "humira"
+      "skyrizi",
+      "abbvie",
+      "fda"
     ]
   },
   {
-    "ticker": "EPD",
+    "ticker": "LLY",
     "keywords": [
-      "ngl",
-      "fractionation",
-      "pipelines",
-      "storage",
-      "midstream"
+      "eli",
+      "jardiance",
+      "fda",
+      "humalog",
+      "trulicity"
+    ]
+  },
+  {
+    "ticker": "TJX",
+    "keywords": [
+      "marmaxx",
+      "homegoods",
+      "the",
+      "expansion",
+      "new"
+    ]
+  },
+  {
+    "ticker": "UAL",
+    "keywords": [
+      "kirby",
+      "airlines",
+      "scott",
+      "united",
+      "ceo"
+    ]
+  },
+  {
+    "ticker": "CSCO",
+    "keywords": [
+      "intercloud",
+      "acquisition",
+      "cisco",
+      "meraki",
+      "partnerships"
+    ]
+  },
+  {
+    "ticker": "PRU",
+    "keywords": [
+      "developments",
+      "financial",
+      "prudential",
+      "japan",
+      "regulatory"
+    ]
+  },
+  {
+    "ticker": "GS",
+    "keywords": [
+      "solomon",
+      "the",
+      "testimony",
+      "sec",
+      "david"
+    ]
+  },
+  {
+    "ticker": "HPQ",
+    "keywords": [
+      "nelson",
+      "hardware",
+      "hp",
+      "launch",
+      "zack"
     ]
   },
   {
     "ticker": "CHTR",
     "keywords": [
       "spectrum",
-      "broadband",
-      "mobile",
-      "wifi",
-      "cable"
-    ]
-  },
-  {
-    "ticker": "PFGC",
-    "keywords": [
-      "foodservice",
-      "vistar",
-      "distribution",
-      "restaurants",
-      "convenience"
-    ]
-  },
-  {
-    "ticker": "AAL",
-    "keywords": [
-      "aadvantage",
-      "hubs",
-      "fleet",
-      "oneworld",
-      "premium"
-    ]
-  },
-  {
-    "ticker": "COF",
-    "keywords": [
-      "venture",
-      "creditcards",
-      "autoloans",
-      "cafes",
-      "digitalbank"
-    ]
-  },
-  {
-    "ticker": "CSCO",
-    "keywords": [
-      "catalyst",
-      "webex",
-      "meraki",
-      "switches",
-      "security"
-    ]
-  },
-  {
-    "ticker": "HPQ",
-    "keywords": [
-      "laserjet",
-      "instantink",
-      "pavilion",
-      "omen",
-      "print"
+      "executives",
+      "internet",
+      "expansion",
+      "charter"
     ]
   },
   {
     "ticker": "TSN",
     "keywords": [
-      "tyson",
-      "jimmydean",
-      "hillshire",
+      "recall",
       "chicken",
-      "preparedfoods"
+      "beef",
+      "foods",
+      "tyson"
+    ]
+  },
+  {
+    "ticker": "AAL",
+    "keywords": [
+      "american",
+      "airlines",
+      "pilot",
+      "strike",
+      "threat"
     ]
   },
   {
     "ticker": "INTC",
     "keywords": [
-      "core",
-      "xeon",
-      "foundry",
-      "arc",
-      "x86"
+      "graphics",
+      "pat",
+      "launch",
+      "intel",
+      "arc"
     ]
   },
   {
-    "ticker": "ORCL",
+    "ticker": "EPD",
     "keywords": [
-      "oracledatabase",
-      "java",
-      "oci",
-      "fusion",
-      "netsuite"
-    ]
-  },
-  {
-    "ticker": "AVGO",
-    "keywords": [
-      "vmware",
-      "broadcom",
-      "switching",
-      "semiconductor",
-      "software"
-    ]
-  },
-  {
-    "ticker": "DE",
-    "keywords": [
-      "johndeere",
-      "tractors",
-      "combines",
-      "precisionag",
-      "jdlink"
-    ]
-  },
-  {
-    "ticker": "NKE",
-    "keywords": [
-      "airjordan",
-      "airmax",
-      "driFit",
-      "snkrs",
-      "runclub"
-    ]
-  },
-  {
-    "ticker": "LMG_PRIVATE",
-    "keywords": [
-      "autoinsurance",
-      "homeowners",
-      "commercial",
-      "claims",
-      "underwriting"
-    ]
-  },
-  {
-    "ticker": "PAGP",
-    "keywords": [
-      "plains",
-      "crude",
-      "pipelines",
-      "storage",
-      "midstream"
-    ]
-  },
-  {
-    "ticker": "USAA_PRIVATE",
-    "keywords": [
-      "military",
-      "autoinsurance",
-      "banking",
-      "homeowners",
-      "claims"
-    ]
-  },
-  {
-    "ticker": "BMY",
-    "keywords": [
-      "opdivo",
-      "eliquis",
-      "celltherapy",
-      "oncology",
-      "immunology"
-    ]
-  },
-  {
-    "ticker": "INGR",
-    "keywords": [
-      "distribution",
-      "logistics",
-      "cloud",
-      "channel",
-      "itservices"
+      "ngl",
+      "partners",
+      "products",
+      "new",
+      "enterprise"
     ]
   },
   {
     "ticker": "GD",
     "keywords": [
-      "gulfstream",
-      "submarines",
-      "abrams",
-      "defense",
-      "itservices"
-    ]
-  },
-  {
-    "ticker": "KO",
-    "keywords": [
-      "cocacola",
-      "sprite",
-      "fanta",
-      "minutemaid",
-      "bottling"
-    ]
-  },
-  {
-    "ticker": "TIAA_PRIVATE",
-    "keywords": [
-      "retirement",
-      "annuities",
-      "pensions",
-      "assetmanagement",
-      "advisors"
-    ]
-  },
-  {
-    "ticker": "TRV",
-    "keywords": [
-      "propertycasualty",
-      "umbrella",
-      "surety",
-      "riskcontrol",
-      "claims"
-    ]
-  },
-  {
-    "ticker": "LLY",
-    "keywords": [
-      "mounjaro",
-      "zepbound",
-      "trulicity",
-      "humalog",
-      "oncology"
+      "program",
+      "dynamics",
+      "hypersonic",
+      "lynx",
+      "general"
     ]
   },
   {
     "ticker": "UBER",
     "keywords": [
-      "rideshare",
-      "ubereats",
+      "partnership",
+      "dispute",
       "freight",
-      "drivers",
-      "marketplace"
+      "uber",
+      "lyft"
+    ]
+  },
+  {
+    "ticker": "TRV",
+    "keywords": [
+      "travelers",
+      "workers",
+      "the",
+      "compensation",
+      "litigation"
+    ]
+  },
+  {
+    "ticker": "BMY",
+    "keywords": [
+      "approval",
+      "fda",
+      "orencia",
+      "bristolmyers",
+      "opdivo"
+    ]
+  },
+  {
+    "ticker": "KO",
+    "keywords": [
+      "coca",
+      "the",
+      "micky",
+      "cola",
+      "ceo"
+    ]
+  },
+  {
+    "ticker": "NKE",
+    "keywords": [
+      "collaboration",
+      "launch",
+      "max",
+      "air",
+      "nike"
+    ]
+  },
+  {
+    "ticker": "DE",
+    "keywords": [
+      "series",
+      "launch",
+      "john",
+      "deere",
+      "company"
+    ]
+  },
+  {
+    "ticker": "QCOM",
+    "keywords": [
+      "snapdragon",
+      "soc",
+      "qualcomm",
+      "partnerships",
+      "update"
+    ]
+  },
+  {
+    "ticker": "GE",
+    "keywords": [
+      "ge",
+      "leapx",
+      "international",
+      "cfm",
+      "engine"
+    ]
+  },
+  {
+    "ticker": "ABT",
+    "keywords": [
+      "covid",
+      "abbott",
+      "kit",
+      "laboratories",
+      "test"
+    ]
+  },
+  {
+    "ticker": "TMO",
+    "keywords": [
+      "fda",
+      "genomics",
+      "thermo",
+      "nexlevel",
+      "technology"
+    ]
+  },
+  {
+    "ticker": "NFLX",
+    "keywords": [
+      "netflix",
+      "content",
+      "spencer",
+      "neumann",
+      "strategy"
+    ]
+  },
+  {
+    "ticker": "MOH",
+    "keywords": [
+      "partnership",
+      "healthcare",
+      "expansion",
+      "medicaid",
+      "molina"
+    ]
+  },
+  {
+    "ticker": "DG",
+    "keywords": [
+      "todd",
+      "dollar",
+      "ceo",
+      "vasos",
+      "general"
+    ]
+  },
+  {
+    "ticker": "BBY",
+    "keywords": [
+      "partnership",
+      "satya",
+      "best",
+      "microsoft",
+      "nadella"
+    ]
+  },
+  {
+    "ticker": "NOC",
+    "keywords": [
+      "program",
+      "launch",
+      "spirit",
+      "northrop",
+      "bomber"
+    ]
+  },
+  {
+    "ticker": "DOW",
+    "keywords": [
+      "increase",
+      "saran",
+      "wrap",
+      "ceo",
+      "dow"
+    ]
+  },
+  {
+    "ticker": "HON",
+    "keywords": [
+      "building",
+      "honeywell",
+      "merger",
+      "avionics",
+      "aerospace"
+    ]
+  },
+  {
+    "ticker": "CRM",
+    "keywords": [
+      "marc",
+      "salesforce",
+      "integration",
+      "announcement",
+      "agentforce"
+    ]
+  },
+  {
+    "ticker": "V",
+    "keywords": [
+      "network",
+      "transaction",
+      "visanet",
+      "processing",
+      "visa"
+    ]
+  },
+  {
+    "ticker": "PM",
+    "keywords": [
+      "iqos",
+      "approval",
+      "philip",
+      "japan",
+      "regulatory"
+    ]
+  },
+  {
+    "ticker": "CBRE",
+    "keywords": [
+      "services",
+      "advisory",
+      "expansion",
+      "cbre",
+      "asia"
+    ]
+  },
+  {
+    "ticker": "USFD",
+    "keywords": [
+      "partnership",
+      "us",
+      "launch",
+      "foods",
+      "moxe"
+    ]
+  },
+  {
+    "ticker": "WBD",
+    "keywords": [
+      "max",
+      "subscriber",
+      "hbo",
+      "bros",
+      "warner"
+    ]
+  },
+  {
+    "ticker": "GEV",
+    "keywords": [
+      "ge",
+      "wind",
+      "turbine",
+      "performance",
+      "haliade"
+    ]
+  },
+  {
+    "ticker": "MDLZ",
+    "keywords": [
+      "mondelez",
+      "reformulation",
+      "announcement",
+      "asia",
+      "oreo"
+    ]
+  },
+  {
+    "ticker": "LAD",
+    "keywords": [
+      "motors",
+      "layton",
+      "lithia",
+      "acquisition",
+      "ceo"
+    ]
+  },
+  {
+    "ticker": "MU",
+    "keywords": [
+      "memory",
+      "based",
+      "expansion",
+      "micron",
+      "cxl"
+    ]
+  },
+  {
+    "ticker": "SBUX",
+    "keywords": [
+      "launches",
+      "schultz",
+      "lunch",
+      "howard",
+      "starbucks"
+    ]
+  },
+  {
+    "ticker": "AMGN",
+    "keywords": [
+      "amgen",
+      "approval",
+      "fda",
+      "enbrel",
+      "update"
+    ]
+  },
+  {
+    "ticker": "LEN",
+    "keywords": [
+      "east",
+      "john",
+      "homebuilding",
+      "lennar",
+      "dilessandro"
+    ]
+  },
+  {
+    "ticker": "HPE",
+    "keywords": [
+      "packard",
+      "servers",
+      "expansion",
+      "proliant",
+      "hewlett"
+    ]
+  },
+  {
+    "ticker": "DHI",
+    "keywords": [
+      "dr",
+      "announcement",
+      "ceo",
+      "land",
+      "horton"
+    ]
+  },
+  {
+    "ticker": "CPNG",
+    "keywords": [
+      "fresh",
+      "expansion",
+      "coupang",
+      "south",
+      "rocket"
+    ]
+  },
+  {
+    "ticker": "CMI",
+    "keywords": [
+      "emissions",
+      "cummins",
+      "accelera",
+      "settlement",
+      "engine"
+    ]
+  },
+  {
+    "ticker": "PYPL",
+    "keywords": [
+      "paypal",
+      "acquisition",
+      "xoom",
+      "venmo",
+      "challenges"
+    ]
+  },
+  {
+    "ticker": "AMD",
+    "keywords": [
+      "instinct",
+      "launch",
+      "epyc",
+      "advanced",
+      "processors"
+    ]
+  },
+  {
+    "ticker": "NUE",
+    "keywords": [
+      "nucor",
+      "galvanized",
+      "sheet",
+      "launch",
+      "steel"
+    ]
+  },
+  {
+    "ticker": "UNFI",
+    "keywords": [
+      "segment",
+      "expansion",
+      "ceo",
+      "united",
+      "natural"
+    ]
+  },
+  {
+    "ticker": "OKE",
+    "keywords": [
+      "oneok",
+      "expansion",
+      "natural",
+      "gas",
+      "gathering"
+    ]
+  },
+  {
+    "ticker": "MA",
+    "keywords": [
+      "open",
+      "network",
+      "mastercard",
+      "digital",
+      "for"
+    ]
+  },
+  {
+    "ticker": "DUK",
+    "keywords": [
+      "energy",
+      "cleanup",
+      "duke",
+      "coal",
+      "ash"
+    ]
+  },
+  {
+    "ticker": "FERG",
+    "keywords": [
+      "plastics",
+      "recall",
+      "executive",
+      "leadership",
+      "ferguson"
+    ]
+  },
+  {
+    "ticker": "PAG",
+    "keywords": [
+      "retail",
+      "strategies",
+      "penske",
+      "automotive",
+      "dealership"
+    ]
+  },
+  {
+    "ticker": "JBL",
+    "keywords": [
+      "partnership",
+      "living",
+      "connected",
+      "jabil",
+      "strategic"
+    ]
+  },
+  {
+    "ticker": "NRG",
+    "keywords": [
+      "nrg",
+      "energy",
+      "smart",
+      "vivint",
+      "home"
+    ]
+  },
+  {
+    "ticker": "PBF",
+    "keywords": [
+      "ultra",
+      "diesel",
+      "low",
+      "sulfur",
+      "pbf"
+    ]
+  },
+  {
+    "ticker": "PCAR",
+    "keywords": [
+      "kenicke",
+      "financial",
+      "paccar",
+      "truck",
+      "announcement"
+    ]
+  },
+  {
+    "ticker": "ARW",
+    "keywords": [
+      "electronics",
+      "launch",
+      "solutions",
+      "interconnect",
+      "arrow"
+    ]
+  },
+  {
+    "ticker": "GILD",
+    "keywords": [
+      "gilead",
+      "approval",
+      "epclusa",
+      "biktarvy",
+      "regulatory"
+    ]
+  },
+  {
+    "ticker": "SO",
+    "keywords": [
+      "the",
+      "merger",
+      "company",
+      "with",
+      "southern"
+    ]
+  },
+  {
+    "ticker": "COF",
+    "keywords": [
+      "card",
+      "data",
+      "credit",
+      "capital",
+      "one"
+    ]
+  },
+  {
+    "ticker": "AMAT",
+    "keywords": [
+      "partnership",
+      "applied",
+      "materials",
+      "research",
+      "lam"
+    ]
+  },
+  {
+    "ticker": "KMX",
+    "keywords": [
+      "markets",
+      "expansion",
+      "carmax",
+      "auctions",
+      "new"
+    ]
+  },
+  {
+    "ticker": "AN",
+    "keywords": [
+      "domestic",
+      "segment",
+      "expansion",
+      "new",
+      "autonation"
+    ]
+  },
+  {
+    "ticker": "HIG",
+    "keywords": [
+      "acquisition",
+      "the",
+      "hartford",
+      "insurance",
+      "business"
+    ]
+  },
+  {
+    "ticker": "BKR",
+    "keywords": [
+      "bit",
+      "baker",
+      "drill",
+      "hughes",
+      "h1x"
+    ]
+  },
+  {
+    "ticker": "LUV",
+    "keywords": [
+      "program",
+      "rewards",
+      "loyalty",
+      "rapid",
+      "southwest"
+    ]
+  },
+  {
+    "ticker": "APO",
+    "keywords": [
+      "rowan",
+      "apollo",
+      "marc",
+      "global",
+      "strategic"
+    ]
+  },
+  {
+    "ticker": "PWR",
+    "keywords": [
+      "infrastructure",
+      "expansion",
+      "solutions",
+      "electric",
+      "quanta"
+    ]
+  },
+  {
+    "ticker": "AIG",
+    "keywords": [
+      "american",
+      "america",
+      "north",
+      "segment",
+      "commercial"
+    ]
+  },
+  {
+    "ticker": "DINO",
+    "keywords": [
+      "sinclair",
+      "hf",
+      "expansion",
+      "kansas",
+      "refining"
+    ]
+  },
+  {
+    "ticker": "OXY",
+    "keywords": [
+      "permian",
+      "locke",
+      "gene",
+      "harry",
+      "occidental"
+    ]
+  },
+  {
+    "ticker": "NEE",
+    "keywords": [
+      "nextera",
+      "power",
+      "company",
+      "light",
+      "florida"
+    ]
+  },
+  {
+    "ticker": "MCD",
+    "keywords": [
+      "mcdonalds",
+      "mcdonald",
+      "mac",
+      "hike",
+      "big"
+    ]
+  },
+  {
+    "ticker": "BKNG",
+    "keywords": [
+      "booking",
+      "europe",
+      "expansion",
+      "com",
+      "strategic"
+    ]
+  },
+  {
+    "ticker": "USB",
+    "keywords": [
+      "management",
+      "us",
+      "bancorp",
+      "wealth",
+      "strategy"
+    ]
+  },
+  {
+    "ticker": "FCX",
+    "keywords": [
+      "minerals",
+      "operation",
+      "freeportmcmoran",
+      "district",
+      "grasberg"
+    ]
+  },
+  {
+    "ticker": "JLL",
+    "keywords": [
+      "transwestern",
+      "acquisition",
+      "firm",
+      "brokerage",
+      "jones"
+    ]
+  },
+  {
+    "ticker": "KHC",
+    "keywords": [
+      "mayer",
+      "oscar",
+      "the",
+      "heinz",
+      "recalls"
+    ]
+  },
+  {
+    "ticker": "MAR",
+    "keywords": [
+      "york",
+      "opening",
+      "bonvoy",
+      "new",
+      "marriott"
+    ]
+  },
+  {
+    "ticker": "CEG",
+    "keywords": [
+      "electricity",
+      "mid",
+      "constellation",
+      "expansion",
+      "atlantic"
+    ]
+  },
+  {
+    "ticker": "MMM",
+    "keywords": [
+      "3m",
+      "defense",
+      "disruption",
+      "tapes",
+      "nexcare"
+    ]
+  },
+  {
+    "ticker": "WM",
+    "keywords": [
+      "waste",
+      "fish",
+      "jim",
+      "ceo",
+      "restructuring"
+    ]
+  },
+  {
+    "ticker": "PCG",
+    "keywords": [
+      "pge",
+      "electric",
+      "and",
+      "gas",
+      "pacific"
+    ]
+  },
+  {
+    "ticker": "LYV",
+    "keywords": [
+      "partnership",
+      "live",
+      "nation",
+      "eilish",
+      "billie"
+    ]
+  },
+  {
+    "ticker": "UNP",
+    "keywords": [
+      "railway",
+      "discussions",
+      "bnsf",
+      "union",
+      "merger"
+    ]
+  },
+  {
+    "ticker": "SYK",
+    "keywords": [
+      "bone",
+      "stryker",
+      "settlement",
+      "cement",
+      "magnum"
+    ]
+  },
+  {
+    "ticker": "IP",
+    "keywords": [
+      "packaging",
+      "international",
+      "paper",
+      "solutions",
+      "company"
+    ]
+  },
+  {
+    "ticker": "EXC",
+    "keywords": [
+      "energy",
+      "exelon",
+      "solutions",
+      "merger",
+      "pseg"
+    ]
+  },
+  {
+    "ticker": "DHR",
+    "keywords": [
+      "partnership",
+      "life",
+      "approval",
+      "danaher",
+      "fda"
+    ]
+  },
+  {
+    "ticker": "GPC",
+    "keywords": [
+      "america",
+      "genuine",
+      "parts",
+      "automotive",
+      "north"
+    ]
+  },
+  {
+    "ticker": "ADBE",
+    "keywords": [
+      "adobe",
+      "dispute",
+      "cloud",
+      "legal",
+      "creative"
+    ]
+  },
+  {
+    "ticker": "SHW",
+    "keywords": [
+      "john",
+      "the",
+      "sherwin",
+      "ceo",
+      "williams"
+    ]
+  },
+  {
+    "ticker": "LEA",
+    "keywords": [
+      "systems",
+      "lear",
+      "expansion",
+      "seating",
+      "corporation"
+    ]
+  },
+  {
+    "ticker": "WCC",
+    "keywords": [
+      "electronic",
+      "electrical",
+      "segment",
+      "solutions",
+      "wesco"
+    ]
+  },
+  {
+    "ticker": "SCHW",
+    "keywords": [
+      "schwab",
+      "the",
+      "intelligent",
+      "lawsuit",
+      "portfolios"
+    ]
+  },
+  {
+    "ticker": "BLK",
+    "keywords": [
+      "larry",
+      "fink",
+      "blackrock",
+      "letter",
+      "esg"
+    ]
+  },
+  {
+    "ticker": "M",
+    "keywords": [
+      "macy",
+      "bloomingdale",
+      "expansion",
+      "macys",
+      "plans"
+    ]
+  },
+  {
+    "ticker": "EOG",
+    "keywords": [
+      "oil",
+      "eog",
+      "company",
+      "enron",
+      "gas"
+    ]
+  },
+  {
+    "ticker": "GPI",
+    "keywords": [
+      "john",
+      "expansion",
+      "group",
+      "plans",
+      "automotive"
+    ]
+  },
+  {
+    "ticker": "AVT",
+    "keywords": [
+      "semiconductor",
+      "acquisition",
+      "avnet",
+      "inc",
+      "farnell"
+    ]
+  },
+  {
+    "ticker": "RGA",
+    "keywords": [
+      "reinsurance",
+      "disability",
+      "europe",
+      "longevity",
+      "launch"
+    ]
+  },
+  {
+    "ticker": "KKR",
+    "keywords": [
+      "kkr",
+      "partners",
+      "private",
+      "equity",
+      "blackstone"
+    ]
+  },
+  {
+    "ticker": "HAL",
+    "keywords": [
+      "production",
+      "segment",
+      "halliburton",
+      "and",
+      "completion"
+    ]
+  },
+  {
+    "ticker": "CDW",
+    "keywords": [
+      "cdw",
+      "segment",
+      "expansion",
+      "government",
+      "commercial"
+    ]
+  },
+  {
+    "ticker": "CARR",
+    "keywords": [
+      "climate",
+      "solutions",
+      "carrier",
+      "cote",
+      "david"
+    ]
+  },
+  {
+    "ticker": "ROST",
+    "keywords": [
+      "ross",
+      "less",
+      "expansion",
+      "dress",
+      "for"
+    ]
+  },
+  {
+    "ticker": "BDX",
+    "keywords": [
+      "becton",
+      "dickinson",
+      "launch",
+      "connected",
+      "catheters"
+    ]
+  },
+  {
+    "ticker": "PNC",
+    "keywords": [
+      "acquires",
+      "the",
+      "new",
+      "bank",
+      "regional"
+    ]
+  },
+  {
+    "ticker": "LHX",
+    "keywords": [
+      "partnership",
+      "l3harris",
+      "mission",
+      "systems",
+      "space"
+    ]
+  },
+  {
+    "ticker": "NEM",
+    "keywords": [
+      "operations",
+      "guinea",
+      "new",
+      "papua",
+      "newmont"
+    ]
+  },
+  {
+    "ticker": "AEP",
+    "keywords": [
+      "american",
+      "texas",
+      "new",
+      "solar",
+      "plant"
+    ]
+  },
+  {
+    "ticker": "BJ",
+    "keywords": [
+      "fresh",
+      "bjs",
+      "food",
+      "expansion",
+      "mobile"
+    ]
+  },
+  {
+    "ticker": "SMCI",
+    "keywords": [
+      "server",
+      "superblade",
+      "supermicro",
+      "super",
+      "update"
+    ]
+  },
+  {
+    "ticker": "APH",
+    "keywords": [
+      "environment",
+      "amphenol",
+      "acquisition",
+      "solutions",
+      "harsh"
+    ]
+  },
+  {
+    "ticker": "ADP",
+    "keywords": [
+      "automatic",
+      "run",
+      "powered",
+      "workforce",
+      "now"
+    ]
+  },
+  {
+    "ticker": "CTSH",
+    "keywords": [
+      "partnership",
+      "health",
+      "sciences",
+      "cognizant",
+      "transformation"
+    ]
+  },
+  {
+    "ticker": "THC",
+    "keywords": [
+      "ambulatory",
+      "tenet",
+      "healthcare",
+      "care",
+      "expansion"
+    ]
+  },
+  {
+    "ticker": "GEHC",
+    "keywords": [
+      "ge",
+      "imaging",
+      "healthcare",
+      "advancements",
+      "integration"
+    ]
+  },
+  {
+    "ticker": "MO",
+    "keywords": [
+      "marlboro",
+      "altria",
+      "changes",
+      "microsoft",
+      "regulatory"
+    ]
+  },
+  {
+    "ticker": "CL",
+    "keywords": [
+      "palmolive",
+      "care",
+      "colgatepalmolive",
+      "colgate",
+      "oral"
+    ]
+  },
+  {
+    "ticker": "PH",
+    "keywords": [
+      "systems",
+      "control",
+      "report",
+      "motion",
+      "parkerhannifin"
+    ]
+  },
+  {
+    "ticker": "BK",
+    "keywords": [
+      "bny",
+      "services",
+      "the",
+      "mellon",
+      "securities"
+    ]
+  },
+  {
+    "ticker": "KMB",
+    "keywords": [
+      "recall",
+      "kimberlyclark",
+      "huggies",
+      "america",
+      "north"
+    ]
+  },
+  {
+    "ticker": "LRCX",
+    "keywords": [
+      "euv",
+      "system",
+      "advances",
+      "altus",
+      "lam"
+    ]
+  },
+  {
+    "ticker": "INTU",
+    "keywords": [
+      "quickbooks",
+      "service",
+      "financial",
+      "intuit",
+      "update"
+    ]
+  },
+  {
+    "ticker": "BSX",
+    "keywords": [
+      "scientific",
+      "talks",
+      "merger",
+      "boston",
+      "medtronic"
+    ]
+  },
+  {
+    "ticker": "AZO",
+    "keywords": [
+      "brazil",
+      "expansion",
+      "mexico",
+      "strategic",
+      "autozone"
+    ]
+  },
+  {
+    "ticker": "GIS",
+    "keywords": [
+      "cereal",
+      "innovation",
+      "announcement",
+      "general",
+      "chex"
+    ]
+  },
+  {
+    "ticker": "DLTR",
+    "keywords": [
+      "dollar",
+      "canada",
+      "expansion",
+      "james",
+      "tree"
+    ]
+  },
+  {
+    "ticker": "LNG",
+    "keywords": [
+      "terminal",
+      "sabine",
+      "cheniere",
+      "expansion",
+      "pass"
+    ]
+  },
+  {
+    "ticker": "CLF",
+    "keywords": [
+      "cleveland",
+      "hot",
+      "clevelandcliffs",
+      "rolled",
+      "cliffs"
+    ]
+  },
+  {
+    "ticker": "AMP",
+    "keywords": [
+      "ceo",
+      "financial",
+      "ameriprise",
+      "announcement",
+      "retirement"
+    ]
+  },
+  {
+    "ticker": "ARMK",
+    "keywords": [
+      "nutrition",
+      "aramark",
+      "sports",
+      "new",
+      "partnerships"
+    ]
+  },
+  {
+    "ticker": "PAYX",
+    "keywords": [
+      "rollout",
+      "solutions",
+      "hcm",
+      "paychex",
+      "ceo"
+    ]
+  },
+  {
+    "ticker": "IDXX",
+    "keywords": [
+      "companion",
+      "group",
+      "animal",
+      "laboratories",
+      "idexx"
+    ]
+  },
+  {
+    "ticker": "ED",
+    "keywords": [
+      "york",
+      "consolidated",
+      "city",
+      "electric",
+      "new"
+    ]
+  },
+  {
+    "ticker": "AFL",
+    "keywords": [
+      "product",
+      "aflac",
+      "japan",
+      "insurance",
+      "cancer"
+    ]
+  },
+  {
+    "ticker": "SRE",
+    "keywords": [
+      "sempra",
+      "infrastructure",
+      "decision",
+      "california",
+      "regulatory"
+    ]
+  },
+  {
+    "ticker": "MCO",
+    "keywords": [
+      "moodys",
+      "moody",
+      "analytics",
+      "research",
+      "esg"
+    ]
+  },
+  {
+    "ticker": "FIS",
+    "keywords": [
+      "fraud",
+      "fidelity",
+      "management",
+      "solutions",
+      "national"
+    ]
+  },
+  {
+    "ticker": "ECL",
+    "keywords": [
+      "segment",
+      "expansion",
+      "global",
+      "water",
+      "ecolab"
+    ]
+  },
+  {
+    "ticker": "EMR",
+    "keywords": [
+      "emerson",
+      "control",
+      "electric",
+      "valves",
+      "final"
+    ]
+  },
+  {
+    "ticker": "ACN",
+    "keywords": [
+      "accenture",
+      "global",
+      "cloud",
+      "initiative",
+      "first"
+    ]
+  },
+  {
+    "ticker": "CINF",
+    "keywords": [
+      "financial",
+      "lines",
+      "cincinnati",
+      "insurance",
+      "commercial"
+    ]
+  },
+  {
+    "ticker": "TAP",
+    "keywords": [
+      "run",
+      "moon",
+      "acquisition",
+      "molson",
+      "blue"
+    ]
+  },
+  {
+    "ticker": "D",
+    "keywords": [
+      "virginia",
+      "dominion",
+      "energy",
+      "rate",
+      "hike"
+    ]
+  },
+  {
+    "ticker": "WELL",
+    "keywords": [
+      "silver",
+      "economy",
+      "welltower",
+      "expansion",
+      "strategy"
+    ]
+  },
+  {
+    "ticker": "SPGI",
+    "keywords": [
+      "jones",
+      "merger",
+      "indices",
+      "sp",
+      "dow"
+    ]
+  },
+  {
+    "ticker": "BALL",
+    "keywords": [
+      "containers",
+      "coca",
+      "ball",
+      "beverage",
+      "aluminum"
+    ]
+  },
+  {
+    "ticker": "HRL",
+    "keywords": [
+      "butter",
+      "recall",
+      "peanut",
+      "skippy",
+      "hormel"
+    ]
+  },
+  {
+    "ticker": "WAB",
+    "keywords": [
+      "positive",
+      "train",
+      "equipment",
+      "control",
+      "westinghouse"
+    ]
+  },
+  {
+    "ticker": "MTB",
+    "keywords": [
+      "trust",
+      "mt",
+      "and",
+      "traders",
+      "manufacturers"
+    ]
+  },
+  {
+    "ticker": "CME",
+    "keywords": [
+      "cme",
+      "house",
+      "changes",
+      "clearing",
+      "regulatory"
+    ]
+  },
+  {
+    "ticker": "FMC",
+    "keywords": [
+      "fmc",
+      "insecticide",
+      "corporation",
+      "latin",
+      "breakthrough"
+    ]
+  },
+  {
+    "ticker": "PPL",
+    "keywords": [
+      "ppl",
+      "regulated",
+      "segment",
+      "kentucky",
+      "corporation"
+    ]
+  },
+  {
+    "ticker": "PEG",
+    "keywords": [
+      "pse",
+      "project",
+      "expansion",
+      "public",
+      "solar"
+    ]
+  },
+  {
+    "ticker": "KEYS",
+    "keywords": [
+      "pxie",
+      "vector",
+      "keysight",
+      "n6700b",
+      "signal"
+    ]
+  },
+  {
+    "ticker": "TDY",
+    "keywords": [
+      "sensor",
+      "launch",
+      "imaging",
+      "digital",
+      "teledyne"
+    ]
+  },
+  {
+    "ticker": "TEL",
+    "keywords": [
+      "acquisition",
+      "connectivity",
+      "industrial",
+      "solutions",
+      "te"
+    ]
+  },
+  {
+    "ticker": "BR",
+    "keywords": [
+      "broadridge",
+      "proxyedge",
+      "adoption",
+      "proxy",
+      "trends"
+    ]
+  },
+  {
+    "ticker": "PKG",
+    "keywords": [
+      "corp",
+      "packaging",
+      "america",
+      "expansion",
+      "emea"
+    ]
+  },
+  {
+    "ticker": "VLTO",
+    "keywords": [
+      "instrumentation",
+      "acquisition",
+      "veralto",
+      "precision",
+      "hach"
+    ]
+  },
+  {
+    "ticker": "OTIS",
+    "keywords": [
+      "york",
+      "otis",
+      "city",
+      "new",
+      "elevate"
+    ]
+  },
+  {
+    "ticker": "TT",
+    "keywords": [
+      "technologies",
+      "executive",
+      "innovation",
+      "trane",
+      "hvac"
+    ]
+  },
+  {
+    "ticker": "MNST",
+    "keywords": [
+      "energy",
+      "monster",
+      "drinks",
+      "brands",
+      "strategic"
+    ]
+  },
+  {
+    "ticker": "GDDY",
+    "keywords": [
+      "godaddy",
+      "platform",
+      "expansion",
+      "core",
+      "managed"
+    ]
+  },
+  {
+    "ticker": "VRSK",
+    "keywords": [
+      "property",
+      "claim",
+      "services",
+      "corporation",
+      "verisk"
+    ]
+  },
+  {
+    "ticker": "FAST",
+    "keywords": [
+      "canada",
+      "mike",
+      "fastenal",
+      "expansion",
+      "ceo"
+    ]
+  },
+  {
+    "ticker": "WST",
+    "keywords": [
+      "johnson",
+      "launch",
+      "products",
+      "west",
+      "proprietary"
+    ]
+  },
+  {
+    "ticker": "RMD",
+    "keywords": [
+      "approval",
+      "apnealink",
+      "fda",
+      "resmed",
+      "air"
+    ]
+  },
+  {
+    "ticker": "STT",
+    "keywords": [
+      "mccall",
+      "executive",
+      "state",
+      "transition",
+      "ashley"
+    ]
+  },
+  {
+    "ticker": "HWM",
+    "keywords": [
+      "howmet",
+      "acquisition",
+      "products",
+      "aerospace",
+      "engine"
+    ]
+  },
+  {
+    "ticker": "LDOS",
+    "keywords": [
+      "security",
+      "leidos",
+      "solutions",
+      "cyber",
+      "national"
+    ]
+  },
+  {
+    "ticker": "ROK",
+    "keywords": [
+      "software",
+      "segment",
+      "control",
+      "automation",
+      "rockwell"
+    ]
+  },
+  {
+    "ticker": "GLW",
+    "keywords": [
+      "gorilla",
+      "innovations",
+      "optical",
+      "fiber",
+      "corning"
+    ]
+  },
+  {
+    "ticker": "SAIC",
+    "keywords": [
+      "cybersecurity",
+      "contract",
+      "solutions",
+      "science",
+      "government"
+    ]
+  },
+  {
+    "ticker": "AME",
+    "keywords": [
+      "ametek",
+      "instrument",
+      "eig",
+      "expansion",
+      "process"
+    ]
+  },
+  {
+    "ticker": "CTRA",
+    "keywords": [
+      "marcellus",
+      "permian",
+      "coterra",
+      "expansion",
+      "basin"
+    ]
+  },
+  {
+    "ticker": "MKL",
+    "keywords": [
+      "group",
+      "markel",
+      "ceo",
+      "announcement",
+      "insurance"
+    ]
+  },
+  {
+    "ticker": "HSY",
+    "keywords": [
+      "cups",
+      "butter",
+      "peanut",
+      "the",
+      "reese"
+    ]
+  },
+  {
+    "ticker": "TDG",
+    "keywords": [
+      "transdigm",
+      "acquisition",
+      "mechanical",
+      "regulatory",
+      "actuators"
+    ]
+  },
+  {
+    "ticker": "CBOE",
+    "keywords": [
+      "vix",
+      "launch",
+      "futures",
+      "cboe",
+      "index"
+    ]
+  },
+  {
+    "ticker": "WRB",
+    "keywords": [
+      "w",
+      "berkley",
+      "specialty",
+      "lines",
+      "personal"
+    ]
+  },
+  {
+    "ticker": "CF",
+    "keywords": [
+      "surge",
+      "industries",
+      "granular",
+      "ammonia",
+      "cf"
+    ]
+  },
+  {
+    "ticker": "NTRS",
+    "keywords": [
+      "management",
+      "trust",
+      "northern",
+      "wealth",
+      "corporation"
+    ]
+  },
+  {
+    "ticker": "MCHP",
+    "keywords": [
+      "pic",
+      "launch",
+      "microcontroller",
+      "new",
+      "microchip"
+    ]
+  },
+  {
+    "ticker": "AKAM",
+    "keywords": [
+      "edge",
+      "akamai",
+      "services",
+      "expansion",
+      "cloud"
+    ]
+  },
+  {
+    "ticker": "GWW",
+    "keywords": [
+      "touch",
+      "ww",
+      "high",
+      "solutions",
+      "north"
+    ]
+  },
+  {
+    "ticker": "XPO",
+    "keywords": [
+      "american",
+      "expansion",
+      "xpo",
+      "ltl",
+      "north"
+    ]
+  },
+  {
+    "ticker": "LKQ",
+    "keywords": [
+      "europe",
+      "lkq",
+      "acquisition",
+      "specialty",
+      "announcement"
+    ]
+  },
+  {
+    "ticker": "PPG",
+    "keywords": [
+      "architectural",
+      "global",
+      "merger",
+      "ppg",
+      "coatings"
+    ]
+  },
+  {
+    "ticker": "AXTA",
+    "keywords": [
+      "mobilitycoat",
+      "axalta",
+      "expansion",
+      "coating",
+      "asia"
+    ]
+  },
+  {
+    "ticker": "MTD",
+    "keywords": [
+      "mettler",
+      "mettlertoledo",
+      "toledo",
+      "lab",
+      "balance"
+    ]
+  },
+  {
+    "ticker": "FTV",
+    "keywords": [
+      "acquisition",
+      "healthcare",
+      "advanced",
+      "solutions",
+      "fortive"
+    ]
+  },
+  {
+    "ticker": "NDAQ",
+    "keywords": [
+      "launch",
+      "nasdaq",
+      "private",
+      "changes",
+      "index"
+    ]
+  },
+  {
+    "ticker": "XYL",
+    "keywords": [
+      "goeckeler",
+      "ceo",
+      "xylem",
+      "announcement",
+      "david"
+    ]
+  },
+  {
+    "ticker": "APTV",
+    "keywords": [
+      "aptiv",
+      "systems",
+      "rollout",
+      "safety",
+      "advanced"
+    ]
+  },
+  {
+    "ticker": "SWKS",
+    "keywords": [
+      "solutions",
+      "ceo",
+      "automotive",
+      "announcement",
+      "skyworks"
+    ]
+  },
+  {
+    "ticker": "OC",
+    "keywords": [
+      "owens",
+      "pricing",
+      "shingles",
+      "roofing",
+      "corning"
+    ]
+  },
+  {
+    "ticker": "POOL",
+    "keywords": [
+      "university",
+      "pool",
+      "announced",
+      "expansion",
+      "swim"
+    ]
+  },
+  {
+    "ticker": "BAX",
+    "keywords": [
+      "approval",
+      "baxter",
+      "fda",
+      "systems",
+      "infusion"
+    ]
+  },
+  {
+    "ticker": "WAT",
+    "keywords": [
+      "upc2",
+      "massachusetts",
+      "launch",
+      "waters",
+      "acquity"
+    ]
+  },
+  {
+    "ticker": "IEX",
+    "keywords": [
+      "technologies",
+      "health",
+      "advancements",
+      "science",
+      "idex"
+    ]
+  },
+  {
+    "ticker": "MAS",
+    "keywords": [
+      "launch",
+      "products",
+      "plumbing",
+      "corporation",
+      "masco"
+    ]
+  },
+  {
+    "ticker": "WPC",
+    "keywords": [
+      "acquisition",
+      "w",
+      "carey",
+      "inc",
+      "strategic"
+    ]
+  },
+  {
+    "ticker": "ZBRA",
+    "keywords": [
+      "zebra",
+      "launch",
+      "connected",
+      "devices",
+      "enterprise"
+    ]
+  },
+  {
+    "ticker": "MKC",
+    "keywords": [
+      "mccormick",
+      "acquisition",
+      "impact",
+      "old",
+      "bay"
+    ]
+  },
+  {
+    "ticker": "IR",
+    "keywords": [
+      "compressed",
+      "ingersoll",
+      "solutions",
+      "rand",
+      "air"
+    ]
+  },
+  {
+    "ticker": "ITW",
+    "keywords": [
+      "illinois",
+      "segment",
+      "expansion",
+      "oem",
+      "automotive"
+    ]
+  },
+  {
+    "ticker": "TSCO",
+    "keywords": [
+      "tractor",
+      "john",
+      "ceo",
+      "wallace",
+      "announcement"
+    ]
+  },
+  {
+    "ticker": "SNA",
+    "keywords": [
+      "hand",
+      "tool",
+      "innovation",
+      "snapon",
+      "snap"
+    ]
+  },
+  {
+    "ticker": "GNRC",
+    "keywords": [
+      "generac",
+      "remote",
+      "link",
+      "mobile",
+      "monitoring"
+    ]
+  },
+  {
+    "ticker": "ENPH",
+    "keywords": [
+      "energy",
+      "expansion",
+      "plans",
+      "enphase",
+      "battery"
+    ]
+  },
+  {
+    "ticker": "FDS",
+    "keywords": [
+      "launches",
+      "comments",
+      "workstation",
+      "factset",
+      "ceo"
+    ]
+  },
+  {
+    "ticker": "CNP",
+    "keywords": [
+      "case",
+      "centerpoint",
+      "indiana",
+      "rate",
+      "electric"
+    ]
+  },
+  {
+    "ticker": "OGE",
+    "keywords": [
+      "wind",
+      "energy",
+      "corp",
+      "oge",
+      "power"
+    ]
+  },
+  {
+    "ticker": "DRI",
+    "keywords": [
+      "menu",
+      "garden",
+      "expansion",
+      "olive",
+      "darden"
+    ]
+  },
+  {
+    "ticker": "RPM",
+    "keywords": [
+      "cpg",
+      "international",
+      "segment",
+      "expansion",
+      "rpm"
+    ]
+  },
+  {
+    "ticker": "NDSN",
+    "keywords": [
+      "acquisition",
+      "industrial",
+      "solutions",
+      "precision",
+      "nordson"
+    ]
+  },
+  {
+    "ticker": "AGCO",
+    "keywords": [
+      "fendt",
+      "acquisition",
+      "deal",
+      "agco",
+      "tractors"
+    ]
+  },
+  {
+    "ticker": "BEN",
+    "keywords": [
+      "john",
+      "iii",
+      "blewett",
+      "ceo",
+      "franklin"
+    ]
+  },
+  {
+    "ticker": "TMHC",
+    "keywords": [
+      "level",
+      "taylor",
+      "morrison",
+      "housing",
+      "entry"
+    ]
+  },
+  {
+    "ticker": "AMKR",
+    "keywords": [
+      "chip",
+      "flip",
+      "scale",
+      "amkor",
+      "stacked"
+    ]
+  },
+  {
+    "ticker": "KEY",
+    "keywords": [
+      "association",
+      "keybank",
+      "keycorp",
+      "regulatory",
+      "national"
+    ]
+  },
+  {
+    "ticker": "LULU",
+    "keywords": [
+      "executive",
+      "culture",
+      "athletica",
+      "lululemon",
+      "resignation"
+    ]
+  },
+  {
+    "ticker": "ORI",
+    "keywords": [
+      "old",
+      "cyber",
+      "specialty",
+      "republic",
+      "insurance"
+    ]
+  },
+  {
+    "ticker": "ZTS",
+    "keywords": [
+      "genus",
+      "vaccines",
+      "livestock",
+      "zoetis",
+      "for"
+    ]
+  },
+  {
+    "ticker": "SJM",
+    "keywords": [
+      "retail",
+      "recall",
+      "smucker",
+      "the",
+      "coffee"
+    ]
+  },
+  {
+    "ticker": "HBAN",
+    "keywords": [
+      "grace",
+      "huntington",
+      "bank",
+      "hour",
+      "national"
+    ]
+  },
+  {
+    "ticker": "INGR",
+    "keywords": [
+      "ingredion",
+      "expansion",
+      "healthful",
+      "solutions",
+      "texture"
+    ]
+  },
+  {
+    "ticker": "SANM",
+    "keywords": [
+      "europe",
+      "appointment",
+      "ceo",
+      "corporation",
+      "sanmina"
+    ]
+  },
+  {
+    "ticker": "CTAS",
+    "keywords": [
+      "services",
+      "cintas",
+      "safety",
+      "aid",
+      "first"
+    ]
+  },
+  {
+    "ticker": "VNT",
+    "keywords": [
+      "technologies",
+      "acquisition",
+      "mobility",
+      "vontier",
+      "repair"
+    ]
+  },
+  {
+    "ticker": "ABM",
+    "keywords": [
+      "industries",
+      "services",
+      "expansion",
+      "janitorial",
+      "abm"
+    ]
+  },
+  {
+    "ticker": "AEE",
+    "keywords": [
+      "case",
+      "rate",
+      "missouri",
+      "ameren",
+      "decision"
+    ]
+  },
+  {
+    "ticker": "FAF",
+    "keywords": [
+      "title",
+      "american",
+      "data",
+      "first",
+      "insurance"
+    ]
+  },
+  {
+    "ticker": "BBWI",
+    "keywords": [
+      "wick",
+      "candles",
+      "body",
+      "works",
+      "bath"
+    ]
+  },
+  {
+    "ticker": "RF",
+    "keywords": [
+      "investigation",
+      "regions",
+      "financial",
+      "corporation",
+      "sec"
+    ]
+  },
+  {
+    "ticker": "AVTR",
+    "keywords": [
+      "technologies",
+      "acquisition",
+      "avantor",
+      "chemical",
+      "agilent"
+    ]
+  },
+  {
+    "ticker": "GNW",
+    "keywords": [
+      "performance",
+      "enact",
+      "segment",
+      "financial",
+      "genworth"
+    ]
+  },
+  {
+    "ticker": "EQT",
+    "keywords": [
+      "eqt",
+      "production",
+      "appalachian",
+      "gas",
+      "basin"
+    ]
+  },
+  {
+    "ticker": "LSTR",
+    "keywords": [
+      "acquisition",
+      "system",
+      "landstar",
+      "new",
+      "trucking"
+    ]
+  },
+  {
+    "ticker": "KNX",
+    "keywords": [
+      "truckload",
+      "knightswift",
+      "knight",
+      "rate",
+      "swift"
+    ]
+  },
+  {
+    "ticker": "WTRG",
+    "keywords": [
+      "regulated",
+      "essential",
+      "utilities",
+      "ceo",
+      "announcement"
+    ]
+  },
+  {
+    "ticker": "ATO",
+    "keywords": [
+      "energy",
+      "pipeline",
+      "expansion",
+      "texas",
+      "atmos"
+    ]
+  },
+  {
+    "ticker": "NI",
+    "keywords": [
+      "case",
+      "rate",
+      "nisource",
+      "decision",
+      "nipsco"
+    ]
+  },
+  {
+    "ticker": "ERIE",
+    "keywords": [
+      "dispute",
+      "erie",
+      "legal",
+      "exchange",
+      "insurance"
+    ]
+  },
+  {
+    "ticker": "ALB",
+    "keywords": [
+      "albemarle",
+      "production",
+      "lithium",
+      "expansion",
+      "ceo"
+    ]
+  },
+  {
+    "ticker": "RRC",
+    "keywords": [
+      "region",
+      "range",
+      "appalachian",
+      "gas",
+      "natural"
+    ]
+  },
+  {
+    "ticker": "NWSA",
+    "keywords": [
+      "acquisition",
+      "news",
+      "jones",
+      "corporation",
+      "dow"
+    ]
+  },
+  {
+    "ticker": "SEE",
+    "keywords": [
+      "sealed",
+      "innovation",
+      "ceo",
+      "stretchwrap",
+      "air"
+    ]
+  },
+  {
+    "ticker": "VMC",
+    "keywords": [
+      "crushed",
+      "materials",
+      "vulcan",
+      "constraints",
+      "stone"
+    ]
+  },
+  {
+    "ticker": "MLM",
+    "keywords": [
+      "east",
+      "martin",
+      "expansion",
+      "group",
+      "marietta"
+    ]
+  },
+  {
+    "ticker": "IPGP",
+    "keywords": [
+      "ipg",
+      "state",
+      "fiber",
+      "solid",
+      "hybrid"
+    ]
+  },
+  {
+    "ticker": "HAS",
+    "keywords": [
+      "mattel",
+      "deal",
+      "story",
+      "toy",
+      "hasbro"
+    ]
+  },
+  {
+    "ticker": "BWA",
+    "keywords": [
+      "launch",
+      "eboosters",
+      "borgwarner",
+      "turbocharging",
+      "partnerships"
+    ]
+  },
+  {
+    "ticker": "UAA",
+    "keywords": [
+      "plank",
+      "kevin",
+      "under",
+      "ceo",
+      "strategic"
+    ]
+  },
+  {
+    "ticker": "DKS",
+    "keywords": [
+      "dicks",
+      "dick",
+      "maffei",
+      "gregory",
+      "golf"
+    ]
+  },
+  {
+    "ticker": "WSM",
+    "keywords": [
+      "ceo",
+      "christopher",
+      "williamssonoma",
+      "williams",
+      "sonoma"
+    ]
+  },
+  {
+    "ticker": "JAZZ",
+    "keywords": [
+      "approval",
+      "xywav",
+      "fda",
+      "jazz",
+      "update"
+    ]
+  },
+  {
+    "ticker": "LNC",
+    "keywords": [
+      "illness",
+      "lincoln",
+      "critical",
+      "insurance",
+      "national"
+    ]
+  },
+  {
+    "ticker": "PRI",
+    "keywords": [
+      "life",
+      "term",
+      "primerica",
+      "insurance",
+      "update"
+    ]
+  },
+  {
+    "ticker": "RLI",
+    "keywords": [
+      "property",
+      "rli",
+      "corp",
+      "casualty",
+      "insurance"
+    ]
+  },
+  {
+    "ticker": "WFRD",
+    "keywords": [
+      "pressure",
+      "drilling",
+      "merger",
+      "weatherford",
+      "managed"
+    ]
+  },
+  {
+    "ticker": "FHN",
+    "keywords": [
+      "horizon",
+      "expansion",
+      "first",
+      "bank",
+      "regional"
+    ]
+  },
+  {
+    "ticker": "ALLY",
+    "keywords": [
+      "report",
+      "automotive",
+      "ally",
+      "finance",
+      "insurance"
+    ]
+  },
+  {
+    "ticker": "GHC",
+    "keywords": [
+      "university",
+      "american",
+      "graham",
+      "english",
+      "language"
+    ]
+  },
+  {
+    "ticker": "TOL",
+    "keywords": [
+      "living",
+      "city",
+      "condos",
+      "brothers",
+      "toll"
+    ]
+  },
+  {
+    "ticker": "BXP",
+    "keywords": [
+      "bxp",
+      "expansion",
+      "new",
+      "boston",
+      "office"
+    ]
+  },
+  {
+    "ticker": "HII",
+    "keywords": [
+      "shipbuilding",
+      "contract",
+      "huntington",
+      "award",
+      "ingalls"
+    ]
+  },
+  {
+    "ticker": "DXC",
+    "keywords": [
+      "services",
+      "expansion",
+      "dxc",
+      "global",
+      "business"
+    ]
+  },
+  {
+    "ticker": "IRM",
+    "keywords": [
+      "partnership",
+      "mountain",
+      "iron",
+      "digital",
+      "transformation"
+    ]
+  },
+  {
+    "ticker": "SCI",
+    "keywords": [
+      "plan",
+      "succession",
+      "service",
+      "ceo",
+      "corporation"
+    ]
+  },
+  {
+    "ticker": "TRMB",
+    "keywords": [
+      "trimble",
+      "software",
+      "connect",
+      "construction",
+      "update"
+    ]
+  },
+  {
+    "ticker": "EG",
+    "keywords": [
+      "reinsurance",
+      "treaty",
+      "updates",
+      "group",
+      "everest"
+    ]
+  },
+  {
+    "ticker": "MHK",
+    "keywords": [
+      "industries",
+      "global",
+      "ceo",
+      "mohawk",
+      "announcement"
+    ]
+  },
+  {
+    "ticker": "HRB",
+    "keywords": [
+      "controversy",
+      "refund",
+      "block",
+      "transfers",
+      "hr"
+    ]
+  },
+  {
+    "ticker": "HOLX",
+    "keywords": [
+      "hologic",
+      "assays",
+      "diagnostic",
+      "molecular",
+      "aptima"
+    ]
+  },
+  {
+    "ticker": "FOXA",
+    "keywords": [
+      "spectrum",
+      "programming",
+      "acquisition",
+      "fox",
+      "network"
+    ]
+  },
+  {
+    "ticker": "AIZ",
+    "keywords": [
+      "lifestyle",
+      "expansion",
+      "segment",
+      "global",
+      "assurant"
+    ]
+  },
+  {
+    "ticker": "AOS",
+    "keywords": [
+      "recall",
+      "residential",
+      "a",
+      "water",
+      "heaters"
+    ]
+  },
+  {
+    "ticker": "GL",
+    "keywords": [
+      "globe",
+      "life",
+      "supplemental",
+      "medicaid",
+      "inc"
+    ]
+  },
+  {
+    "ticker": "FNF",
+    "keywords": [
+      "title",
+      "fidelity",
+      "insurance",
+      "national",
+      "trends"
+    ]
+  },
+  {
+    "ticker": "PFG",
+    "keywords": [
+      "expansion",
+      "solutions",
+      "principal",
+      "retirement",
+      "asset"
+    ]
+  },
+  {
+    "ticker": "STLD",
+    "keywords": [
+      "dynamics",
+      "hot",
+      "steel",
+      "expansion",
+      "rolled"
+    ]
+  },
+  {
+    "ticker": "PRGO",
+    "keywords": [
+      "perrigo",
+      "suppressant",
+      "infant",
+      "expansion",
+      "cough"
+    ]
+  },
+  {
+    "ticker": "RGLD",
+    "keywords": [
+      "stream",
+      "america",
+      "royal",
+      "gold",
+      "south"
+    ]
+  },
+  {
+    "ticker": "WEX",
+    "keywords": [
+      "wex",
+      "executive",
+      "segment",
+      "expansion",
+      "mobility"
+    ]
+  },
+  {
+    "ticker": "CLX",
+    "keywords": [
+      "investigation",
+      "recall",
+      "the",
+      "clorox",
+      "bleach"
+    ]
+  },
+  {
+    "ticker": "DVN",
+    "keywords": [
+      "oil",
+      "production",
+      "devon",
+      "delaware",
+      "basin"
     ]
   },
   {
     "ticker": "PSA",
     "keywords": [
-      "operational",
-      "supply",
-      "chain",
-      "psa",
-      "efficiency"
+      "self",
+      "shurgard",
+      "limited",
+      "public",
+      "storage"
+    ]
+  },
+  {
+    "ticker": "EW",
+    "keywords": [
+      "sapien",
+      "trial",
+      "edwards",
+      "valve",
+      "heart"
+    ]
+  },
+  {
+    "ticker": "CHRW",
+    "keywords": [
+      "surface",
+      "expansion",
+      "ch",
+      "robinson",
+      "transportation"
+    ]
+  },
+  {
+    "ticker": "EXPE",
+    "keywords": [
+      "acquires",
+      "travel",
+      "expedia",
+      "group",
+      "new"
+    ]
+  },
+  {
+    "ticker": "SNAP",
+    "keywords": [
+      "evan",
+      "snapchat",
+      "snap",
+      "spiegel",
+      "strategic"
+    ]
+  },
+  {
+    "ticker": "NCLH",
+    "keywords": [
+      "victor",
+      "corral",
+      "del",
+      "ceo",
+      "norwegian"
+    ]
+  },
+  {
+    "ticker": "CCL",
+    "keywords": [
+      "fleet",
+      "cruises",
+      "expansion",
+      "aida",
+      "carnival"
+    ]
+  },
+  {
+    "ticker": "RCL",
+    "keywords": [
+      "royal",
+      "international",
+      "expansion",
+      "caribbean",
+      "brand"
+    ]
+  },
+  {
+    "ticker": "BURL",
+    "keywords": [
+      "fashion",
+      "burlington",
+      "store",
+      "closures",
+      "stores"
     ]
   },
   {
     "ticker": "ULTA",
     "keywords": [
-      "optimization",
+      "schultz",
       "ulta",
-      "supply",
-      "chain",
-      "ultra"
+      "leadership",
+      "shea",
+      "katie"
+    ]
+  },
+  {
+    "ticker": "OHI",
+    "keywords": [
+      "omega",
+      "healthcare",
+      "care",
+      "investors",
+      "homes"
+    ]
+  },
+  {
+    "ticker": "AFG",
+    "keywords": [
+      "property",
+      "american",
+      "group",
+      "financial",
+      "insurance"
+    ]
+  },
+  {
+    "ticker": "WK",
+    "keywords": [
+      "chief",
+      "workiva",
+      "financial",
+      "platform",
+      "update"
+    ]
+  },
+  {
+    "ticker": "IRDM",
+    "keywords": [
+      "launch",
+      "constellation",
+      "global",
+      "iridium",
+      "next"
+    ]
+  },
+  {
+    "ticker": "AIR",
+    "keywords": [
+      "inspection",
+      "corp",
+      "aar",
+      "expansion",
+      "airframe"
+    ]
+  },
+  {
+    "ticker": "CW",
+    "keywords": [
+      "industrial",
+      "curtiss",
+      "wright",
+      "aerospace",
+      "curtisswright"
+    ]
+  },
+  {
+    "ticker": "OGN",
+    "keywords": [
+      "organon",
+      "nexplanon",
+      "launch",
+      "updates",
+      "nuvaring"
+    ]
+  },
+  {
+    "ticker": "CRI",
+    "keywords": [
+      "retail",
+      "carters",
+      "international",
+      "expansion",
+      "carter"
+    ]
+  },
+  {
+    "ticker": "GPK",
+    "keywords": [
+      "paperboard",
+      "packaging",
+      "launch",
+      "graphic",
+      "americas"
+    ]
+  },
+  {
+    "ticker": "WMS",
+    "keywords": [
+      "ezflow",
+      "aggregate",
+      "bundles",
+      "advanced",
+      "synthetic"
+    ]
+  },
+  {
+    "ticker": "BLD",
+    "keywords": [
+      "topbuild",
+      "installation",
+      "corp",
+      "expansion",
+      "insulation"
+    ]
+  },
+  {
+    "ticker": "COKE",
+    "keywords": [
+      "cocacola",
+      "nonalcoholic",
+      "consolidated",
+      "coca",
+      "cola"
+    ]
+  },
+  {
+    "ticker": "CFR",
+    "keywords": [
+      "texas",
+      "frost",
+      "cullenfrost",
+      "bank",
+      "commercial"
+    ]
+  },
+  {
+    "ticker": "SFNC",
+    "keywords": [
+      "npl",
+      "simmons",
+      "first",
+      "bank",
+      "strategy"
+    ]
+  },
+  {
+    "ticker": "GXO",
+    "keywords": [
+      "gxo",
+      "expansion",
+      "james",
+      "robotics",
+      "barber"
+    ]
+  },
+  {
+    "ticker": "LYFT",
+    "keywords": [
+      "logan",
+      "lyft",
+      "ipo",
+      "ceo",
+      "reaction"
+    ]
+  },
+  {
+    "ticker": "DOCU",
+    "keywords": [
+      "powered",
+      "adoption",
+      "iam",
+      "docusign",
+      "platform"
     ]
   }
 ]

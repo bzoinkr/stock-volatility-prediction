@@ -1,10 +1,9 @@
 from _bootstrap import *
 
 import json
-import yaml
 
 from common.config import load_config
-from pipelines.prediction.eval_pipeline import run_eval_pipeline
+from pipelines.prediction.ridgeCreateModel_pipeline import run_pipeline
 
 
 # ── Paths — fill these in ─────────────────────────────────────────────────────
@@ -18,13 +17,13 @@ MODEL_DIR       = "data/models"   # directory where vol_model.pkl will be saved
 
 def main():
     run             = load_config("run.yaml")
-    date            = run["universe"]["end_date"]
+    date            = run["universe"]["end_datey"]
     day_weights     = run["day_weights"]
     feature_weights = run["feature_weights"]
 
-    print(f"Evaluating model on date        : {date}")
+    print(f"Predicting volatility for date  : {date}")
 
-    results = run_eval_pipeline(
+    predictions = run_pipeline(
         sentiment_path  = SENTIMENT_PATH,
         volatility_path = VOLATILITY_PATH,
         model_dir       = MODEL_DIR,
@@ -33,10 +32,10 @@ def main():
         feature_weights = feature_weights,
     )
 
-    output_path = "eval_results.json"
+    output_path = "predictions.json"
     with open(output_path, "w") as f:
-        json.dump(results, f, indent=4)
-    print(f"\nFull results saved to {output_path}")
+        json.dump(predictions, f, indent=4)
+    print(f"\nPredictions saved to {output_path}")
 
 
 if __name__ == "__main__":

@@ -36,7 +36,7 @@ def main():
     # 2) Fetch news for the base ticker + peers (saved to yahoo_news.jsonl)
     # --------------------------------------------------
     end_date = run["universe"]["end_date"] or date.today().isoformat()
-    start_date = run["universe"]["start_date"] or (date.fromisoformat(end_date) - timedelta(days=7)).isoformat()
+    start_date = run["universe"]["start_date_news"] or (date.fromisoformat(end_date) - timedelta(days=7)).isoformat()
     limit_per_ticker = int(run.get("news_limit_per_ticker", 200))
     peer_list = pC[tickers[0]]
 

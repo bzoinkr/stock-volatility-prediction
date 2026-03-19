@@ -13,7 +13,7 @@ def main():
     # Load run configuration (tickers, dates, limits, etc.)
     run = load_config("run.yaml")
 
-    START_DATE = run["universe"]["start_date"]
+    START_DATE = run["universe"]["start_date_news"]
     END_DATE = run["universe"]["end_date"]
     ANNUALIZE = True
 

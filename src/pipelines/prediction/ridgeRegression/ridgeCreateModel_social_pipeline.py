@@ -253,7 +253,7 @@ def print_correlations(correlations: list[dict]) -> None:
 
 def save_correlations(correlations: list[dict], output_dir: str) -> str:
     os.makedirs(output_dir, exist_ok=True)
-    path = os.path.join(output_dir, "feature_correlations.json")
+    path = os.path.join(output_dir, "social_feature_correlations.json")
     with open(path, "w") as f:
         json.dump(correlations, f, indent=4)
     return path
@@ -328,12 +328,12 @@ def run_pipeline(
     correlations = compute_feature_target_correlations(X, y, day_weights)
     print_correlations(correlations)
     corr_path = save_correlations(correlations, model_dir)
-    print(f"\n  Correlations saved → {corr_path}")
+    print(f"\nCorrelations saved → {corr_path}")
 
     # ── train & save ──────────────────────────────────────────────────────
     model_bundle = train_model(X, y)
     saved_path   = save_model(model_bundle, model_dir)
-    print(f"  Model saved    → {saved_path}")
+    print(f"Model saved    → {saved_path}")
 
     # ── predict ───────────────────────────────────────────────────────────
     X_pred, pred_tickers = build_prediction_rows(
@@ -346,7 +346,5 @@ def run_pipeline(
 
     preds       = predict(model_bundle, X_pred)
     predictions = dict(zip(pred_tickers, preds.tolist()))
-
-    print("\n  Predictions:")
 
     return predictions

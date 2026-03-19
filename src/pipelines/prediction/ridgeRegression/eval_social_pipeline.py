@@ -1,5 +1,5 @@
 """
-eval_pipeline.py
+eval_social_pipeline.py
 
 Loads the saved vol_model.pkl and evaluates it on a single date (end_date).
 Applies the same feature-level and day-level weighting used during training.
@@ -13,7 +13,7 @@ import pickle
 import numpy as np
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
-from pipelines.prediction.ridgeRegression.ridgeCreateModel_pipeline import (
+from pipelines.prediction.ridgeRegression.ridgeCreateModel_social_pipeline import (
     LOOKBACK,
     N_FEATURES,
     N_PER_DAY,
@@ -138,20 +138,6 @@ def print_stats(
     print("=" * 52)
 
 
-def print_per_ticker(
-    tickers: list[str],
-    y_true: list[float],
-    y_pred: np.ndarray,
-) -> None:
-    print("\n  Per-ticker breakdown:")
-    print(f"  {'Ticker':<8}  {'Actual':>10}  {'Predicted':>10}  {'Abs Error':>10}  {'Error%':>8}")
-    print("  " + "-" * 52)
-    for ticker, actual, pred in zip(tickers, y_true, y_pred):
-        abs_err = abs(pred - actual)
-        pct_err = (abs_err / actual * 100) if actual != 0 else float("nan")
-        print(f"  {ticker:<8}  {actual:>10.6f}  {pred:>10.6f}  {abs_err:>10.6f}  {pct_err:>7.2f}%")
-
-
 # ── Entry point ───────────────────────────────────────────────────────────────
 
 def run_eval_pipeline(
@@ -195,9 +181,6 @@ def run_eval_pipeline(
 
     # ── correlations on eval set ──────────────────────────────────────────
     correlations = compute_feature_target_correlations(X, y_true_arr, day_weights)
-    #print_correlations(correlations)
-    corr_path = save_correlations(correlations, model_dir)
-    print(f"\n  Correlations saved → {corr_path}")
 
     # ── predict ───────────────────────────────────────────────────────────
     X_scaled = model_bundle["scaler"].transform(X)

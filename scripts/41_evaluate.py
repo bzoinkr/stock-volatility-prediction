@@ -4,7 +4,7 @@ import json
 import yaml
 
 from common.config import load_config
-from pipelines.prediction.eval_pipeline import run_eval_pipeline
+from pipelines.prediction.ridgeRegression.eval_pipeline import run_eval_pipeline
 
 
 # ── Paths — fill these in ─────────────────────────────────────────────────────
@@ -18,7 +18,7 @@ MODEL_DIR       = "artifacts/models"   # directory where vol_model.pkl will be s
 
 def main():
     run             = load_config("run.yaml")
-    date            = run["universe"]["end_date"]
+    date            = run["universe"]["target_date"]
     day_weights     = run["day_weights"]
     feature_weights = run["feature_weights"]
 

@@ -6,9 +6,9 @@ project:
 universe:
   tickers: ["Nvidia"]
   ticker_symbols: ["PSA"]
-  start_date: "2026-03-10"
-  end_date: "2026-03-16"
-  end_datey: "2026-03-18"
+  start_date: "2026-03-10"      # Train window begin
+  end_date: "2026-03-16"        # Train window end
+  target_date: "2026-03-18"     # Target date for prediction
 
 frequency:
   base: "1D"               # daily base timeline

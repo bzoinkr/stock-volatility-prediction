@@ -3,7 +3,7 @@ from _bootstrap import *
 import json
 
 from common.config import load_config
-from pipelines.prediction.ridgeCreateModel_pipeline import run_pipeline
+from pipelines.prediction.ridgeRegression.ridgeCreateModel_pipeline import run_pipeline
 
 
 # ── Paths — fill these in ─────────────────────────────────────────────────────
@@ -17,7 +17,7 @@ MODEL_DIR       = "artifacts/models"   # directory where vol_model.pkl will be s
 
 def main():
     run             = load_config("run.yaml")
-    date            = run["universe"]["end_datey"]
+    date            = run["universe"]["end_date"]
     day_weights     = run["day_weights"]
     feature_weights = run["feature_weights"]
 

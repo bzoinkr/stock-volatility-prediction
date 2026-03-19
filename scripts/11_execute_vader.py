@@ -1,5 +1,5 @@
 from _bootstrap import *
-from pipelines.vader_pipeline import run_vader_on_reddit_posts
+from pipelines.prediction.sentimentModels.vader_pipeline import run_vader_on_reddit_posts
 
 
 def main() -> None:

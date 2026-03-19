@@ -3,8 +3,8 @@ from _bootstrap import *
 from datetime import date, timedelta
 
 from common.config import load_config
-from pipelines.peerCompany_pipeline import build_peerCompanies, save_keywords
-from pipelines.finnhub_news_pipeline import fetch_and_save_finnhub_news
+from pipelines.news.peerCompany_pipeline import build_peerCompanies, save_keywords
+from pipelines.news.finnhub_news_pipeline import fetch_and_save_finnhub_news
 
 
 def main():

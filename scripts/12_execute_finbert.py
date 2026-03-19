@@ -1,5 +1,5 @@
 from _bootstrap import *
-from pipelines.finbert_pipeline import run_finbert_on_yahoo_news
+from pipelines.prediction.sentimentModels.finbert_pipeline import run_finbert_on_yahoo_news
 
 
 def main() -> None:

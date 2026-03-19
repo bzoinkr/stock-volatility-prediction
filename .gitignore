@@ -1,1 +1,3 @@
 .env
+data/raw/social/reddit_posts_train.json
+data/processed/social/reddit_posts_vader_scored.jsonl

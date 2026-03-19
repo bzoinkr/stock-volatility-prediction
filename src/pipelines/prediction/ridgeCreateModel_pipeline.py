@@ -67,7 +67,7 @@ def load_json(path: str) -> dict:
         return json.load(f)
 
 
-def save_model(model_bundle: dict, model_dir: str, filename: str = "vol_model.pkl") -> str:
+def save_model(model_bundle: dict, model_dir: str, filename: str = "social_vol_model.pkl") -> str:
     os.makedirs(model_dir, exist_ok=True)
     path = os.path.join(model_dir, filename)
     with open(path, "wb") as f:

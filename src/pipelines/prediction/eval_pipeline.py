@@ -31,7 +31,7 @@ from pipelines.prediction.ridgeCreateModel_pipeline import (
 
 # ── I/O ──────────────────────────────────────────────────────────────────────
 
-def load_model(model_dir: str, filename: str = "vol_model.pkl") -> dict:
+def load_model(model_dir: str, filename: str = "social_vol_model.pkl") -> dict:
     path = os.path.join(model_dir, filename)
     if not os.path.exists(path):
         raise FileNotFoundError(f"No saved model found at: {path}")

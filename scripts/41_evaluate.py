@@ -11,7 +11,7 @@ from pipelines.prediction.eval_pipeline import run_eval_pipeline
 
 SENTIMENT_PATH  = "data/processed/social/social_data_train.json"   # path to sentiment JSON file
 VOLATILITY_PATH = "data/processed/market/volatility.json"   # path to volatility JSON file
-MODEL_DIR       = "data/models"   # directory where vol_model.pkl will be saved
+MODEL_DIR       = "artifacts/models"   # directory where vol_model.pkl will be saved
 
 
 # ── Main ──────────────────────────────────────────────────────────────────────
@@ -33,7 +33,7 @@ def main():
         feature_weights = feature_weights,
     )
 
-    output_path = "eval_results.json"
+    output_path = "artifacts/evaluations/social_eval_results.json"
     with open(output_path, "w") as f:
         json.dump(results, f, indent=4)
     print(f"\nFull results saved to {output_path}")

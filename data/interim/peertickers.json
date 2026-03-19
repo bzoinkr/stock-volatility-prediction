@@ -1,10 +1,11 @@
 {
-  "Nvidia": [
-    "MSFT",
-    "AMZN",
-    "AAPL",
-    "FB",
-    "GOOG",
-    "GOOGL"
+  "PSA": [
+    "AMER",
+    "CSGP",
+    "FCS",
+    "STOR",
+    "REIT",
+    "SLG",
+    "PSA"
   ]
 }

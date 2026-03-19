@@ -26,13 +26,21 @@ def build_peerCompanies(
         for i in range(runs):
             print(f"  Run {i + 1}/{runs} for {t}...")
 
-            peers = get_peer_tickers(t, k=k)
+            for i in range(runs):
+                print(f"  Run {i + 1}/{runs} for {t}...")
+
+                peers_dict = get_peer_tickers(t, k=k)
+                peers = peers_dict.get(t.upper(), [])  # ← unpack the dict
+                print(f"    Returned: {peers}")
+
+                counter.update(set(p.upper().strip() for p in peers))
             print(f"    Returned: {peers}")
 
             # normalize
             counter.update(set(p.upper().strip() for p in peers))
 
         top_peers = [p for p, _ in counter.most_common(k)]
+        top_peers.append(t)
 
         print(f"\nFinal selected peer companies for {t}: {top_peers}")
         result[t] = top_peers

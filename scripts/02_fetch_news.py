@@ -12,7 +12,7 @@ def main():
     run = load_config("run.yaml")
 
     # Base tickers defined in the config universe
-    tickers = run["universe"]["tickers"]
+    tickers = run["universe"]["ticker_symbols"]
 
     # Fail fast if no tickers were found
     if not tickers:

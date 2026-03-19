@@ -129,32 +129,68 @@ Return ONLY the keywords separated by spaces. No numbering, no bullets, no expla
     return []
 
 
-def get_peer_tickers(ticker: str, k: int = 6, retries: int = 2) -> list[str]:
+def get_peer_tickers(ticker: str, k: int = 6, retries: int = 2) -> dict[str, list[str]]:
 
-    # Use company name if available for a clearer prompt
     ctx = _get_company_context(ticker)
-    company_label = f"{ctx['name']} ({ticker})" if ctx["name"] != ticker else ticker
+
+    context_lines = [f"{ctx['name']} ({ticker})"]
+    if ctx["sector"]:
+        context_lines.append(f"Sector: {ctx['sector']}  |  Industry: {ctx['industry']}")
+    if ctx["description"]:
+        context_lines.append(f"Business: {ctx['description']}")
+    context_block = "\n".join(context_lines)
 
     prompt = f"""
-Give {k} US stock TICKERS of companies operating in the same industry as {company_label}.
-Output ONLY tickers separated by spaces or newlines.
-No punctuation, no bullets, no numbering, no extra text.
+# Role
+Expert equity analyst with deep knowledge of US public markets.
+
+# Company
+{context_block}
+
+# Task
+List {k} US-listed stock tickers of direct competitors or close peers of {ctx['name']}.
+Do NOT include {ticker.upper()} in your answer.
+
+# Rules
+- Only include companies that compete in the SAME specific industry segment, not just the same broad sector
+- ONLY output valid US exchange tickers (NYSE / NASDAQ), 1–5 uppercase letters
+- Do NOT include {ticker.upper()} itself under any circumstances
+- Each ticker on its own line
+
+# Output format — follow exactly:
+TICK1
+TICK2
+TICK3
 """.strip()
+
+    # Known non-ticker uppercase words to filter out
+    false_positives = {
+        "NYSE", "NASDAQ", "ETF", "CEO", "CFO", "USA", "US", "UK",
+        "IPO", "SEC", "ESG", "AI", "IT", "GDP", "EPS", "PE",
+        ticker.upper(),
+        # also filter the first word of company name uppercased
+        ctx["name"].split()[0].upper() if ctx["name"] != ticker else "",
+    }
 
     for _ in range(retries + 1):
         try:
-            r = requests.post(URL, json={"model": MODEL, "stream": False, "prompt": prompt}, timeout=60)
+            r = requests.post(
+                URL,
+                json={"model": MODEL, "stream": False, "prompt": prompt},
+                timeout=60,
+            )
             r.raise_for_status()
             text = r.json().get("response", "")
 
-            # Extract uppercase-ish tickers (1-5 chars, allow dot for BRK.B etc.)
-            raw = re.findall(r"\b[A-Z]{1,5}(?:\.[A-Z])?\b", text)
-            out, seen = [], set()
+            # Only grab tokens that look like real tickers:
+            # - 2 to 5 uppercase letters (single letters like "A" are too ambiguous)
+            # - optionally followed by .A or .B for share classes
+            raw = re.findall(r"\b([A-Z]{2,5}(?:\.[AB])?)\b", text)
+
+            out, seen = [], {ticker.upper()}
 
             for t in raw:
-                if t == ticker.upper():
-                    continue
-                if t in seen:
+                if t in seen or t in false_positives:
                     continue
                 seen.add(t)
                 out.append(t)
@@ -162,9 +198,9 @@ No punctuation, no bullets, no numbering, no extra text.
                     break
 
             if len(out) >= max(2, k // 2):
-                return out
+                return {ticker.upper(): out}
 
         except Exception:
             time.sleep(1)
 
-    return []
+    return {ticker.upper(): []}

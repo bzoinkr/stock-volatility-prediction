@@ -5,7 +5,7 @@ project:
 
 universe:
   tickers: ["Nvidia"]
-  ticker_symbols: ["PSA", "ULTA"]
+  ticker_symbols: ["PSA"]
   start_date: "2026-03-10"
   end_date: "2026-03-16"
   end_datey: "2026-03-18"

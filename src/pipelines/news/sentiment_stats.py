@@ -4,7 +4,6 @@ from collections import defaultdict
 from datetime import datetime, date
 from pathlib import Path
 import sys
-import math
 from urllib.parse import urlparse
 
 
@@ -30,9 +29,8 @@ def build_sentiment_stats(
     end_date: str | date,
 ) -> None:
     """
-      - impressions = 1 per article
-      - match_term  = permalink domain (e.g., finance.yahoo.com)
-      - date        = already "YYYY-MM-DD" in input
+      - match_term = permalink domain (e.g., finance.yahoo.com)
+      - date       = already "YYYY-MM-DD" in input
     """
     start = _parse_date(start_date)
     end = _parse_date(end_date)
@@ -51,7 +49,6 @@ def build_sentiment_stats(
                 print(f"Warning: skipping line {line_num} — {e}", file=sys.stderr)
                 continue
 
-            # --- Parse date from YYYY-MM-DD ---
             if "date" not in record:
                 continue
             try:
@@ -66,8 +63,6 @@ def build_sentiment_stats(
             if not ticker:
                 continue
 
-            # --- Ensure fields exist like social expects ---
-            # compound: prefer "compound", fallback to "sentiment_score"
             compound = record.get("compound", record.get("sentiment_score"))
             if compound is None:
                 continue
@@ -76,9 +71,6 @@ def build_sentiment_stats(
             record["pos"] = float(record.get("pos", 0.0))
             record["neg"] = float(record.get("neg", 0.0))
             record["neu"] = float(record.get("neu", 0.0))
-
-            # Social fields we emulate for news:
-            record["impressions"] = 1  # each article counts as 1 impression
             record["match_term"] = _domain_from_permalink(record.get("permalink"))
 
             date_str = record_date.strftime("%Y-%m-%d")
@@ -90,12 +82,10 @@ def build_sentiment_stats(
         compounds = [r["compound"] for r in records]
         n = len(records)
 
-        # --- Compound stats (None when undefined, not zero) ---
         mean_compound = statistics.mean(compounds)
         variance_compound = statistics.variance(compounds) if n > 1 else None
         std_compound = statistics.stdev(compounds) if n > 1 else None
 
-        # --- Pos / Neg / Neu ---
         total_pos = sum(r["pos"] for r in records)
         total_neg = sum(r["neg"] for r in records)
         total_neu = sum(r["neu"] for r in records)
@@ -103,13 +93,9 @@ def build_sentiment_stats(
         mean_neg = total_neg / n
         mean_neu = total_neu / n
 
-        # --- Sentiment ratio: avoid div-by-zero if total_neg == 0 ---
         pos_neg_ratio = total_pos / total_neg if total_neg > 0 else None
-
-        # --- Sentiment balance: net directional lean per post/article ---
         sentiment_balance = (total_pos - total_neg) / n
 
-        # --- Bullish / Bearish / Neutral counts ---
         bullish_posts = sum(1 for r in records if r["compound"] > 0.05)
         bearish_posts = sum(1 for r in records if r["compound"] < -0.05)
         neutral_posts = n - bullish_posts - bearish_posts
@@ -117,19 +103,6 @@ def build_sentiment_stats(
         bearish_ratio = bearish_posts / n
         neutral_ratio = neutral_posts / n
 
-        # --- Impression-weighted compound ---
-        total_impressions = sum(r["impressions"] for r in records)  # == n for news
-        if total_impressions > 0:
-            impression_weighted_compound = sum(
-                r["compound"] * r["impressions"] for r in records
-            ) / total_impressions
-        else:
-            impression_weighted_compound = mean_compound
-
-        # --- Log impressions ---
-        log_impressions = math.log1p(total_impressions)
-
-        # --- "term diversity" via domain diversity (match_term analogue) ---
         unique_terms = set(r["match_term"] for r in records)
         term_diversity = len(unique_terms)
 
@@ -141,16 +114,10 @@ def build_sentiment_stats(
         results.append({
             "ticker": ticker,
             "date": date_str,
-            # Volume (same key names as social)
             "num_posts": n,
-            "log_impressions": round(log_impressions, 6),
-            "total_impressions": total_impressions,
-            # Compound
             "mean_compound": round(mean_compound, 6),
             "variance_compound": round(variance_compound, 6) if variance_compound is not None else None,
             "std_compound": round(std_compound, 6) if std_compound is not None else None,
-            "impression_weighted_compound": round(impression_weighted_compound, 6),
-            # Pos / Neg / Neu
             "mean_pos": round(mean_pos, 6),
             "mean_neg": round(mean_neg, 6),
             "mean_neu": round(mean_neu, 6),
@@ -159,11 +126,9 @@ def build_sentiment_stats(
             "total_neu": round(total_neu, 6),
             "pos_neg_ratio": round(pos_neg_ratio, 6) if pos_neg_ratio is not None else None,
             "sentiment_balance": round(sentiment_balance, 6),
-            # Directional breakdown
             "bullish_ratio": round(bullish_ratio, 6),
             "bearish_ratio": round(bearish_ratio, 6),
             "neutral_ratio": round(neutral_ratio, 6),
-            # Match term 
             "term_diversity": term_diversity,
             "top_term_ratio": round(top_term_ratio, 6),
         })

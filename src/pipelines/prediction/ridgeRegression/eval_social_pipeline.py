@@ -86,11 +86,10 @@ def build_eval_rows(
 def compute_stats(y_true: np.ndarray, y_pred: np.ndarray) -> dict:
     residuals  = y_pred - y_true
     abs_errors = np.abs(residuals)
-
+    qlike = lambda y_true, y_pred: np.mean(y_true / y_pred - np.log(y_true / y_pred) - 1)    
     mae  = mean_absolute_error(y_true, y_pred)
     rmse = np.sqrt(mean_squared_error(y_true, y_pred))
     r2   = r2_score(y_true, y_pred) if len(y_true) > 1 else float("nan")
-
     mape_vals    = abs_errors / np.where(y_true != 0, y_true, np.nan)
     mape         = float(np.nanmean(mape_vals)) * 100
     mean_vol     = float(np.mean(y_true))
@@ -108,6 +107,7 @@ def compute_stats(y_true: np.ndarray, y_pred: np.ndarray) -> dict:
         "std_error"   : float(np.std(residuals)),
         "baseline_mae": baseline_mae,
         "skill_score" : float(1 - mae / baseline_mae) if baseline_mae > 0 else float("nan"),
+        "qlike"       : float(qlike)
     }
 
 
@@ -123,6 +123,7 @@ def print_stats(
     print(f"  Feature weights                 : {feature_weights}")
     print("=" * 52)
     print(f"  MAE             : {stats['mae']:.6f}")
+    print(f"  qlike             : {stats['qlike']:.6f}")
     print(f"  RMSE            : {stats['rmse']:.6f}")
     print(f"  R²              : {stats['r2']:.4f}")
     print(f"  MAPE            : {stats['mape_pct']:.2f}%")
@@ -136,8 +137,7 @@ def print_stats(
     label = "better" if skill > 0 else "worse"
     print(f"  Skill score     : {skill:.4f}  ({label} than baseline)")
     print("=" * 52)
-
-
+    
 # ── Entry point ───────────────────────────────────────────────────────────────
 
 def run_eval_pipeline(

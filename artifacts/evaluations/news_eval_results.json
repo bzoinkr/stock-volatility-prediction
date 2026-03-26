@@ -1,0 +1,115 @@
+{
+    "ticker": "AMD",
+    "eval_start_date": "2026-02-27",
+    "eval_end_date": "2026-03-05",
+    "predictions": {
+        "2026-03-02": 0.4283702246242924,
+        "2026-03-03": 0.2716621005757053,
+        "2026-03-04": 0.6107173405657479,
+        "2026-03-05": 0.6333170260564922
+    },
+    "actuals": {
+        "2026-03-02": 0.42875895219134125,
+        "2026-03-03": 0.2706522723569082,
+        "2026-03-04": 0.6116442008362624,
+        "2026-03-05": 0.4262098170971959
+    },
+    "stats": {
+        "n_samples": 4,
+        "mae": 0.05235815625391417,
+        "rmse": 0.10355605479041718,
+        "r2": 0.26457878941152946,
+        "baseline_mae": 0.08866394510791771,
+        "skill_score": 0.40947635264609294,
+        "mean_error": 0.05170036233513252,
+        "std_error": 0.08972696929113284,
+        "max_error": 0.2071072089592963,
+        "min_error": 0.00038872756704882994
+    },
+    "correlations": [
+        {
+            "feature": "mean_neu",
+            "pearson_r": 0.490656,
+            "abs_r": 0.490656,
+            "p_value": 0.509344,
+            "significant": false
+        },
+        {
+            "feature": "mean_pos",
+            "pearson_r": -0.451823,
+            "abs_r": 0.451823,
+            "p_value": 0.548177,
+            "significant": false
+        },
+        {
+            "feature": "mean_neg",
+            "pearson_r": -0.447126,
+            "abs_r": 0.447126,
+            "p_value": 0.552874,
+            "significant": false
+        },
+        {
+            "feature": "variance_compound",
+            "pearson_r": -0.443898,
+            "abs_r": 0.443898,
+            "p_value": 0.556102,
+            "significant": false
+        },
+        {
+            "feature": "bearish_ratio",
+            "pearson_r": -0.417119,
+            "abs_r": 0.417119,
+            "p_value": 0.582881,
+            "significant": false
+        },
+        {
+            "feature": "std_compound",
+            "pearson_r": -0.392584,
+            "abs_r": 0.392584,
+            "p_value": 0.607416,
+            "significant": false
+        },
+        {
+            "feature": "pos_neg_ratio",
+            "pearson_r": 0.309926,
+            "abs_r": 0.309926,
+            "p_value": 0.690074,
+            "significant": false
+        },
+        {
+            "feature": "mean_compound",
+            "pearson_r": 0.252228,
+            "abs_r": 0.252228,
+            "p_value": 0.747772,
+            "significant": false
+        },
+        {
+            "feature": "sentiment_balance",
+            "pearson_r": 0.252228,
+            "abs_r": 0.252228,
+            "p_value": 0.747772,
+            "significant": false
+        },
+        {
+            "feature": "volatility",
+            "pearson_r": -0.250324,
+            "abs_r": 0.250324,
+            "p_value": 0.749676,
+            "significant": false
+        },
+        {
+            "feature": "bullish_ratio",
+            "pearson_r": -0.192321,
+            "abs_r": 0.192321,
+            "p_value": 0.807679,
+            "significant": false
+        },
+        {
+            "feature": "num_posts",
+            "pearson_r": 0.044515,
+            "abs_r": 0.044515,
+            "p_value": 0.955485,
+            "significant": false
+        }
+    ]
+}

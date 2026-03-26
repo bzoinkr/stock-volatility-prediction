@@ -1,0 +1,86 @@
+[
+    {
+        "feature": "mean_neu",
+        "pearson_r": 0.761305,
+        "abs_r": 0.761305,
+        "p_value": 0.238695,
+        "significant": false
+    },
+    {
+        "feature": "mean_compound",
+        "pearson_r": 0.749395,
+        "abs_r": 0.749395,
+        "p_value": 0.250605,
+        "significant": false
+    },
+    {
+        "feature": "sentiment_balance",
+        "pearson_r": 0.749395,
+        "abs_r": 0.749395,
+        "p_value": 0.250605,
+        "significant": false
+    },
+    {
+        "feature": "pos_neg_ratio",
+        "pearson_r": 0.716941,
+        "abs_r": 0.716941,
+        "p_value": 0.283059,
+        "significant": false
+    },
+    {
+        "feature": "bullish_ratio",
+        "pearson_r": 0.617256,
+        "abs_r": 0.617256,
+        "p_value": 0.382744,
+        "significant": false
+    },
+    {
+        "feature": "mean_pos",
+        "pearson_r": 0.545404,
+        "abs_r": 0.545404,
+        "p_value": 0.454596,
+        "significant": false
+    },
+    {
+        "feature": "num_posts",
+        "pearson_r": 0.526354,
+        "abs_r": 0.526354,
+        "p_value": 0.473646,
+        "significant": false
+    },
+    {
+        "feature": "std_compound",
+        "pearson_r": 0.492499,
+        "abs_r": 0.492499,
+        "p_value": 0.507501,
+        "significant": false
+    },
+    {
+        "feature": "variance_compound",
+        "pearson_r": 0.306662,
+        "abs_r": 0.306662,
+        "p_value": 0.693338,
+        "significant": false
+    },
+    {
+        "feature": "mean_neg",
+        "pearson_r": 0.288547,
+        "abs_r": 0.288547,
+        "p_value": 0.711453,
+        "significant": false
+    },
+    {
+        "feature": "bearish_ratio",
+        "pearson_r": 0.23608,
+        "abs_r": 0.23608,
+        "p_value": 0.76392,
+        "significant": false
+    },
+    {
+        "feature": "volatility",
+        "pearson_r": 0.15183,
+        "abs_r": 0.15183,
+        "p_value": 0.84817,
+        "significant": false
+    }
+]

@@ -3,7 +3,7 @@ from _bootstrap import *
 import json
 
 from common.config import load_config
-from pipelines.prediction.ridgeRegression.ridgeCreateModel_social_pipeline import run_pipeline
+from pipelines.prediction.ridgeRegression.social_models_pipeline import train_and_predict_all_models
 
 
 # ── Paths — fill these in ─────────────────────────────────────────────────────
@@ -23,13 +23,13 @@ def main():
 
     print(f"Predicting volatility for date  : {date}")
 
-    predictions = run_pipeline(
-        sentiment_path  = SENTIMENT_PATH,
-        volatility_path = VOLATILITY_PATH,
-        model_dir       = MODEL_DIR,
-        target_date     = str(date),
-        day_weights     = day_weights,
-        feature_weights = feature_weights,
+    predictions = train_and_predict_all_models(
+        sentiment_path=SENTIMENT_PATH,
+        volatility_path=VOLATILITY_PATH,
+        model_dir=MODEL_DIR,
+        target_date=str(date),
+        day_weights=day_weights,
+        feature_weights=feature_weights,
     )
 
     output_path = "data/predictions/social_predictions.json"

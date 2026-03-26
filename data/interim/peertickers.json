@@ -1,10 +1,11 @@
 {
-  "PSA": [
-    "SSS",
-    "SFM",
-    "RSP",
-    "STOR",
-    "AMH",
-    "PSA"
+  "NVDA": [
+    "MATX",
+    "AMD",
+    "MCHP",
+    "AIV",
+    "MSCI",
+    "MICR",
+    "NVDA"
   ]
 }

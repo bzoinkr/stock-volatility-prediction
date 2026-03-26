@@ -1,10 +1,9 @@
 from _bootstrap import *
 
 import json
-import yaml
 
 from common.config import load_config
-from pipelines.prediction.ridgeRegression.eval_social_pipeline import run_eval_pipeline
+from pipelines.prediction.ridgeRegression.social_models_pipeline import evaluate_all_models
 
 
 # ── Paths — fill these in ─────────────────────────────────────────────────────
@@ -24,13 +23,13 @@ def main():
 
     print(f"Evaluating model on date        : {date}")
 
-    results = run_eval_pipeline(
-        sentiment_path  = SENTIMENT_PATH,
-        volatility_path = VOLATILITY_PATH,
-        model_dir       = MODEL_DIR,
-        target_date     = str(date),
-        day_weights     = day_weights,
-        feature_weights = feature_weights,
+    results = evaluate_all_models(
+        sentiment_path=SENTIMENT_PATH,
+        volatility_path=VOLATILITY_PATH,
+        model_dir=MODEL_DIR,
+        target_date=str(date),
+        day_weights=day_weights,
+        feature_weights=feature_weights,
     )
 
     output_path = "artifacts/evaluations/social_eval_results.json"

@@ -5,10 +5,10 @@ project:
 
 universe:
   tickers: ["Nvidia"]
-  ticker_symbols: ["PSA"]
+  ticker_symbols: ["NVDA"]
   start_date_news: "2025-03-10" # Train window begin exclusive for news
-  start_date: "2026-03-10"      # Train window begin
-  end_date: "2026-03-16"        # Train window end
+  start_date: "2025-04-25"      # Train window begin
+  end_date: "2026-03-18"        # Train window end
   target_date: "2026-03-18"     # Target date for prediction
 
 frequency:
@@ -43,4 +43,19 @@ feature_weights: [
   .1,  # 13 term_diversity
   .1,  # 14 top_term_ratio
   2,  # 15 volatility (lagged)
+]
+
+feature_weights_news: [
+  1,  # 0  num_posts
+  .1,  # 1  mean_compound
+  .1,  # 2  mean_pos
+  .1,  # 3  mean_neg
+  .1,  # 4  mean_neu
+  .1,  # 5  pos_neg_ratio
+  .1,  # 6  sentiment_balance
+  .1,  # 7  bullish_ratio
+  .1,  # 8 bearish_ratio
+  1,  # 9 variance_compound
+  1,  # 10 std_compound
+  2,  # 11 volatility (lagged)
 ]

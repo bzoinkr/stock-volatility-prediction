@@ -1,86 +1,86 @@
 [
     {
         "feature": "volatility",
-        "pearson_r": 0.180228,
-        "abs_r": 0.180228,
-        "p_value": 0.043439,
-        "significant": true
+        "pearson_r": 0.173002,
+        "abs_r": 0.173002,
+        "p_value": 0.051769,
+        "significant": false
     },
     {
         "feature": "mean_neg",
-        "pearson_r": 0.093948,
-        "abs_r": 0.093948,
-        "p_value": 0.295391,
+        "pearson_r": 0.092007,
+        "abs_r": 0.092007,
+        "p_value": 0.303574,
         "significant": false
     },
     {
         "feature": "bearish_ratio",
-        "pearson_r": 0.081278,
-        "abs_r": 0.081278,
-        "p_value": 0.365598,
-        "significant": false
-    },
-    {
-        "feature": "mean_neu",
-        "pearson_r": 0.074784,
-        "abs_r": 0.074784,
-        "p_value": 0.405267,
+        "pearson_r": 0.078446,
+        "abs_r": 0.078446,
+        "p_value": 0.380677,
         "significant": false
     },
     {
         "feature": "mean_compound",
-        "pearson_r": -0.069764,
-        "abs_r": 0.069764,
-        "p_value": 0.437605,
+        "pearson_r": -0.0783,
+        "abs_r": 0.0783,
+        "p_value": 0.381568,
         "significant": false
     },
     {
         "feature": "sentiment_balance",
-        "pearson_r": -0.069764,
-        "abs_r": 0.069764,
-        "p_value": 0.437605,
+        "pearson_r": -0.0783,
+        "abs_r": 0.0783,
+        "p_value": 0.381568,
         "significant": false
     },
     {
-        "feature": "num_posts",
-        "pearson_r": 0.064726,
-        "abs_r": 0.064726,
-        "p_value": 0.471489,
+        "feature": "mean_neu",
+        "pearson_r": 0.057959,
+        "abs_r": 0.057959,
+        "p_value": 0.517472,
         "significant": false
     },
     {
         "feature": "pos_neg_ratio",
-        "pearson_r": -0.032688,
-        "abs_r": 0.032688,
-        "p_value": 0.716333,
+        "pearson_r": -0.045745,
+        "abs_r": 0.045745,
+        "p_value": 0.609566,
+        "significant": false
+    },
+    {
+        "feature": "num_posts",
+        "pearson_r": 0.037051,
+        "abs_r": 0.037051,
+        "p_value": 0.679199,
         "significant": false
     },
     {
         "feature": "variance_compound",
-        "pearson_r": -0.015938,
-        "abs_r": 0.015938,
-        "p_value": 0.859401,
-        "significant": false
-    },
-    {
-        "feature": "mean_pos",
-        "pearson_r": 0.007305,
-        "abs_r": 0.007305,
-        "p_value": 0.935296,
+        "pearson_r": -0.02093,
+        "abs_r": 0.02093,
+        "p_value": 0.815324,
         "significant": false
     },
     {
         "feature": "std_compound",
-        "pearson_r": -0.005201,
-        "abs_r": 0.005201,
-        "p_value": 0.953909,
+        "pearson_r": -0.012678,
+        "abs_r": 0.012678,
+        "p_value": 0.887499,
         "significant": false
     },
     {
         "feature": "bullish_ratio",
-        "pearson_r": 0.002928,
-        "abs_r": 0.002928,
-        "p_value": 0.974046,
+        "pearson_r": -0.009799,
+        "abs_r": 0.009799,
+        "p_value": 0.912935,
+        "significant": false
+    },
+    {
+        "feature": "mean_pos",
+        "pearson_r": -0.001636,
+        "abs_r": 0.001636,
+        "p_value": 0.985438,
         "significant": false
     }
 ]

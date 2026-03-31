@@ -7,7 +7,7 @@ universe:
   tickers: ["Nvidia"]
   ticker_symbols: ["NVDA"]
   start_date_news: "2025-03-10" # Train window begin exclusive for news
-  start_date: "2025-09-15"      # Train window begin
+  start_date: "2025-09-14"      # Train window begin
   end_date: "2026-03-26"        # Train window end
   target_date: "2026-03-18"     # Target date for prediction
 
@@ -44,6 +44,7 @@ feature_weights: [
   .1,  # 14 top_term_ratio
   2,  # 15 volatility (lagged)
 ]
+
 feature_weights_news: [
   1,  # 0  num_posts
   .1,  # 1  mean_compound

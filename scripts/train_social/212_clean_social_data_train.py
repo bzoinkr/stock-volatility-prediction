@@ -9,7 +9,7 @@ from pipelines.social.sentiment_stats import build_sentiment_stats
 def main():
     run = load_config("run.yaml")
 
-    INPUT_PATH = Path("data/processed/social/reddit_posts_vader_scored_target.json")
+    INPUT_PATH = Path("data/processed/social/reddit_posts_vader_scored_train.json")
     OUTPUT_PATH = Path("data/processed/social/social_data.json")
 
     START_DATE = run["universe"]["start_date"]

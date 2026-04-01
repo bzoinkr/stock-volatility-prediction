@@ -6,10 +6,10 @@ project:
 universe:
   tickers: ["Nvidia"]
   ticker_symbols: ["NVDA"]
-  start_date_news: "2025-03-10" # Train window begin exclusive for news
-  start_date: "2025-04-25"      # Train window begin
-  end_date: "2026-03-18"        # Train window end
-  target_date: "2026-03-18"     # Target date for prediction
+  start_date_news: "2025-03-25" # Train window begin exclusive for news
+  start_date: "2026-03-18"      # Train window begin
+  end_date: "2026-04-01"        # Train window end
+  target_date: "2026-04-01"     # Target date for prediction
 
 frequency:
   base: "1D"               # daily base timeline

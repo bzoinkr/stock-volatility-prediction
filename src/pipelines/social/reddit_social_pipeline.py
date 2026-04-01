@@ -69,7 +69,7 @@ def run_reddit_social_pipeline(
     _ensure_dir(raw_dir_p)
 
     # ONLY output file (stored in RAW directory)
-    output_path = raw_dir_p / "reddit_posts.jsonl"
+    output_path = raw_dir_p / "reddit_posts_target.jsonl"
 
     listing_params = RedditListingParams(
         limit=cfg.limit,

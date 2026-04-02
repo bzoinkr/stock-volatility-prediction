@@ -43,6 +43,8 @@ feature_weights: [
   .1,  # 13 term_diversity
   .1,  # 14 top_term_ratio
   2,  # 15 volatility (lagged)
+  2,  # 16 avg_weekly_vol
+  2,  # 17 avg_monthly_vol
 ]
 
 feature_weights_news: [
@@ -58,4 +60,6 @@ feature_weights_news: [
   1,  # 9 variance_compound
   1,  # 10 std_compound
   2,  # 11 volatility (lagged)
+  2,  # 12 avg_weekly_vol
+  2,  # 13 avg_monthly_vol
 ]

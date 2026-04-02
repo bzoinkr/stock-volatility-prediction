@@ -24,10 +24,10 @@ SENTIMENT_FEATURES = [
     "std_compound",
 ]
 
-ALL_FEATURES = SENTIMENT_FEATURES + ["volatility"]
+ALL_FEATURES = SENTIMENT_FEATURES + ["volatility", "avg_weekly_vol", "avg_monthly_vol"]
 
-N_PER_DAY = len(ALL_FEATURES)       # 12
-N_FEATURES = LOOKBACK * N_PER_DAY   # 60
+N_PER_DAY = len(ALL_FEATURES)       # 14
+N_FEATURES = LOOKBACK * N_PER_DAY   # 70
 
 
 def load_json(path: str) -> dict:
@@ -74,9 +74,22 @@ def _sorted_dates(date_dict: dict) -> list[str]:
     return sorted(date_dict.keys())
 
 
-def _feature_row(day_data: dict, vol_value: float, feature_weights: list[float]) -> np.ndarray:
+def _rolling_avg_vol(volatility_ticker: dict, date: str, window: int) -> float:
+    """
+    Compute the mean of the most recent `window` daily vol values
+    on dates strictly before `date`.  Returns 0.0 if no values exist.
+    """
+    sorted_dates = sorted(d for d in volatility_ticker if d < date)
+    recent = sorted_dates[-window:]
+    vals = [volatility_ticker[d] for d in recent if volatility_ticker[d] is not None]
+    return float(np.mean(vals)) if vals else 0.0
+
+
+def _feature_row(day_data: dict, vol_value: float, avg_weekly: float, avg_monthly: float, feature_weights: list[float]) -> np.ndarray:
     raw = [float(day_data.get(col, 0.0) or 0.0) for col in SENTIMENT_FEATURES]
     raw.append(float(vol_value) if vol_value is not None else 0.0)
+    raw.append(float(avg_weekly))
+    raw.append(float(avg_monthly))
     return np.array(raw) * np.array(feature_weights)
 
 
@@ -98,7 +111,9 @@ def _window_features(
     for day, dw in zip(window, weights_oldest_first):
         day_data = sentiment_ticker.get(day, {})
         vol_value = volatility_ticker.get(day, fill_vol) if day else fill_vol
-        row = _feature_row(day_data, vol_value, feature_weights)
+        avg_weekly  = _rolling_avg_vol(volatility_ticker, day, 5) if day else 0.0
+        avg_monthly = _rolling_avg_vol(volatility_ticker, day, 21) if day else 0.0
+        row = _feature_row(day_data, vol_value, avg_weekly, avg_monthly, feature_weights)
         vec.append(row * dw)
 
     return np.concatenate(vec)

@@ -7,7 +7,9 @@ Each (ticker, date) pair is one training sample. The feature vector is the
 concatenation of LOOKBACK=5 windows, each window containing:
     - 15 sentiment features
     - 1 lagged volatility value  (0.0 if missing for that day)
-= 16 features per day × 5 days = 80 features total.
+    - 1 avg weekly volatility    (5-day rolling avg of daily vol)
+    - 1 avg monthly volatility   (21-day rolling avg of daily vol)
+= 18 features per day × 5 days = 90 features total.
 
 Two sets of weights are applied at the feature level:
     day_weights     : length-5 list; index 0 = most recent day, index 4 = oldest
@@ -55,9 +57,9 @@ SENTIMENT_FEATURES = [
     "top_term_ratio",
 ]
 
-ALL_FEATURES = SENTIMENT_FEATURES + ["volatility"]
-N_PER_DAY    = len(ALL_FEATURES)        # 16
-N_FEATURES   = LOOKBACK * N_PER_DAY    # 80
+ALL_FEATURES = SENTIMENT_FEATURES + ["volatility", "avg_weekly_vol", "avg_monthly_vol"]
+N_PER_DAY    = len(ALL_FEATURES)        # 18
+N_FEATURES   = LOOKBACK * N_PER_DAY    # 90
 
 
 # ── I/O ──────────────────────────────────────────────────────────────────────
@@ -81,14 +83,33 @@ def _sorted_dates(date_dict: dict) -> list[str]:
     return sorted(date_dict.keys())
 
 
-def _feature_row(day_data: dict, vol_value: float, feature_weights: list[float]) -> np.ndarray:
+def _rolling_avg_vol(volatility_ticker: dict, date: str, window: int) -> float:
     """
-    Single day → weighted feature vector of length 16.
+    Compute the mean of the most recent `window` daily vol values
+    on dates strictly before `date`.  Returns 0.0 if no values exist.
+    """
+    sorted_dates = sorted(d for d in volatility_ticker if d < date)
+    recent = sorted_dates[-window:]
+    vals = [volatility_ticker[d] for d in recent if volatility_ticker[d] is not None]
+    return float(np.mean(vals)) if vals else 0.0
+
+
+def _feature_row(
+    day_data: dict,
+    vol_value: float,
+    avg_weekly: float,
+    avg_monthly: float,
+    feature_weights: list[float],
+) -> np.ndarray:
+    """
+    Single day → weighted feature vector of length 18.
     Sentiment nulls become 0.0. Missing volatility becomes 0.0.
     feature_weights applied element-wise.
     """
     raw = [float(day_data.get(col) or 0.0) for col in SENTIMENT_FEATURES]
     raw.append(float(vol_value) if vol_value is not None else 0.0)
+    raw.append(float(avg_weekly))
+    raw.append(float(avg_monthly))
     return np.array(raw) * np.array(feature_weights)
 
 
@@ -127,7 +148,9 @@ def _window_features(
     for day, dw in zip(window, weights_oldest_first):
         sent_row  = sentiment_ticker.get(day, {})
         vol_value = volatility_ticker.get(day, vol_fill) if day else vol_fill
-        row       = _feature_row(sent_row, vol_value, feature_weights)
+        avg_weekly  = _rolling_avg_vol(volatility_ticker, day, 5) if day else 0.0
+        avg_monthly = _rolling_avg_vol(volatility_ticker, day, 21) if day else 0.0
+        row       = _feature_row(sent_row, vol_value, avg_weekly, avg_monthly, feature_weights)
         vec.append(row * dw)
 
     return np.concatenate(vec)

@@ -5,7 +5,7 @@ project:
 
 universe:
   tickers: ["Apple", "Amazon"]
-  ticker_symbols: ["JPM"]
+  ticker_symbols: ["FMCC"]
   start_date_news: "2026-03-18" # Train window begin exclusive for news
   start_date: "2026-03-18"      # Train window begin
   end_date: "2026-04-03"        # Train window end

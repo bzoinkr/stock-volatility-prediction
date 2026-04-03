@@ -1,4 +1,8 @@
-from _bootstrap import *
+import os
+import sys
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
+
+from scripts._bootstrap import *
 from pipelines.prediction.sentimentModels.vader_pipeline import run_vader_on_reddit_posts
 
 

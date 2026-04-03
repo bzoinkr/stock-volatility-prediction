@@ -48,11 +48,9 @@ def _empty_day() -> dict:
 def build_sentiment_stats(
     input_path: Path,
     output_path: Path,
-    start_date: str | date,
-    end_date: str | date,
+    start_date: str | date | None = None,  # kept for backwards compatibility; ignored
+    end_date: str | date | None = None,    # kept for backwards compatibility; ignored
 ) -> None:
-    start = _parse_date(start_date)
-    end = _parse_date(end_date)
 
     groups: dict[tuple, list[dict]] = defaultdict(list)
 
@@ -68,12 +66,17 @@ def build_sentiment_stats(
                 continue
 
             record_date = datetime.fromtimestamp(record["date"], tz=timezone.utc).date()
-
-            if not (start <= record_date <= end):
-                continue
-
             date_str = record_date.strftime("%Y-%m-%d")
             groups[(record["ticker"], date_str)].append(record)
+
+    if not groups:
+        print("No records found in input file.")
+        return
+
+    # derive date range from the actual data
+    all_dates = [d for (_, d) in groups]
+    start = _parse_date(min(all_dates))
+    end   = _parse_date(max(all_dates))
 
     # Load existing output file if present, so we can merge into it
     if output_path.exists():

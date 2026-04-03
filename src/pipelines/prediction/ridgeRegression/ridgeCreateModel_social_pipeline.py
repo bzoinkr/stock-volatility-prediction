@@ -9,18 +9,11 @@ concatenation of LOOKBACK=5 windows, each window containing:
     - 1 lagged volatility value  (0.0 if missing for that day)
 = 16 features per day × 5 days = 80 features total.
 
-Two sets of weights are applied at the feature level:
-    day_weights     : length-5 list; index 0 = most recent day, index 4 = oldest
-    feature_weights : length-16 list; applied uniformly across all 5 days
-                      order: [num_posts, log_impressions, mean_compound,
-                              impression_weighted_compound, mean_pos, mean_neg,
-                              mean_neu, pos_neg_ratio, sentiment_balance,
-                              bullish_ratio, bearish_ratio, variance_compound,
-                              std_compound, term_diversity, top_term_ratio,
-                              volatility]
+Day weights (length-5, index 0 = most recent) are applied via sign-preserving
+exponentiation (sign(x) * |x|^w) during feature construction.
 
-One shared Ridge model is trained across all tickers and saved as a single
-.pkl file.
+One shared HuberRegressor model is trained across all tickers and saved as a
+single .pkl file.
 """
 
 import json
@@ -29,7 +22,7 @@ import pickle
 
 import numpy as np
 from scipy.stats import pearsonr
-from sklearn.linear_model import Ridge
+from sklearn.linear_model import HuberRegressor
 from sklearn.preprocessing import StandardScaler
 
 
@@ -81,15 +74,29 @@ def _sorted_dates(date_dict: dict) -> list[str]:
     return sorted(date_dict.keys())
 
 
-def _feature_row(day_data: dict, vol_value: float, feature_weights: list[float]) -> np.ndarray:
+def _signed_pow(x: np.ndarray, w: np.ndarray) -> np.ndarray:
     """
-    Single day → weighted feature vector of length 16.
+    Sign-preserving power: sign(x) * |x|^w
+
+    This handles negative feature values safely when w is fractional or
+    non-integer.  Special cases:
+      - w == 0  → 0.0  (suppress the feature rather than returning x^0 = 1)
+      - x == 0  → 0.0  (0^w = 0 for any positive w)
+    """
+    signs  = np.sign(x)
+    result = signs * (np.abs(x) ** w)
+    result = np.where(w == 0.0, 0.0, result)   # weight=0 suppresses feature
+    return result
+
+
+def _feature_row(day_data: dict, vol_value: float) -> np.ndarray:
+    """
+    Single day → raw feature vector of length 16.
     Sentiment nulls become 0.0. Missing volatility becomes 0.0.
-    feature_weights applied element-wise.
     """
     raw = [float(day_data.get(col) or 0.0) for col in SENTIMENT_FEATURES]
     raw.append(float(vol_value) if vol_value is not None else 0.0)
-    return np.array(raw) * np.array(feature_weights)
+    return np.array(raw)
 
 
 def _ticker_mean_vol(volatility_ticker: dict) -> float:
@@ -103,7 +110,6 @@ def _window_features(
     volatility_ticker: dict,
     dates_before: list[str],
     day_weights: list[float],
-    feature_weights: list[float],
     vol_fill: float = 0.0,
 ) -> np.ndarray:
     """
@@ -113,6 +119,8 @@ def _window_features(
         window[0] = oldest → day_weights[-1]
         window[-1] = newest → day_weights[0]
 
+    Day weight is applied as a power via sign-preserving exponentiation.
+
     If the window has fewer than LOOKBACK days, pad the front with empty rows.
     Missing volatility values are filled with vol_fill (ticker mean vol).
     """
@@ -120,17 +128,37 @@ def _window_features(
     weights_oldest_first = list(reversed(day_weights))
 
     # pad front with empty sentinel days if window shorter than LOOKBACK
-    pad          = LOOKBACK - len(window)
-    window       = ([""] * pad) + list(window)
+    pad    = LOOKBACK - len(window)
+    window = ([""] * pad) + list(window)
 
     vec = []
     for day, dw in zip(window, weights_oldest_first):
         sent_row  = sentiment_ticker.get(day, {})
         vol_value = volatility_ticker.get(day, vol_fill) if day else vol_fill
-        row       = _feature_row(sent_row, vol_value, feature_weights)
-        vec.append(row * dw)
+        row       = _feature_row(sent_row, vol_value)
+        vec.append(_signed_pow(row, np.full(row.shape, dw)))
 
     return np.concatenate(vec)
+
+
+def _window_has_posts(
+    sentiment_ticker: dict,
+    dates_before: list[str],
+) -> bool:
+    """
+    Returns False if any day in the last LOOKBACK window has num_posts == 0
+    (or missing). Padded days (empty string sentinel) are also treated as
+    zero-post days and will cause the window to be rejected.
+    """
+    window = dates_before[-LOOKBACK:]
+    # padded days count as zero-post
+    if len(window) < LOOKBACK:
+        return False
+    for day in window:
+        posts = sentiment_ticker.get(day, {}).get("num_posts", 0) or 0
+        if posts == 0:
+            return False
+    return True
 
 
 # ── Dataset construction ──────────────────────────────────────────────────────
@@ -138,18 +166,24 @@ def _window_features(
 def build_dataset(
     sentiment_data: dict,
     volatility_data: dict,
-    target_date: str,
-    day_weights: list[float],
-    feature_weights: list[float],
+    target_date: str | None = None,   # kept for backwards compatibility; ignored
+    day_weights: list[float] = None,
 ) -> tuple[np.ndarray, np.ndarray]:
     """
-    Build cross-ticker (X, y) matrices.
-    Each row = one (ticker, date) pair with a LOOKBACK-day weighted feature window.
-    y = realized volatility on that date.
+    Build cross-ticker (X, y) matrices using ALL available dates.
 
-    Missing lagged volatility values within the window are filled with 0.0
-    rather than dropping the sample entirely.
+    A date is included as a training sample if:
+      - it has at least LOOKBACK prior sentiment days for that ticker
+      - a volatility label exists for that date (missing = weekend/holiday, skipped)
+      - every day in the LOOKBACK window has num_posts > 0
+
+    target_date is accepted for backwards compatibility but ignored.
+    Missing lagged volatility values within the window are filled with the
+    ticker's mean volatility rather than dropping the sample entirely.
     """
+    if day_weights is None:
+        raise ValueError("day_weights must be provided.")
+
     X_rows, y_vals = [], []
     tickers = sorted(set(sentiment_data) & set(volatility_data))
 
@@ -161,52 +195,23 @@ def build_dataset(
         mean_vol = _ticker_mean_vol(vol)
 
         for i, date in enumerate(dates):
-            if date >= target_date:
-                break
+            if i < LOOKBACK:
+                # need at least LOOKBACK prior days to form a full window
+                continue
             if date not in vol:
+                # no volatility label for this date (weekend/holiday) — skip
                 continue
 
             prior_dates = dates[:i]
-            # allow window from first available date onward; padding handles short windows
-
-            X_rows.append(_window_features(sent, vol, prior_dates, day_weights, feature_weights, vol_fill=mean_vol))
+            if not _window_has_posts(sent, prior_dates):
+                continue
+            X_rows.append(_window_features(sent, vol, prior_dates, day_weights, vol_fill=mean_vol))
             y_vals.append(float(vol[date]))
 
     if not X_rows:
         return np.empty((0, N_FEATURES)), np.array([])
 
     return np.array(X_rows), np.array(y_vals)
-
-
-def build_prediction_rows(
-    sentiment_data: dict,
-    volatility_data: dict,
-    target_date: str,
-    day_weights: list[float],
-    feature_weights: list[float],
-) -> tuple[np.ndarray, list[str]]:
-    """
-    Build one prediction feature row per ticker for target_date.
-    Missing lagged volatility values are filled with 0.0.
-    """
-    X_rows, tickers_out = [], []
-
-    for ticker, sent in sorted(sentiment_data.items()):
-        vol         = volatility_data.get(ticker, {})
-        prior_dates = [d for d in _sorted_dates(sent) if d < target_date]
-        mean_vol    = _ticker_mean_vol(vol)
-
-        if len(prior_dates) < 1:
-            print(f"[{ticker}] No prior sentiment days available, skipping.")
-            continue
-
-        X_rows.append(_window_features(sent, vol, prior_dates, day_weights, feature_weights, vol_fill=mean_vol))
-        tickers_out.append(ticker)
-
-    if not X_rows:
-        return np.empty((0, N_FEATURES)), []
-
-    return np.array(X_rows), tickers_out
 
 
 # ── Correlation ───────────────────────────────────────────────────────────────
@@ -264,28 +269,24 @@ def save_correlations(correlations: list[dict], output_dir: str) -> str:
 def train_model(X: np.ndarray, y: np.ndarray, alpha: float = 1.0) -> dict:
     # Use with_std=False: only center (remove mean), do NOT divide by std.
     # Dividing by std would erase the variance differences introduced by
-    # feature_weights and day_weights, making all weights ineffective.
-    # Centering alone removes constant offsets while preserving the relative
-    # scaling the weights impose.
+    # day_weights, making them ineffective. Centering alone removes constant
+    # offsets while preserving the relative scaling the weights impose.
     scaler   = StandardScaler(with_std=False)
     X_scaled = scaler.fit_transform(X)
-    model    = Ridge(alpha=alpha)
+    model    = HuberRegressor(alpha=alpha, epsilon=1.35, max_iter=200)
     model.fit(X_scaled, y)
+    n_outliers = int(np.sum(model.outliers_))
+    print(f"HuberRegressor: {n_outliers}/{len(y)} samples flagged as outliers "
+          f"(alpha={alpha}, epsilon={model.epsilon})")
     return {"scaler": scaler, "model": model}
-
-
-def predict(model_bundle: dict, X: np.ndarray) -> np.ndarray:
-    X_scaled = model_bundle["scaler"].transform(X)
-    return model_bundle["model"].predict(X_scaled)
 
 
 # ── Validation ────────────────────────────────────────────────────────────────
 
-def _validate_weights(day_weights: list[float], feature_weights: list[float]) -> None:
+def _validate_weights(day_weights: list[float], feature_weights: list[float] | None = None) -> None:
     if len(day_weights) != LOOKBACK:
         raise ValueError(f"day_weights must have {LOOKBACK} elements, got {len(day_weights)}.")
-    if len(feature_weights) != N_PER_DAY:
-        raise ValueError(f"feature_weights must have {N_PER_DAY} elements, got {len(feature_weights)}.")
+    # feature_weights is accepted for backwards compatibility but ignored.
 
 
 # ── Entry point ───────────────────────────────────────────────────────────────
@@ -294,18 +295,22 @@ def run_pipeline(
     sentiment_path: str,
     volatility_path: str,
     model_dir: str,
-    target_date: str,
-    day_weights: list[float],
-    feature_weights: list[float],
-) -> dict[str, float | None]:
+    target_date: str | None = None,               # kept for backwards compatibility; ignored
+    day_weights: list[float] = None,
+    feature_weights: list[float] | None = None,   # kept for backwards compatibility; ignored
+    alpha: float = 1.0,
+    l1_ratio: float | None = None,                # kept for backwards compatibility; ignored
+) -> None:
     """
     1. Load data
-    2. Build cross-ticker training dataset with day + feature weighting
+    2. Build cross-ticker training dataset using ALL available dates per ticker
+       (any date with >= LOOKBACK prior sentiment days, a volatility label,
+       and num_posts > 0 for every day in the window)
     3. Compute and print feature→target correlations
-    4. Train one Ridge model, save to model_dir/vol_model.pkl
-    5. Predict volatility for every ticker on target_date
+    4. Train one HuberRegressor model, save to model_dir/social_vol_model.pkl
 
-    Returns {ticker: predicted_volatility}
+    target_date, feature_weights, and l1_ratio are accepted for backwards
+    compatibility but ignored.
     """
     _validate_weights(day_weights, feature_weights)
 
@@ -313,16 +318,13 @@ def run_pipeline(
     volatility_data = load_json(volatility_path)
 
     # ── build dataset ─────────────────────────────────────────────────────
-    X, y = build_dataset(
-        sentiment_data, volatility_data, target_date, day_weights, feature_weights
-    )
+    X, y = build_dataset(sentiment_data, volatility_data, day_weights=day_weights)
 
     if X.shape[0] < 2:
         raise ValueError(f"Only {X.shape[0]} training samples — need at least 2.")
 
     print(f"Training on {X.shape[0]} samples ({X.shape[1]} features each).")
-    print(f"Day weights     (newest→oldest) : {day_weights}")
-    print(f"Feature weights                 : {feature_weights}")
+    print(f"Day weights (newest→oldest) : {day_weights}")
 
     # ── correlations ──────────────────────────────────────────────────────
     correlations = compute_feature_target_correlations(X, y, day_weights)
@@ -331,20 +333,6 @@ def run_pipeline(
     print(f"\nCorrelations saved → {corr_path}")
 
     # ── train & save ──────────────────────────────────────────────────────
-    model_bundle = train_model(X, y)
+    model_bundle = train_model(X, y, alpha=alpha)
     saved_path   = save_model(model_bundle, model_dir)
     print(f"Model saved    → {saved_path}")
-
-    # ── predict ───────────────────────────────────────────────────────────
-    X_pred, pred_tickers = build_prediction_rows(
-        sentiment_data, volatility_data, target_date, day_weights, feature_weights
-    )
-
-    if len(pred_tickers) == 0:
-        print("No tickers had enough data to predict.")
-        return {}
-
-    preds       = predict(model_bundle, X_pred)
-    predictions = dict(zip(pred_tickers, preds.tolist()))
-
-    return predictions

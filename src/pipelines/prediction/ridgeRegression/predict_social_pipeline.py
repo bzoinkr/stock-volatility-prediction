@@ -1,10 +1,10 @@
 """
-eval_social_pipeline.py
+predict_social_pipeline.py
 
-Loads the saved social_vol_model.pkl and evaluates it on a single date (end_date)
-for a single ticker.
-Applies the same feature-level and day-level weighting used during training.
-Missing lagged volatility values in the window are filled with the ticker mean.
+Loads the saved social_vol_model.pkl and predicts volatility for a single
+ticker using its latest available sentiment date as the prediction point.
+Applies day-level weighting during feature construction. Windows where any
+day has num_posts == 0 are rejected.
 """
 
 import os
@@ -20,6 +20,7 @@ from pipelines.prediction.ridgeRegression.ridgeCreateModel_social_pipeline impor
     load_json,
     _sorted_dates,
     _window_features,
+    _window_has_posts,
     _ticker_mean_vol,
     _validate_weights,
 )
@@ -41,30 +42,41 @@ def build_eval_row(
     sentiment_data: dict,
     volatility_data: dict,
     ticker: str,
-    target_date: str,
     day_weights: list[float],
-    feature_weights: list[float],
-) -> np.ndarray:
+    target_date: str | None = None,             # kept for backwards compatibility; ignored
+    feature_weights: list[float] | None = None, # kept for backwards compatibility; ignored
+) -> tuple[np.ndarray, str]:
     """
-    Build the weighted feature row for a single ticker on target_date.
-    Returns (X_row, y_true) or (None, None) if the ticker cannot be evaluated.
+    Build the feature row for a single ticker using its latest available
+    sentiment date as the prediction point.
+
+    Returns (X_row, date) or raises if the ticker cannot be evaluated.
+    target_date and feature_weights are accepted for backwards compatibility
+    but ignored.
     """
     if ticker not in sentiment_data:
         raise ValueError(f"Ticker '{ticker}' not found in sentiment data.")
     if ticker not in volatility_data:
         raise ValueError(f"Ticker '{ticker}' not found in volatility data.")
 
-    sent = sentiment_data[ticker]
-    vol  = volatility_data[ticker]
+    sent      = sentiment_data[ticker]
+    vol       = volatility_data[ticker]
+    all_dates = _sorted_dates(sent)
 
-    prior_dates = [d for d in _sorted_dates(sent) if d < target_date]
-    if len(prior_dates) < 1:
-        raise ValueError(f"No prior sentiment days available for '{ticker}' before {target_date}.")
+    if len(all_dates) < LOOKBACK + 1:
+        raise ValueError(f"Not enough sentiment days for '{ticker}' to form a window.")
+
+    # latest date is the prediction target; everything before it is the window
+    date        = all_dates[-1]
+    prior_dates = all_dates[:-1]
+
+    if not _window_has_posts(sent, prior_dates):
+        raise ValueError(f"[{ticker}] Zero-post day in the window — cannot predict.")
 
     mean_vol = _ticker_mean_vol(vol)
-    X_row    = _window_features(sent, vol, prior_dates, day_weights, feature_weights, vol_fill=mean_vol)
+    X_row    = _window_features(sent, vol, prior_dates, day_weights, vol_fill=mean_vol)
 
-    return X_row.reshape(1, -1)
+    return X_row.reshape(1, -1), date
 
 
 # ── Entry point ───────────────────────────────────────────────────────────────
@@ -74,20 +86,23 @@ def run_prediction_pipeline(
     volatility_path: str,
     model_dir: str,
     ticker: str,
-    target_date: str,
     day_weights: list[float],
-    feature_weights: list[float],
+    target_date: str | None = None,             # kept for backwards compatibility; ignored
+    feature_weights: list[float] | None = None, # kept for backwards compatibility; ignored
 ) -> dict:
     """
-    Load the saved model and predict volatility for a single ticker on target_date.
+    Load the saved model and predict volatility for a single ticker using its
+    latest available sentiment date.
+
+    target_date and feature_weights are accepted for backwards compatibility
+    but ignored.
 
     Returns
     -------
     {
         "ticker"    : ticker symbol,
-        "date"      : target date,
+        "date"      : date predicted for (latest available),
         "predicted" : predicted volatility (float),
-        "actual"    : actual volatility (float),
     }
     """
     _validate_weights(day_weights, feature_weights)
@@ -96,17 +111,17 @@ def run_prediction_pipeline(
     volatility_data = load_json(volatility_path)
     model_bundle    = load_model(model_dir)
 
-    X = build_eval_row(
-        sentiment_data, volatility_data, ticker, target_date, day_weights, feature_weights
+    X, date = build_eval_row(
+        sentiment_data, volatility_data, ticker, day_weights
     )
 
-    X_scaled  = model_bundle["scaler"].transform(X)
-    y_pred    = float(model_bundle["model"].predict(X_scaled)[0])
+    X_scaled = model_bundle["scaler"].transform(X)
+    y_pred   = float(model_bundle["model"].predict(X_scaled)[0])
 
-    print(f"[{ticker}] {target_date}  |  predicted: {y_pred:.6f}")
+    print(f"[{ticker}] {date}  |  predicted: {y_pred:.6f}")
 
     return {
         "ticker"   : ticker,
-        "date"     : target_date,
+        "date"     : date,
         "predicted": y_pred,
     }

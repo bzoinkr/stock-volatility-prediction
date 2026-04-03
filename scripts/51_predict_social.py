@@ -61,10 +61,8 @@ def insert_prediction(store: dict, ticker: str, date: str, result: dict):
 def main():
     run = load_config("run.yaml")
 
-    tickers         = run["universe"]["ticker_symbols"]
-    date            = str(run["universe"]["target_date"])
-    day_weights     = run["day_weights"]
-    feature_weights = run["feature_weights"]
+    tickers     = run["universe"]["ticker_symbols"]
+    day_weights = run["day_weights"]
 
     if not tickers[0]:
         raise ValueError("TICKER is not set. Please assign a ticker symbol in config/run.yaml")
@@ -73,17 +71,17 @@ def main():
 
     for ticker in tickers:
         print(f"Ticker          : {ticker}")
-        print(f"Target date     : {date}")
 
         result = run_prediction_pipeline(
             sentiment_path  = SENTIMENT_PATH,
             volatility_path = VOLATILITY_PATH,
             model_dir       = MODEL_DIR,
             ticker          = ticker,
-            target_date     = date,
             day_weights     = day_weights,
-            feature_weights = feature_weights,
         )
+
+        date = result["date"]
+        print(f"Target date     : {date}")
 
         insert_prediction(store, ticker, date, result)
         save_predictions(OUTPUT_PATH, store)

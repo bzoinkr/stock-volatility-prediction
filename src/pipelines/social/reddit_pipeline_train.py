@@ -7,7 +7,7 @@ from typing import Dict, List, Set
 
 import requests
 
-from apis.reddit_data import fetch_posts_for_ticker
+from apis.reddit_data import fetch_posts_for_ticker, RateLimitError
 
 
 def _load_keywords_map(path: Path) -> Dict[str, List[str]]:
@@ -63,6 +63,8 @@ def run_pipeline(keywords_path: Path, output_path: Path, cfg: dict) -> None:
                 max_posts=cfg["max_posts_per_ticker"],
                 session=session,
             )
+        except RateLimitError:
+            raise  # propagate immediately — do not swallow
         except Exception as e:
             print(f"[{idx}/{len(tickers)}] {ticker} failed: {e}")
             time.sleep(cfg["request_delay_s"])

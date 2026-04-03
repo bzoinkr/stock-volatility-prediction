@@ -6,10 +6,10 @@ project:
 universe:
   tickers: ["Apple", "Amazon"]
   ticker_symbols: ["JPM"]
-  start_date_news: "2025-03-25" # Train window begin exclusive for news
+  start_date_news: "2026-03-18" # Train window begin exclusive for news
   start_date: "2026-03-18"      # Train window begin
-  end_date: "2026-04-01"        # Train window end
-  target_date: "2026-04-01"     # Target date for prediction
+  end_date: "2026-04-03"        # Train window end
+  target_date: "2026-03-31"     # Target date for prediction
 
 frequency:
   base: "1D"               # daily base timeline
@@ -25,7 +25,7 @@ llm_run_count: 1          # number of times to run the llm
 
 peer_count: 6              # number of peer companies per base ticker
 news_limit_per_ticker: 10000 # max news articles per ticker (Yahoo and Finnhub)
-day_weights: [1, 0.7, 0.5, 0.3, 0.2]
+day_weights: [1, 0.5, 0.25, 0.125, 0.0625]
 feature_weights: [
   1,  # 0  num_posts
   1,  # 1  log_impressions
@@ -42,7 +42,7 @@ feature_weights: [
   1,  # 12 std_compound
   .1,  # 13 term_diversity
   .1,  # 14 top_term_ratio
-  2,  # 15 volatility (lagged)
+  3,  # 15 volatility (lagged)
 ]
 
 feature_weights_news: [

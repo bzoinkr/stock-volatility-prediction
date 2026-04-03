@@ -757,3 +757,5 @@
 {"id": "1q6qjbz", "ticker": "JPM", "match_term": "community", "date": 1767817391.0, "neg": 0.04, "neu": 0.904, "pos": 0.056, "compound": 0.1926, "impressions": 12}
 {"id": "1q550k7", "ticker": "JPM", "match_term": "chase", "date": 1767663535.0, "neg": 0.327, "neu": 0.566, "pos": 0.107, "compound": -0.9716, "impressions": 32}
 {"id": "1q52ivr", "ticker": "JPM", "match_term": "community", "date": 1767657402.0, "neg": 0.037, "neu": 0.808, "pos": 0.155, "compound": 0.998, "impressions": 25}
+{"id": "1satoy2", "ticker": "JPM", "match_term": "chase", "date": 1775163834.0, "neg": 0.039, "neu": 0.885, "pos": 0.075, "compound": 0.9089, "impressions": 12}
+{"id": "1sahd30", "ticker": "JPM", "match_term": "chase", "date": 1775136374.0, "neg": 0.137, "neu": 0.821, "pos": 0.042, "compound": -0.9418, "impressions": 16}

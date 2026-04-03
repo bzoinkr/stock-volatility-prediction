@@ -10,6 +10,11 @@ import requests
 PAGE_SIZE = 100  # Reddit's hard maximum per request
 
 
+class RateLimitError(Exception):
+    """Raised on HTTP 429 — must not be swallowed by pipeline error handlers."""
+    pass
+
+
 def fetch_posts_for_ticker(
     ticker: str,
     keywords: List[str],
@@ -38,6 +43,8 @@ def fetch_posts_for_ticker(
             params["after"] = after
 
         resp = session.get(f"{base_url}?{urlencode(params)}", timeout=30)
+        if resp.status_code == 429:
+            raise RateLimitError(f"429 Too Many Requests for url: {resp.url}")
         resp.raise_for_status()
         data = resp.json().get("data", {})
 

@@ -3,7 +3,7 @@ from _bootstrap import *
 import json
 
 from common.config import load_config
-from pipelines.prediction.ridgeRegression.ridgeCreateModel_social_pipeline import run_pipeline
+from pipelines.prediction.ridgeRegression.huberCreateModel_social_pipeline import run_pipeline
 
 
 # ── Paths — fill these in ─────────────────────────────────────────────────────

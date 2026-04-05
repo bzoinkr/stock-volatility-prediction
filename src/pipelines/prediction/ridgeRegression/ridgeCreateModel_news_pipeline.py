@@ -80,13 +80,19 @@ def _feature_row(day_data: dict, vol_value: float, feature_weights: list[float])
     return np.array(raw) * np.array(feature_weights)
 
 
+def _ticker_mean_vol(volatility_ticker: dict) -> float:
+    """Mean of all available volatility values for a ticker; 0.0 if none."""
+    vals = [v for v in volatility_ticker.values() if v is not None]
+    return float(np.mean(vals)) if vals else 0.0
+
+
 def _window_features(
     sentiment_ticker: dict,
     volatility_ticker: dict,
     dates_before: list[str],
     day_weights: list[float],
     feature_weights: list[float],
-    fill_vol: float = 0.0,
+    vol_fill: float = 0.0,
 ) -> np.ndarray:
     window = dates_before[-LOOKBACK:]
     weights_oldest_first = list(reversed(day_weights))
@@ -97,7 +103,7 @@ def _window_features(
     vec = []
     for day, dw in zip(window, weights_oldest_first):
         day_data = sentiment_ticker.get(day, {})
-        vol_value = volatility_ticker.get(day, fill_vol) if day else fill_vol
+        vol_value = volatility_ticker.get(day, vol_fill) if day else vol_fill
         row = _feature_row(day_data, vol_value, feature_weights)
         vec.append(row * dw)
 
@@ -124,6 +130,8 @@ def build_dataset(
     vol = volatility_data[ticker]
     dates = _sorted_dates(sentiment)
 
+    mean_vol = _ticker_mean_vol(vol)
+
     for i, date in enumerate(dates):
         if date >= target_date:
             break
@@ -139,7 +147,7 @@ def build_dataset(
                 prior_dates,
                 day_weights,
                 feature_weights,
-                fill_vol=0.0,
+                vol_fill=mean_vol,
             )
         )
         y_vals.append(float(vol[date]))
@@ -171,13 +179,15 @@ def build_prediction_row(
     if len(prior_dates) < 1:
         raise ValueError(f"No prior dates available for {ticker} before {target_date}")
 
+    mean_vol = _ticker_mean_vol(vol)
+
     X_pred = _window_features(
         sentiment,
         vol,
         prior_dates,
         day_weights,
         feature_weights,
-        fill_vol=0.0,
+        vol_fill=mean_vol,
     )
 
     return X_pred.reshape(1, -1)
@@ -279,6 +289,8 @@ def run_pipeline(
         )
 
     print(f"Training on {X.shape[0]} samples ({X.shape[1]} features each) for {ticker}.")
+    print(f"Day weights     (newest→oldest) : {day_weights}")
+    print(f"Feature weights                 : {feature_weights}")
 
     correlations = compute_feature_target_correlations(X, y)
     print_correlations(correlations)

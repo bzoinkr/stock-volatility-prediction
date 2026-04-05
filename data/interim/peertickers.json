@@ -1,14 +1,5 @@
 {
-  "NVDA": [
-<<<<<<< HEAD
-=======
-    "INTC",
-    "MRVL",
-    "AMD",
-    "AVGO",
-    "QCOM",
-    "XLNX",
->>>>>>> main
-    "NVDA"
+  "FMCC": [
+    "FMCC"
   ]
 }

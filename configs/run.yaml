@@ -4,21 +4,12 @@ project:
   seed: 42
 
 universe:
-<<<<<<< HEAD
-  tickers: ["Nvidia"]
-  ticker_symbols: ["NVDA"]
-  start_date_news: "2025-03-10" # Train window begin exclusive for news
-  start_date: "2025-05-02"      # Train window begin
-  end_date: "2026-03-28"        # Train window end
-  target_date: "2026-03-28"     # Target date for prediction
-=======
   tickers: ["Apple", "Amazon"]
   ticker_symbols: ["FMCC"]
-  start_date_news: "2026-03-18" # Train window begin exclusive for news
-  start_date: "2026-03-18"      # Train window begin
+  start_date_news: "2025-03-18" # Train window begin exclusive for news
+  start_date: "2025-03-18"      # Train window begin
   end_date: "2026-04-03"        # Train window end
   target_date: "2026-03-31"     # Target date for prediction
->>>>>>> main
 
 frequency:
   base: "1D"               # daily base timeline
@@ -51,22 +42,14 @@ feature_weights: [
   1,  # 12 std_compound
   .1,  # 13 term_diversity
   .1,  # 14 top_term_ratio
-<<<<<<< HEAD
-  2,  # 15 volatility (lagged)
-=======
   3,  # 15 volatility (lagged)
->>>>>>> main
 ]
 
 feature_weights_news: [
   1,  # 0  num_posts
   .1,  # 1  mean_compound
   .1,  # 2  mean_pos
-<<<<<<< HEAD
-  1,  # 3  mean_neg
-=======
   .1,  # 3  mean_neg
->>>>>>> main
   .1,  # 4  mean_neu
   .1,  # 5  pos_neg_ratio
   .1,  # 6  sentiment_balance

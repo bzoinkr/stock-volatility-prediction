@@ -6,7 +6,7 @@ from common.config import load_config
 from pipelines.prediction.ridgeRegression.eval_news_pipeline import run_eval_pipeline
 
 
-NEWS_PATH = "data/processed/news/news_data_train.json"
+NEWS_PATH = "data/processed/news/news_data.json"
 VOLATILITY_PATH = "data/processed/market/volatilitySingleTicker.json"
 MODEL_DIR = "artifacts/models"
 

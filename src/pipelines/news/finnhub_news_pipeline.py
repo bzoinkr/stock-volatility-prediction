@@ -47,7 +47,7 @@ def fetch_and_save_finnhub_news(
     os.makedirs(NEWS_RAW_DATA_DIR, exist_ok=True)
 
     if filename is None:
-        filename = "yahoo_news.jsonl"
+        filename = "yahoo_news_train.jsonl"
     out_path = os.path.join(out_dir, filename)
 
     with open(out_path, "w", encoding="utf-8") as f:

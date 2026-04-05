@@ -48,11 +48,9 @@ def _empty_day() -> dict:
 def build_sentiment_stats(
     input_path: Path,
     output_path: Path,
-    start_date: str | date,
-    end_date: str | date,
+    start_date: str | date | None = None,  # kept for backwards compatibility; ignored
+    end_date: str | date | None = None,    # kept for backwards compatibility; ignored
 ) -> None:
-    start = _parse_date(start_date)
-    end = _parse_date(end_date)
 
     groups: dict[tuple, list[dict]] = defaultdict(list)
 
@@ -68,20 +66,37 @@ def build_sentiment_stats(
                 continue
 
             record_date = datetime.fromtimestamp(record["date"], tz=timezone.utc).date()
-
-            if not (start <= record_date <= end):
-                continue
-
             date_str = record_date.strftime("%Y-%m-%d")
             groups[(record["ticker"], date_str)].append(record)
+
+    if not groups:
+        print("No records found in input file.")
+        return
+
+    # derive date range from the actual data
+    all_dates = [d for (_, d) in groups]
+    start = _parse_date(min(all_dates))
+    end   = _parse_date(max(all_dates))
+
+    # Load existing output file if present, so we can merge into it
+    if output_path.exists():
+        with open(output_path, "r", encoding="utf-8") as f:
+            try:
+                existing: dict[str, dict[str, dict]] = json.load(f)
+            except json.JSONDecodeError as e:
+                print(f"Warning: existing output file is malformed, starting fresh — {e}", file=sys.stderr)
+                existing = {}
+    else:
+        existing = {}
 
     # Collect all tickers seen across the data
     all_tickers = sorted({ticker for (ticker, _) in groups})
 
-    output: dict[str, dict[str, dict]] = {}
+    output: dict[str, dict[str, dict]] = existing
 
     for ticker in all_tickers:
-        output[ticker] = {}
+        if ticker not in output:
+            output[ticker] = {}
 
         for d in _date_range(start, end):
             date_str = d.strftime("%Y-%m-%d")
@@ -162,4 +177,8 @@ def build_sentiment_stats(
         json.dump(output, f, indent=4)
 
     total_days = sum(len(dates) for dates in output.values())
-    print(f"Done — {len(output)} tickers, {total_days} ticker-date entries written to '{output_path}'")
+    date_span = len(list(_date_range(start, end)))
+    print(
+        f"Done — merged {len(all_tickers)} tickers × {date_span} days into '{output_path}' "
+        f"(file now contains {len(output)} tickers, {total_days} ticker-date entries total)"
+    )

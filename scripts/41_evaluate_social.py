@@ -9,7 +9,7 @@ from pipelines.prediction.ridgeRegression.eval_social_pipeline import run_eval_p
 
 # ── Paths — fill these in ─────────────────────────────────────────────────────
 
-SENTIMENT_PATH  = "data/processed/social/social_data_train.json"   # path to sentiment JSON file
+SENTIMENT_PATH  = "data/processed/social/social_data.json"   # path to sentiment JSON file
 VOLATILITY_PATH = "data/processed/market/volatility.json"   # path to volatility JSON file
 MODEL_DIR       = "artifacts/models"   # directory where vol_model.pkl will be saved
 

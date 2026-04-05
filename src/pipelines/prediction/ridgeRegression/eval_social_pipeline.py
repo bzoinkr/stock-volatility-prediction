@@ -13,7 +13,7 @@ import pickle
 import numpy as np
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
-from pipelines.prediction.ridgeRegression.ridgeCreateModel_social_pipeline import (
+from pipelines.prediction.ridgeRegression.huberCreateModel_social_pipeline import (
     LOOKBACK,
     N_FEATURES,
     N_PER_DAY,
@@ -21,6 +21,7 @@ from pipelines.prediction.ridgeRegression.ridgeCreateModel_social_pipeline impor
     load_json,
     _sorted_dates,
     _window_features,
+    _window_has_posts,
     _ticker_mean_vol,
     compute_feature_target_correlations,
     print_correlations,
@@ -46,12 +47,13 @@ def build_eval_rows(
     volatility_data: dict,
     target_date: str,
     day_weights: list[float],
-    feature_weights: list[float],
 ) -> tuple[np.ndarray, list[float], list[str]]:
     """
     For each ticker, build the weighted feature row for target_date and look
     up the actual volatility label on that date (if available).
-    Missing lagged volatility values in the window are filled with 0.0.
+    Missing lagged volatility values in the window are filled with the
+    ticker's mean volatility. Windows where any day has num_posts == 0
+    are skipped.
     """
     X_rows, y_true, tickers_out = [], [], []
 
@@ -71,7 +73,11 @@ def build_eval_rows(
             print(f"[{ticker}] No prior sentiment days available, skipping.")
             continue
 
-        X_rows.append(_window_features(sent, vol, prior_dates, day_weights, feature_weights, vol_fill=mean_vol))
+        if not _window_has_posts(sent, prior_dates):
+            print(f"[{ticker}] Zero-post day in window, skipping.")
+            continue
+
+        X_rows.append(_window_features(sent, vol, prior_dates, day_weights, vol_fill=mean_vol))
         y_true.append(float(vol[target_date]))
         tickers_out.append(ticker)
 
@@ -86,11 +92,10 @@ def build_eval_rows(
 def compute_stats(y_true: np.ndarray, y_pred: np.ndarray) -> dict:
     residuals  = y_pred - y_true
     abs_errors = np.abs(residuals)
-
+    qlike = lambda y_true, y_pred: np.mean(y_true / y_pred - np.log(y_true / y_pred) - 1)
     mae  = mean_absolute_error(y_true, y_pred)
     rmse = np.sqrt(mean_squared_error(y_true, y_pred))
     r2   = r2_score(y_true, y_pred) if len(y_true) > 1 else float("nan")
-
     mape_vals    = abs_errors / np.where(y_true != 0, y_true, np.nan)
     mape         = float(np.nanmean(mape_vals)) * 100
     mean_vol     = float(np.mean(y_true))
@@ -107,7 +112,8 @@ def compute_stats(y_true: np.ndarray, y_pred: np.ndarray) -> dict:
         "mean_error"  : float(np.mean(residuals)),
         "std_error"   : float(np.std(residuals)),
         "baseline_mae": baseline_mae,
-        "skill_score" : float(1 - mae / baseline_mae) if baseline_mae > 0 else float("nan"),
+        "skill_score" : float(1 - mae / baseline_mae) if baseline_mae > 0 else float("nan")#,
+#        "qlike"       : float(qlike)
     }
 
 
@@ -115,14 +121,13 @@ def print_stats(
     stats: dict,
     target_date: str,
     day_weights: list[float],
-    feature_weights: list[float],
 ) -> None:
     print("\n" + "=" * 52)
     print(f"  Evaluation on {target_date}  ({stats['n_tickers']} tickers)")
-    print(f"  Day weights     (newest→oldest) : {day_weights}")
-    print(f"  Feature weights                 : {feature_weights}")
+    print(f"  Day weights (newest→oldest) : {day_weights}")
     print("=" * 52)
     print(f"  MAE             : {stats['mae']:.6f}")
+#    print(f"  qlike             : {stats['qlike']:.6f}")
     print(f"  RMSE            : {stats['rmse']:.6f}")
     print(f"  R²              : {stats['r2']:.4f}")
     print(f"  MAPE            : {stats['mape_pct']:.2f}%")
@@ -137,7 +142,6 @@ def print_stats(
     print(f"  Skill score     : {skill:.4f}  ({label} than baseline)")
     print("=" * 52)
 
-
 # ── Entry point ───────────────────────────────────────────────────────────────
 
 def run_eval_pipeline(
@@ -146,11 +150,14 @@ def run_eval_pipeline(
     model_dir: str,
     target_date: str,
     day_weights: list[float],
-    feature_weights: list[float],
+    feature_weights: list[float] | None = None,   # kept for backwards compatibility; ignored
 ) -> dict:
     """
     Load the saved model, predict on target_date, compare against known
     volatility labels, and print evaluation statistics + correlations.
+
+    feature_weights is accepted for backwards compatibility but ignored;
+    ElasticNet regularization handles feature selection internally.
 
     Returns
     -------
@@ -167,11 +174,11 @@ def run_eval_pipeline(
     volatility_data = load_json(volatility_path)
     model_bundle    = load_model(model_dir)
 
-    print(f"Loaded model from : {os.path.join(model_dir, 'vol_model.pkl')}")
+    print(f"Loaded model from : {os.path.join(model_dir, 'social_vol_model.pkl')}")
 
     # ── build eval rows ───────────────────────────────────────────────────
     X, y_true, tickers = build_eval_rows(
-        sentiment_data, volatility_data, target_date, day_weights, feature_weights
+        sentiment_data, volatility_data, target_date, day_weights
     )
 
     if len(tickers) == 0:
@@ -188,7 +195,7 @@ def run_eval_pipeline(
 
     # ── stats & printing ──────────────────────────────────────────────────
     stats = compute_stats(y_true_arr, y_pred)
-    print_stats(stats, target_date, day_weights, feature_weights)
+    print_stats(stats, target_date, day_weights)
 
     return {
         "predictions" : dict(zip(tickers, y_pred.tolist())),

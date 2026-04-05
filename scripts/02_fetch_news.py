@@ -46,6 +46,7 @@ def main():
         start_date=start_date,
         end_date=end_date,
         limit_per_ticker=limit_per_ticker,
+        api_key = 'd671vthr01qmckkbqdhgd671vthr01qmckkbqdi0',
     )
     print("Saved:", path)
     print("Tickers used:", tickers_used)

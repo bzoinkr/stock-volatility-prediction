@@ -4,8 +4,8 @@ from pipelines.prediction.sentimentModels.vader_pipeline import run_vader_on_red
 
 def main() -> None:
 
-    INPUT_PATH = Path("data/raw/social/reddit_posts_train.json")
-    OUTPUT_PATH = Path("data/processed/social/reddit_posts_vader_scored.jsonl")
+    INPUT_PATH = Path("data/raw/social/reddit_posts_target.json")
+    OUTPUT_PATH = Path("data/processed/social/reddit_posts_vader_scored_target.json")
 
     result = run_vader_on_reddit_posts(INPUT_PATH, OUTPUT_PATH)
 

@@ -7,7 +7,7 @@ from evaluation.sentiment_plots import make_sentiment_report
 
 if __name__ == "__main__":
     make_sentiment_report(
-        input_jsonl="data/processed/social/reddit_posts_vader_scored.jsonl",
+        input_jsonl="data/processed/social/reddit_posts_vader_scored_train.json",
         out_dir="artifacts/reports/sentiment/vader",
         date_col="date",
         score_col="compound",

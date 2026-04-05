@@ -221,9 +221,9 @@ Creates:
 ## Typical Workflow
 
 ```bash
-python scripts/05_fetch_social_test.py
+python scripts/04_fetch_social_target.py
 python scripts/02_fetch_news.py
-python scripts/03_fetch_market_volatility_compound.py
+python scripts/032_fetch_market_volatility_compound.py
 
 python scripts/01_build_keywords.py
 

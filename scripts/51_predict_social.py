@@ -63,6 +63,7 @@ def main():
 
     tickers     = run["universe"]["ticker_symbols"]
     day_weights = run["day_weights"]
+    target_date = run["universe"]["target_date"]
 
     if not tickers[0]:
         raise ValueError("TICKER is not set. Please assign a ticker symbol in config/run.yaml")
@@ -78,9 +79,14 @@ def main():
             model_dir       = MODEL_DIR,
             ticker          = ticker,
             day_weights     = day_weights,
+            target_date     = target_date,
         )
 
-        date = result["date"]
+        if result is None:
+            print(f"  Skipped: no data available for {ticker} on {target_date}")
+            continue
+
+        date = result.get("date", target_date)
         print(f"Target date     : {date}")
 
         insert_prediction(store, ticker, date, result)

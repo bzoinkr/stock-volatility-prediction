@@ -964,3 +964,13 @@
 {"id": "1qwag65", "ticker": "FMCC", "match_term": "federal", "date": 1770262734.0, "neg": 0.078, "neu": 0.88, "pos": 0.042, "compound": -0.4766, "impressions": 138}
 {"id": "1qw78am", "ticker": "FMCC", "match_term": "purchase", "date": 1770254142.0, "neg": 0.022, "neu": 0.77, "pos": 0.208, "compound": 0.9747, "impressions": 22}
 {"id": "1qw6g1q", "ticker": "FMCC", "match_term": "purchase", "date": 1770252102.0, "neg": 0.0, "neu": 0.83, "pos": 0.17, "compound": 0.9549, "impressions": 3}
+{"id": "1se9fda", "ticker": "FMCC", "match_term": "purchase", "date": 1775504903.0, "neg": 0.0, "neu": 0.915, "pos": 0.085, "compound": 0.9383, "impressions": 1}
+{"id": "1se995c", "ticker": "FMCC", "match_term": "purchase", "date": 1775504516.0, "neg": 0.0, "neu": 0.911, "pos": 0.089, "compound": 0.9454, "impressions": 20}
+{"id": "1se45ob", "ticker": "FMCC", "match_term": "purchase", "date": 1775493783.0, "neg": 0.05, "neu": 0.892, "pos": 0.058, "compound": 0.1548, "impressions": 13}
+{"id": "1se2iic", "ticker": "FMCC", "match_term": "mortgage", "date": 1775490223.0, "neg": 0.062, "neu": 0.83, "pos": 0.108, "compound": 0.9611, "impressions": 58}
+{"id": "1se1ieu", "ticker": "FMCC", "match_term": "purchase", "date": 1775488045.0, "neg": 0.047, "neu": 0.849, "pos": 0.104, "compound": 0.9988, "impressions": 6}
+{"id": "1sdwxme", "ticker": "FMCC", "match_term": "purchase", "date": 1775477038.0, "neg": 0.116, "neu": 0.766, "pos": 0.118, "compound": -0.4215, "impressions": 24}
+{"id": "1sdhyr5", "ticker": "FMCC", "match_term": "purchase", "date": 1775430334.0, "neg": 0.015, "neu": 0.893, "pos": 0.092, "compound": 0.9968, "impressions": 19}
+{"id": "1sd465u", "ticker": "FMCC", "match_term": "purchase", "date": 1775397104.0, "neg": 0.047, "neu": 0.882, "pos": 0.071, "compound": 0.972, "impressions": 21}
+{"id": "1scj7q0", "ticker": "FMCC", "match_term": "mortgage", "date": 1775333106.0, "neg": 0.076, "neu": 0.856, "pos": 0.069, "compound": -0.653, "impressions": 141}
+{"id": "1sbrap8", "ticker": "FMCC", "match_term": "purchase", "date": 1775253827.0, "neg": 0.079, "neu": 0.872, "pos": 0.049, "compound": -0.9209, "impressions": 58}

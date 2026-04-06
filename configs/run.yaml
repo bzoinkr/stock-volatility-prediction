@@ -7,8 +7,8 @@ universe:
   tickers: ["Apple", "Amazon"]
   ticker_symbols: ["FMCC"]
   start_date_news: "2025-03-18" # Train window begin exclusive for news
-  start_date: "2025-03-18"      # Train window begin
-  end_date: "2026-04-02"        # Train window end
+  start_date: "2025-03-23"      # Train window begin
+  end_date: "2026-03-30"        # Train window end
   target_date: "2026-03-31"     # Target date for prediction
 
 frequency:
@@ -25,6 +25,9 @@ llm_run_count: 1          # number of times to run the llm
 
 peer_count: 6              # number of peer companies per base ticker
 news_limit_per_ticker: 10000 # max news articles per ticker (Yahoo and Finnhub)
+
+prediction_ratio: 0.1  # The ratio of importance of social (close to 0) vs news (close to 1) prediction in final prediction
+
 day_weights: [1, 0.5, 0.25, 0.125, 0.0625]
 feature_weights: [
   1,  # 0  num_posts

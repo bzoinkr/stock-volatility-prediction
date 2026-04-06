@@ -102,12 +102,25 @@ def build_sentiment_stats(
             date_str = record_date.strftime("%Y-%m-%d")
             groups[(record["ticker"], date_str)].append(record)
 
+    # Load existing output file if present, so we can merge into it
+    if output_path.exists():
+        with open(output_path, "r", encoding="utf-8") as f:
+            try:
+                existing: dict[str, dict[str, dict]] = json.load(f)
+            except json.JSONDecodeError as e:
+                print(f"Warning: existing output file is malformed, starting fresh — {e}", file=sys.stderr)
+                existing = {}
+    else:
+        existing = {}
+
     all_tickers = sorted({ticker for (ticker, _) in groups})
 
-    output: dict[str, dict[str, dict]] = {}
+    output: dict[str, dict[str, dict]] = existing
 
     for ticker in all_tickers:
-        output[ticker] = {}
+
+        if ticker not in output:
+            output[ticker] = {}
 
         for d in _date_range(start, end):
             date_str = d.strftime("%Y-%m-%d")
@@ -167,4 +180,8 @@ def build_sentiment_stats(
         json.dump(output, f, indent=4)
 
     total_days = sum(len(dates) for dates in output.values())
-    print(f"Done — {len(output)} tickers, {total_days} ticker-date entries written to '{output_path}'")
+    date_span = len(list(_date_range(start, end)))
+    print(
+        f"Done — merged {len(all_tickers)} tickers × {date_span} days into '{output_path}' "
+        f"(file now contains {len(output)} tickers, {total_days} ticker-date entries total)"
+    )

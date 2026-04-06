@@ -9,7 +9,7 @@ from typing import Any, Dict, Iterable, Iterator, Optional
 from models.finbert.model import score_finbert
 
 NEWS_RAW_DIR = Path("data/raw/news")
-OUTPUT_PATH = Path("data/processed/news/yahoo_news_finbert_scored.jsonl")
+OUTPUT_PATH = Path("data/processed/news/yahoo_news_finbert_scored_train.jsonl")
 
 
 def _iter_jsonl(path: Path) -> Iterator[Dict[str, Any]]:
@@ -31,8 +31,8 @@ def _write_jsonl(path: Path, rows: Iterable[Dict[str, Any]]) -> int:
 
 
 def _latest_yahoo_jsonl(raw_dir: Path) -> Path:
-    # Prefer single consolidated file from Finnhub pipeline (yahoo_news.jsonl)
-    single = raw_dir / "yahoo_news.jsonl"
+    # Prefer single consolidated file from Finnhub pipeline (yahoo_news_train.jsonl)
+    single = raw_dir / "yahoo_news_train.jsonl"
     if single.exists():
         return single
     files = sorted(raw_dir.glob("yahoo_news_*.jsonl"))

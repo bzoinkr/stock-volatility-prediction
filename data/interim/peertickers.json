@@ -1,11 +1,5 @@
 {
-  "NVDA": [
-    "INTC",
-    "MRVL",
-    "AMD",
-    "AVGO",
-    "QCOM",
-    "XLNX",
-    "NVDA"
+  "FMCC": [
+    "FMCC"
   ]
 }

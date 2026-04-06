@@ -1,9 +1,14 @@
-from _bootstrap import *
+import os
+import sys
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
+
+from scripts._bootstrap import *
 
 from pathlib import Path
-from common.config import load_config
-from pipelines.news.sentiment_stats import build_sentiment_stats
 
+from common.config import load_config
+
+from pipelines.news.sentiment_stats import build_sentiment_stats
 
 def main():
     run = load_config("run.yaml")
@@ -15,7 +20,6 @@ def main():
     END_DATE = run["universe"]["end_date"]
 
     build_sentiment_stats(INPUT_PATH, OUTPUT_PATH, START_DATE, END_DATE)
-
 
 if __name__ == "__main__":
     main()

@@ -11,6 +11,7 @@ from pipelines.prediction.ridgeRegression.ridgeCreateModel_news_pipeline import 
     normalize_news_data,
     _sorted_dates,
     _window_features,
+    _ticker_mean_vol,
     compute_feature_target_correlations,
     _validate_weights,
 )
@@ -46,6 +47,7 @@ def build_eval_rows_for_range(
 
     sentiment_dates = _sorted_dates(sentiment)
     vol_dates = sorted(vol.keys())
+    mean_vol = _ticker_mean_vol(vol)
 
     for date in vol_dates:
         if date < start_eval_date or date > end_eval_date:
@@ -62,6 +64,7 @@ def build_eval_rows_for_range(
                 prior_dates,
                 day_weights,
                 feature_weights,
+                vol_fill = mean_vol,
             )
         )
         y_true.append(float(vol[date]))

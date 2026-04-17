@@ -273,7 +273,7 @@ def train_model(X: np.ndarray, y: np.ndarray, alpha: float = 1.0) -> dict:
     # offsets while preserving the relative scaling the weights impose.
     scaler   = StandardScaler(with_std=False)
     X_scaled = scaler.fit_transform(X)
-    model    = HuberRegressor(alpha=alpha, epsilon=1.35, max_iter=200)
+    model    = HuberRegressor(alpha=alpha, epsilon=1.5, max_iter=2000)
     model.fit(X_scaled, y)
     n_outliers = int(np.sum(model.outliers_))
     print(f"HuberRegressor: {n_outliers}/{len(y)} samples flagged as outliers "

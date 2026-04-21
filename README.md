@@ -62,7 +62,8 @@ Model outputs.
 artifacts/
 ├─ models/        # saved model objects
 ├─ predictions/   # prediction files
-└─ reports/       # metrics, plots
+├─ reports/       # metrics, plots
+└─ evaluations/   # predictions, evaluations
 ```
 
 ---

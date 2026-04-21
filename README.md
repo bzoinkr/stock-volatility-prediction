@@ -254,7 +254,7 @@ python scripts/52_predict_news.py
 
 ---
 
-## Financial News Data Pipeline
+## Prediction Combination
 
 To combine predictions from both social media and financial news sentiment: 
 

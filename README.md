@@ -240,6 +240,29 @@ python scripts/41_evaluate_social.py
 
 ---
 
+## Financial News Data Pipeline
+
+'''bash
+python scripts/02_fetch_news.py
+python scripts/03_fetch_market_volatility_target.py
+python scripts/11_execute_finbert.py
+python scripts/22_clean_news_data.py
+python scripts/42_createModel_news.py
+python scripts/43_evaluate_news.py
+python scripts/52_predict_news.py
+'''
+
+---
+
+## Financial News Data Pipeline
+
+To combine predictions from both social media and financial news sentiment: 
+
+'''bash
+python scripts/61_combine_predictions.py
+'''
+
+---
 ## Routing Test
 
 To verify imports and paths:

@@ -5,7 +5,7 @@ project:
 
 universe:
   tickers: ["Apple", "Amazon"]
-  ticker_symbols: ["PNC", "NEM", "AEP", "BJ", "APH", "ADP"]
+  ticker_symbols: ["PNC"]
   start_date_news: "2025-03-18" # Train window begin exclusive for news
   start_date: "2026-02-10"      # Train window begin
   end_date: "2026-04-16"        # Train window end
@@ -24,7 +24,7 @@ keyword_count: 5          # number of keywords per ticker
 llm_run_count: 1          # number of times to run the llm
 
 peer_count: 6              # number of peer companies per base ticker
-news_limit_per_ticker: 10000 # max news articles per ticker (Yahoo and Finnhub)
+news_limit_per_ticker: 30000 # max news articles per ticker (Yahoo and Finnhub)
 
 prediction_ratio: 0.1  # The ratio of importance of social (close to 0) vs news (close to 1) prediction in final prediction
 

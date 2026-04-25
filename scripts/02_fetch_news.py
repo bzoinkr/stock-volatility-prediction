@@ -1,9 +1,9 @@
 from _bootstrap import *
 
+import os
 from datetime import date, timedelta
 
 from common.config import load_config
-from pipelines.news.peerCompany_pipeline import build_peerCompanies, save_keywords
 from pipelines.news.finnhub_news_pipeline import fetch_and_save_finnhub_news
 
 
@@ -11,8 +11,13 @@ def main():
     # Load run configuration (tickers, dates, limits, etc.)
     run = load_config("run.yaml")
 
-    # Base tickers defined in the config universe
-    tickers = run["universe"]["ticker_symbols"]
+    # By default, fetch for a single target ticker.
+    # For batch orchestrators, allow comma-separated override via env.
+    override = os.environ.get("NEWS_TICKERS")
+    if override:
+        tickers = [t.strip().upper() for t in override.split(",") if t.strip()]
+    else:
+        tickers = [run["universe"]["ticker_symbols"][0]]
 
     # Fail fast if no tickers were found
     if not tickers:
@@ -22,31 +27,26 @@ def main():
         )
 
     # --------------------------------------------------
-    # 1) Build peer-company universe via Ollama
+    # Fetch news for configured ticker(s) only (saved to yahoo_news_train.jsonl)
     # --------------------------------------------------
-    peer_k = run.get("peer_count", 5)  # number of peers per ticker
-    llm_runs = run.get("llm_run_count", 30)   # Number of times to run the llm
-    pC = build_peerCompanies(tickers, k=peer_k, runs=llm_runs)
-
-    # Persist peers for reproducibility/debugging
-    path = save_keywords(pC)
-    print("Saved:", path)
-
-    # --------------------------------------------------
-    # 2) Fetch news for the base ticker + peers (saved to yahoo_news.jsonl)
-    # --------------------------------------------------
+    # Pull a full rolling year of news ending on configured end_date (or today).
     end_date = run["universe"]["end_date"] or date.today().isoformat()
-    start_date = run["universe"]["start_date_news"] or (date.fromisoformat(end_date) - timedelta(days=7)).isoformat()
+    start_date = (date.fromisoformat(end_date) - timedelta(days=365)).isoformat()
     limit_per_ticker = int(run.get("news_limit_per_ticker", 200))
-    peer_list = pC[tickers[0]]
+    output_filename = os.environ.get("NEWS_OUTPUT_FILENAME", "yahoo_news_train.jsonl")
+    append_mode = os.environ.get("NEWS_APPEND", "0") == "1"
+    finnhub_api_key = os.environ.get("FINNHUB_API_KEY")
+    if not finnhub_api_key:
+        raise ValueError("Missing FINNHUB_API_KEY. Add it to your .env file.")
 
     path, tickers_used = fetch_and_save_finnhub_news(
         tickers,
-        peer_tickers=peer_list,
         start_date=start_date,
         end_date=end_date,
         limit_per_ticker=limit_per_ticker,
-        api_key = 'd671vthr01qmckkbqdhgd671vthr01qmckkbqdi0',
+        filename=output_filename,
+        append=append_mode,
+        api_key=finnhub_api_key,
     )
     print("Saved:", path)
     print("Tickers used:", tickers_used)

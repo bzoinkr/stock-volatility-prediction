@@ -11,12 +11,13 @@ from common.paths import NEWS_RAW_DATA_DIR
 # --------------------------------------------------
 def fetch_and_save_finnhub_news(
     base_tickers: list[str],
-    peer_tickers: list[str],
+    peer_tickers: list[str] | None = None,
     start_date: str | None = None,
     end_date: str | None = None,
     *,
     limit_per_ticker: int = 200,
     filename: str | None = None,
+    append: bool = False,
     exclude_sources: tuple[str, ...] | None = None,
     api_key: str | None = None,
 ) -> tuple[str, list[str]]:
@@ -36,7 +37,8 @@ def fetch_and_save_finnhub_news(
     # Normalize + de-dupe while preserving order (same as Yahoo pipeline)
     seen = set()
     tickers_used = []
-    for t in base_tickers + peer_tickers:
+    all_tickers = list(base_tickers) + list(peer_tickers or [])
+    for t in all_tickers:
         t = t.upper()
         if t not in seen:
             seen.add(t)
@@ -50,7 +52,8 @@ def fetch_and_save_finnhub_news(
         filename = "yahoo_news_train.jsonl"
     out_path = os.path.join(out_dir, filename)
 
-    with open(out_path, "w", encoding="utf-8") as f:
+    mode = "a" if append else "w"
+    with open(out_path, mode, encoding="utf-8") as f:
         for t in tickers_used:
             rows = fetch_finnhub_news(
                 t,

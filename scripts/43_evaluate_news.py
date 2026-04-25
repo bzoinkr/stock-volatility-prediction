@@ -15,7 +15,7 @@ def main():
     run = load_config("run.yaml")
 
     ticker = run["universe"]["ticker_symbols"][0]
-    start_eval_date = run["universe"]["start_date"]
+    start_eval_date = run["universe"]["start_date_news"]
     end_eval_date = run["universe"]["target_date"]
     day_weights = run["day_weights"]
     feature_weights = run["feature_weights_news"]

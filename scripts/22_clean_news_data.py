@@ -11,7 +11,7 @@ def main():
     INPUT_PATH = Path("data/processed/news/yahoo_news_finbert_scored_train.jsonl")
     OUTPUT_PATH = Path("data/processed/news/news_data.json")
 
-    START_DATE = run["universe"]["start_date"]
+    START_DATE = run["universe"]["start_date_news"]
     END_DATE = run["universe"]["end_date"]
 
     build_sentiment_stats(INPUT_PATH, OUTPUT_PATH, START_DATE, END_DATE)

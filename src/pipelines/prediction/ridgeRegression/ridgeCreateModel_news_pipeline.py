@@ -113,44 +113,40 @@ def _window_features(
 def build_dataset(
     sentiment_data: dict,
     volatility_data: dict,
-    ticker: str,
     target_date: str,
     day_weights: list[float],
     feature_weights: list[float],
 ) -> tuple[np.ndarray, np.ndarray]:
     X_rows, y_vals = [], []
 
-    if ticker not in volatility_data:
-        raise ValueError(f"{ticker} is not in volatilitySingleTicker.json")
+    tickers = sorted(set(sentiment_data) & set(volatility_data))
+    for ticker in tickers:
+        sentiment = sentiment_data[ticker]
+        vol = volatility_data[ticker]
+        dates = _sorted_dates(sentiment)
 
-    if ticker not in sentiment_data:
-        raise ValueError(f"{ticker} is not in news_data_train.json")
+        mean_vol = _ticker_mean_vol(vol)
 
-    sentiment = sentiment_data[ticker]
-    vol = volatility_data[ticker]
-    dates = _sorted_dates(sentiment)
+        for i, date in enumerate(dates):
+            if date >= target_date:
+                break
+            if date not in vol:
+                continue
+            if vol.get(date) is None:
+                continue
 
-    mean_vol = _ticker_mean_vol(vol)
-
-    for i, date in enumerate(dates):
-        if date >= target_date:
-            break
-        if date not in vol:
-            continue
-
-        prior_dates = dates[:i]
-
-        X_rows.append(
-            _window_features(
-                sentiment,
-                vol,
-                prior_dates,
-                day_weights,
-                feature_weights,
-                vol_fill=mean_vol,
+            prior_dates = dates[:i]
+            X_rows.append(
+                _window_features(
+                    sentiment,
+                    vol,
+                    prior_dates,
+                    day_weights,
+                    feature_weights,
+                    vol_fill=mean_vol,
+                )
             )
-        )
-        y_vals.append(float(vol[date]))
+            y_vals.append(float(vol[date]))
 
     if not X_rows:
         return np.empty((0, N_FEATURES)), np.array([])
@@ -276,7 +272,6 @@ def run_pipeline(
     X, y = build_dataset(
         sentiment_data,
         volatility_data,
-        ticker,
         target_date,
         day_weights,
         feature_weights,
@@ -284,11 +279,11 @@ def run_pipeline(
 
     if X.shape[0] < 2:
         raise ValueError(
-            f"Only {X.shape[0]} training samples found for {ticker}. "
+            f"Only {X.shape[0]} training samples found across available tickers. "
             f"You need more historical dates before {target_date}."
         )
 
-    print(f"Training on {X.shape[0]} samples ({X.shape[1]} features each) for {ticker}.")
+    print(f"Training on {X.shape[0]} samples ({X.shape[1]} features each) across available tickers.")
     print(f"Day weights     (newest→oldest) : {day_weights}")
     print(f"Feature weights                 : {feature_weights}")
 

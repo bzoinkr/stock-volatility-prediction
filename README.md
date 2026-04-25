@@ -48,6 +48,7 @@ stock-volatility-prediction/
         ├── social/
         └── prediction/
             ├── ridgeRegression/
+            ├── lgbm/
             └── sentimentModels/
 ```
 

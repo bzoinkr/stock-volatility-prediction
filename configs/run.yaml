@@ -5,11 +5,11 @@ project:
 
 universe:
   tickers: ["Apple", "Amazon"]
-  ticker_symbols: ["PNC", "NEM", "AEP", "BJ", "APH", "ADP"]
+  ticker_symbols: ["NVDA"]
   start_date_news: "2025-03-18" # Train window begin exclusive for news
-  start_date: "2026-02-10"      # Train window begin
-  end_date: "2026-04-16"        # Train window end
-  target_date: "2026-04-17"     # Target date for prediction
+  start_date: "2026-04-10"      # Train window begin
+  end_date: "2026-04-21"        # Train window end
+  target_date: "2026-04-21"     # Target date for prediction
 
 frequency:
   base: "1D"               # daily base timeline

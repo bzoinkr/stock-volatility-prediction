@@ -141,6 +141,28 @@ def run_eval_pipeline(
     predictions = {d: float(p) for d, p in zip(eval_dates, y_pred.tolist())}
     actuals = {d: float(a) for d, a in zip(eval_dates, y_true)}
 
+    # Add forward prediction for end_eval_date if no actual exists yet
+    if end_eval_date not in predictions:
+        sent = sentiment_data[ticker]
+        vol = volatility_data[ticker]
+
+        prior_dates = [d for d in _sorted_dates(sent) if d < end_eval_date]
+        if len(prior_dates) >= 1:
+            mean_vol = _ticker_mean_vol(vol)
+            X_future = _window_features(
+                sent,
+                vol,
+                prior_dates,
+                day_weights,
+                feature_weights,
+                vol_fill=mean_vol,
+            ).reshape(1, -1)
+
+            X_future_scaled = model_bundle["scaler"].transform(X_future)
+            y_future = float(model_bundle["model"].predict(X_future_scaled)[0])
+
+            predictions[end_eval_date] = y_future
+
     return {
         "ticker": ticker,
         "eval_start_date": start_eval_date,

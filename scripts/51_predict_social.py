@@ -5,7 +5,7 @@ import os
 from datetime import datetime
 
 from common.config import load_config
-from pipelines.prediction.ridgeRegression.predict_social_pipeline import run_prediction_pipeline
+from pipelines.prediction.lgbm.predict_social_pipeline import run_prediction_pipeline
 
 
 # ── Paths ─────────────────────────────────────────────────────────────────────

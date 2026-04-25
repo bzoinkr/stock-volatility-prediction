@@ -1,114 +1,114 @@
 [
     {
         "feature": "volatility",
-        "pearson_r": 0.532445,
-        "abs_r": 0.532445,
+        "pearson_r": 0.473887,
+        "abs_r": 0.473887,
         "p_value": 0.0,
         "significant": true
     },
     {
-        "feature": "num_posts",
-        "pearson_r": -0.045707,
-        "abs_r": 0.045707,
-        "p_value": 0.004011,
+        "feature": "top_term_ratio",
+        "pearson_r": -0.032826,
+        "abs_r": 0.032826,
+        "p_value": 0.000969,
         "significant": true
     },
     {
-        "feature": "top_term_ratio",
-        "pearson_r": -0.044803,
-        "abs_r": 0.044803,
-        "p_value": 0.004798,
+        "feature": "num_posts",
+        "pearson_r": -0.022233,
+        "abs_r": 0.022233,
+        "p_value": 0.025466,
         "significant": true
+    },
+    {
+        "feature": "term_diversity",
+        "pearson_r": 0.016503,
+        "abs_r": 0.016503,
+        "p_value": 0.09725,
+        "significant": false
     },
     {
         "feature": "std_compound",
-        "pearson_r": 0.030885,
-        "abs_r": 0.030885,
-        "p_value": 0.051942,
+        "pearson_r": 0.014811,
+        "abs_r": 0.014811,
+        "p_value": 0.136673,
         "significant": false
     },
     {
         "feature": "variance_compound",
-        "pearson_r": 0.027837,
-        "abs_r": 0.027837,
-        "p_value": 0.079819,
-        "significant": false
-    },
-    {
-        "feature": "bullish_ratio",
-        "pearson_r": -0.026303,
-        "abs_r": 0.026303,
-        "p_value": 0.097891,
-        "significant": false
-    },
-    {
-        "feature": "mean_neg",
-        "pearson_r": 0.025691,
-        "abs_r": 0.025691,
-        "p_value": 0.105949,
+        "pearson_r": 0.014158,
+        "abs_r": 0.014158,
+        "p_value": 0.154824,
         "significant": false
     },
     {
         "feature": "sentiment_balance",
-        "pearson_r": -0.025163,
-        "abs_r": 0.025163,
-        "p_value": 0.113329,
-        "significant": false
-    },
-    {
-        "feature": "mean_compound",
-        "pearson_r": -0.023429,
-        "abs_r": 0.023429,
-        "p_value": 0.140407,
-        "significant": false
-    },
-    {
-        "feature": "impression_weighted_compound",
-        "pearson_r": -0.022193,
-        "abs_r": 0.022193,
-        "p_value": 0.162578,
-        "significant": false
-    },
-    {
-        "feature": "bearish_ratio",
-        "pearson_r": 0.020101,
-        "abs_r": 0.020101,
-        "p_value": 0.205943,
-        "significant": false
-    },
-    {
-        "feature": "log_impressions",
-        "pearson_r": -0.018207,
-        "abs_r": 0.018207,
-        "p_value": 0.251944,
+        "pearson_r": -0.012907,
+        "abs_r": 0.012907,
+        "p_value": 0.194636,
         "significant": false
     },
     {
         "feature": "mean_pos",
-        "pearson_r": -0.013421,
-        "abs_r": 0.013421,
-        "p_value": 0.398437,
+        "pearson_r": -0.01027,
+        "abs_r": 0.01027,
+        "p_value": 0.302074,
         "significant": false
     },
     {
-        "feature": "term_diversity",
-        "pearson_r": 0.012157,
-        "abs_r": 0.012157,
-        "p_value": 0.44434,
+        "feature": "mean_neg",
+        "pearson_r": 0.009346,
+        "abs_r": 0.009346,
+        "p_value": 0.347646,
         "significant": false
     },
     {
         "feature": "pos_neg_ratio",
-        "pearson_r": -0.007218,
-        "abs_r": 0.007218,
-        "p_value": 0.649733,
+        "pearson_r": -0.008838,
+        "abs_r": 0.008838,
+        "p_value": 0.374494,
+        "significant": false
+    },
+    {
+        "feature": "bullish_ratio",
+        "pearson_r": -0.004237,
+        "abs_r": 0.004237,
+        "p_value": 0.670266,
+        "significant": false
+    },
+    {
+        "feature": "log_impressions",
+        "pearson_r": -0.002448,
+        "abs_r": 0.002448,
+        "p_value": 0.805694,
         "significant": false
     },
     {
         "feature": "mean_neu",
-        "pearson_r": -0.007194,
-        "abs_r": 0.007194,
-        "p_value": 0.650832,
+        "pearson_r": 0.001555,
+        "abs_r": 0.001555,
+        "p_value": 0.875824,
+        "significant": false
+    },
+    {
+        "feature": "bearish_ratio",
+        "pearson_r": -0.00061,
+        "abs_r": 0.00061,
+        "p_value": 0.951095,
+        "significant": false
+    },
+    {
+        "feature": "mean_compound",
+        "pearson_r": 0.000437,
+        "abs_r": 0.000437,
+        "p_value": 0.96497,
+        "significant": false
+    },
+    {
+        "feature": "impression_weighted_compound",
+        "pearson_r": -5e-05,
+        "abs_r": 5e-05,
+        "p_value": 0.996012,
         "significant": false
     }
 ]

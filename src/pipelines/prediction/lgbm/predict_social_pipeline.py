@@ -4,7 +4,9 @@ predict_social_pipeline.py
 Loads the saved social_vol_model.pkl and predicts volatility for a single
 ticker using either a specified target_date or its latest available sentiment
 date as the prediction point. Applies day-level weighting during feature
-construction. Windows where any day has num_posts == 0 are rejected.
+construction and feature-level weighting post-scaling (retrieved from the
+model bundle) to mirror the training transform exactly.
+Windows where any day has num_posts == 0 are rejected.
 """
 
 import os
@@ -12,7 +14,7 @@ import pickle
 
 import numpy as np
 
-from pipelines.prediction.ridgeRegression.huberCreateModel_social_pipeline import (
+from pipelines.prediction.lgbm.lgbmCreateModel_social_pipeline import (
     LOOKBACK,
     N_FEATURES,
     N_PER_DAY,
@@ -22,6 +24,7 @@ from pipelines.prediction.ridgeRegression.huberCreateModel_social_pipeline impor
     _window_features,
     _window_has_posts,
     _ticker_mean_vol,
+    apply_feature_weights,
     _validate_weights,
 )
 
@@ -120,6 +123,9 @@ def run_prediction_pipeline(
     LOOKBACK days before it as the feature window.
     If target_date is None, predicts for the latest available sentiment date.
 
+    Feature weights are retrieved from the model bundle and applied
+    automatically — no need to pass them here.
+
     Returns
     -------
     {
@@ -144,8 +150,10 @@ def run_prediction_pipeline(
         print(f"  Skipped [{ticker}]: {e}")
         return None
 
-    X_scaled = model_bundle["scaler"].transform(X)
-    y_pred   = float(model_bundle["model"].predict(X_scaled)[0])
+    # Mirror train-time transform exactly: scale → apply feature weights → predict
+    X_scaled   = model_bundle["scaler"].transform(X)
+    X_weighted = apply_feature_weights(X_scaled, model_bundle.get("feature_weights"))
+    y_pred     = float(model_bundle["model"].predict(X_weighted)[0])
 
     print(f"[{ticker}] {date}  |  predicted: {y_pred:.6f}")
 

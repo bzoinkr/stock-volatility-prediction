@@ -1,9 +1,10 @@
 """
 eval_social_pipeline.py
 
-Loads the saved vol_model.pkl and evaluates it on a single date (end_date).
-Applies the same feature-level and day-level weighting used during training.
-Missing lagged volatility values in the window are filled with 0.0.
+Loads the saved social_vol_model.pkl and evaluates it on a single date
+(target_date). Applies the same feature-level and day-level weighting used
+during training. Missing lagged volatility values in the window are filled
+with the ticker's mean volatility.
 """
 
 import json
@@ -13,7 +14,7 @@ import pickle
 import numpy as np
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
-from pipelines.prediction.ridgeRegression.huberCreateModel_social_pipeline import (
+from pipelines.prediction.lgbm.lgbmCreateModel_social_pipeline import (
     LOOKBACK,
     N_FEATURES,
     N_PER_DAY,
@@ -23,6 +24,7 @@ from pipelines.prediction.ridgeRegression.huberCreateModel_social_pipeline impor
     _window_features,
     _window_has_posts,
     _ticker_mean_vol,
+    apply_feature_weights,
     compute_feature_target_correlations,
     print_correlations,
     save_correlations,
@@ -92,7 +94,6 @@ def build_eval_rows(
 def compute_stats(y_true: np.ndarray, y_pred: np.ndarray) -> dict:
     residuals  = y_pred - y_true
     abs_errors = np.abs(residuals)
-    qlike = lambda y_true, y_pred: np.mean(y_true / y_pred - np.log(y_true / y_pred) - 1)
     mae  = mean_absolute_error(y_true, y_pred)
     rmse = np.sqrt(mean_squared_error(y_true, y_pred))
     r2   = r2_score(y_true, y_pred) if len(y_true) > 1 else float("nan")
@@ -112,8 +113,7 @@ def compute_stats(y_true: np.ndarray, y_pred: np.ndarray) -> dict:
         "mean_error"  : float(np.mean(residuals)),
         "std_error"   : float(np.std(residuals)),
         "baseline_mae": baseline_mae,
-        "skill_score" : float(1 - mae / baseline_mae) if baseline_mae > 0 else float("nan")#,
-#        "qlike"       : float(qlike)
+        "skill_score" : float(1 - mae / baseline_mae) if baseline_mae > 0 else float("nan"),
     }
 
 
@@ -127,7 +127,6 @@ def print_stats(
     print(f"  Day weights (newest→oldest) : {day_weights}")
     print("=" * 52)
     print(f"  MAE             : {stats['mae']:.6f}")
-#    print(f"  qlike             : {stats['qlike']:.6f}")
     print(f"  RMSE            : {stats['rmse']:.6f}")
     print(f"  R²              : {stats['r2']:.4f}")
     print(f"  MAPE            : {stats['mape_pct']:.2f}%")
@@ -141,6 +140,7 @@ def print_stats(
     label = "better" if skill > 0 else "worse"
     print(f"  Skill score     : {skill:.4f}  ({label} than baseline)")
     print("=" * 52)
+
 
 # ── Entry point ───────────────────────────────────────────────────────────────
 
@@ -156,8 +156,9 @@ def run_eval_pipeline(
     Load the saved model, predict on target_date, compare against known
     volatility labels, and print evaluation statistics + correlations.
 
-    feature_weights is accepted for backwards compatibility but ignored;
-    ElasticNet regularization handles feature selection internally.
+    feature_weights is accepted for backwards compatibility but ignored here;
+    the weights applied at training time are retrieved from the model bundle
+    and reapplied automatically.
 
     Returns
     -------
@@ -189,9 +190,10 @@ def run_eval_pipeline(
     # ── correlations on eval set ──────────────────────────────────────────
     correlations = compute_feature_target_correlations(X, y_true_arr, day_weights)
 
-    # ── predict ───────────────────────────────────────────────────────────
-    X_scaled = model_bundle["scaler"].transform(X)
-    y_pred   = model_bundle["model"].predict(X_scaled)
+    # ── predict — must mirror the train-time transform exactly ────────────
+    X_scaled   = model_bundle["scaler"].transform(X)
+    X_weighted = apply_feature_weights(X_scaled, model_bundle.get("feature_weights"))
+    y_pred     = model_bundle["model"].predict(X_weighted)
 
     # ── stats & printing ──────────────────────────────────────────────────
     stats = compute_stats(y_true_arr, y_pred)

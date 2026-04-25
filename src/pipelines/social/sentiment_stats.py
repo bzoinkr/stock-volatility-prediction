@@ -6,6 +6,8 @@ from pathlib import Path
 import sys
 import math
 
+from tqdm import tqdm
+
 
 def _parse_date(value: str | date) -> date:
     if isinstance(value, date):
@@ -52,22 +54,31 @@ def build_sentiment_stats(
     end_date: str | date | None = None,    # kept for backwards compatibility; ignored
 ) -> None:
 
+    # ── Pass 1: count lines for progress bar ─────────────────────────────────
+    print("Counting records...")
+    total_lines = sum(1 for line in open(input_path, "rb") if line.strip())
+
+    # ── Pass 2: group records by (ticker, date) ───────────────────────────────
     groups: dict[tuple, list[dict]] = defaultdict(list)
 
-    with open(input_path, "r", encoding="utf-8") as f:
-        for line_num, line in enumerate(f, 1):
-            line = line.strip()
-            if not line:
-                continue
-            try:
-                record = json.loads(line)
-            except json.JSONDecodeError as e:
-                print(f"Warning: skipping line {line_num} — {e}", file=sys.stderr)
-                continue
+    with tqdm(total=total_lines, desc="Reading ", unit="rec", dynamic_ncols=True, smoothing=0.05) as bar:
+        with open(input_path, "r", encoding="utf-8") as f:
+            for line_num, line in enumerate(f, 1):
+                line = line.strip()
+                if not line:
+                    bar.update(1)
+                    continue
+                try:
+                    record = json.loads(line)
+                except json.JSONDecodeError as e:
+                    print(f"Warning: skipping line {line_num} — {e}", file=sys.stderr)
+                    bar.update(1)
+                    continue
 
-            record_date = datetime.fromtimestamp(record["date"], tz=timezone.utc).date()
-            date_str = record_date.strftime("%Y-%m-%d")
-            groups[(record["ticker"], date_str)].append(record)
+                record_date = datetime.fromtimestamp(record["date"], tz=timezone.utc).date()
+                date_str = record_date.strftime("%Y-%m-%d")
+                groups[(record["ticker"], date_str)].append(record)
+                bar.update(1)
 
     if not groups:
         print("No records found in input file.")
@@ -77,8 +88,9 @@ def build_sentiment_stats(
     all_dates = [d for (_, d) in groups]
     start = _parse_date(min(all_dates))
     end   = _parse_date(max(all_dates))
+    date_span = len(list(_date_range(start, end)))
 
-    # Load existing output file if present, so we can merge into it
+    # ── Load existing output for merging ──────────────────────────────────────
     if output_path.exists():
         with open(output_path, "r", encoding="utf-8") as f:
             try:
@@ -89,95 +101,101 @@ def build_sentiment_stats(
     else:
         existing = {}
 
-    # Collect all tickers seen across the data
     all_tickers = sorted({ticker for (ticker, _) in groups})
-
     output: dict[str, dict[str, dict]] = existing
 
-    for ticker in all_tickers:
-        if ticker not in output:
-            output[ticker] = {}
+    print(f"Computing stats for {len(all_tickers)} tickers × {date_span} days "
+          f"({date_span * len(all_tickers):,} ticker-date cells)...")
 
-        for d in _date_range(start, end):
-            date_str = d.strftime("%Y-%m-%d")
-            records = groups.get((ticker, date_str), [])
+    # ── Pass 3: compute stats per ticker ─────────────────────────────────────
+    with tqdm(total=len(all_tickers), desc="Tickers  ", unit="ticker", dynamic_ncols=True) as bar:
+        for ticker in all_tickers:
+            if ticker not in output:
+                output[ticker] = {}
 
-            if not records:
-                output[ticker][date_str] = _empty_day()
-                continue
+            for d in _date_range(start, end):
+                date_str = d.strftime("%Y-%m-%d")
+                records = groups.get((ticker, date_str), [])
 
-            compounds = [r["compound"] for r in records]
-            n = len(records)
+                if not records:
+                    output[ticker][date_str] = _empty_day()
+                    continue
 
-            mean_compound = statistics.mean(compounds)
-            variance_compound = statistics.variance(compounds) if n > 1 else None
-            std_compound = statistics.stdev(compounds) if n > 1 else None
+                compounds = [r["compound"] for r in records]
+                n = len(records)
 
-            total_pos = sum(r["pos"] for r in records)
-            total_neg = sum(r["neg"] for r in records)
-            total_neu = sum(r["neu"] for r in records)
-            mean_pos = total_pos / n
-            mean_neg = total_neg / n
-            mean_neu = total_neu / n
+                mean_compound     = statistics.mean(compounds)
+                variance_compound = statistics.variance(compounds) if n > 1 else None
+                std_compound      = statistics.stdev(compounds) if n > 1 else None
 
-            pos_neg_ratio = total_pos / total_neg if total_neg > 0 else None
-            sentiment_balance = (total_pos - total_neg) / n
+                total_pos = sum(r["pos"] for r in records)
+                total_neg = sum(r["neg"] for r in records)
+                total_neu = sum(r["neu"] for r in records)
+                mean_pos  = total_pos / n
+                mean_neg  = total_neg / n
+                mean_neu  = total_neu / n
 
-            bullish_posts = sum(1 for r in records if r["compound"] > 0.05)
-            bearish_posts = sum(1 for r in records if r["compound"] < -0.05)
-            neutral_posts = n - bullish_posts - bearish_posts
-            bullish_ratio = bullish_posts / n
-            bearish_ratio = bearish_posts / n
-            neutral_ratio = neutral_posts / n
+                pos_neg_ratio    = total_pos / total_neg if total_neg > 0 else None
+                sentiment_balance = (total_pos - total_neg) / n
 
-            total_impressions = sum(r["impressions"] for r in records)
-            if total_impressions > 0:
-                impression_weighted_compound = sum(
-                    r["compound"] * r["impressions"] for r in records
-                ) / total_impressions
-            else:
-                impression_weighted_compound = mean_compound
+                bullish_posts = sum(1 for r in records if r["compound"] > 0.05)
+                bearish_posts = sum(1 for r in records if r["compound"] < -0.05)
+                neutral_posts = n - bullish_posts - bearish_posts
+                bullish_ratio = bullish_posts / n
+                bearish_ratio = bearish_posts / n
+                neutral_ratio = neutral_posts / n
 
-            log_impressions = math.log1p(total_impressions)
+                total_impressions = sum(r["impressions"] for r in records)
+                if total_impressions > 0:
+                    impression_weighted_compound = sum(
+                        r["compound"] * r["impressions"] for r in records
+                    ) / total_impressions
+                else:
+                    impression_weighted_compound = mean_compound
 
-            unique_terms = set(r["match_term"] for r in records)
-            term_diversity = len(unique_terms)
+                log_impressions = math.log1p(total_impressions)
 
-            term_counts: dict[str, int] = defaultdict(int)
-            for r in records:
-                term_counts[r["match_term"]] += 1
-            top_term_ratio = max(term_counts.values()) / n
+                unique_terms = set(r["match_term"] for r in records)
+                term_diversity = len(unique_terms)
 
-            output[ticker][date_str] = {
-                "num_posts": n,
-                "log_impressions": round(log_impressions, 6),
-                "total_impressions": total_impressions,
-                "mean_compound": round(mean_compound, 6),
-                "variance_compound": round(variance_compound, 6) if variance_compound is not None else None,
-                "std_compound": round(std_compound, 6) if std_compound is not None else None,
-                "impression_weighted_compound": round(impression_weighted_compound, 6),
-                "mean_pos": round(mean_pos, 6),
-                "mean_neg": round(mean_neg, 6),
-                "mean_neu": round(mean_neu, 6),
-                "total_pos": round(total_pos, 6),
-                "total_neg": round(total_neg, 6),
-                "total_neu": round(total_neu, 6),
-                "pos_neg_ratio": round(pos_neg_ratio, 6) if pos_neg_ratio is not None else None,
-                "sentiment_balance": round(sentiment_balance, 6),
-                "bullish_ratio": round(bullish_ratio, 6),
-                "bearish_ratio": round(bearish_ratio, 6),
-                "neutral_ratio": round(neutral_ratio, 6),
-                "term_diversity": term_diversity,
-                "top_term_ratio": round(top_term_ratio, 6),
-            }
+                term_counts: dict[str, int] = defaultdict(int)
+                for r in records:
+                    term_counts[r["match_term"]] += 1
+                top_term_ratio = max(term_counts.values()) / n
 
+                output[ticker][date_str] = {
+                    "num_posts":                   n,
+                    "log_impressions":             round(log_impressions, 6),
+                    "total_impressions":           total_impressions,
+                    "mean_compound":               round(mean_compound, 6),
+                    "variance_compound":           round(variance_compound, 6) if variance_compound is not None else None,
+                    "std_compound":                round(std_compound, 6) if std_compound is not None else None,
+                    "impression_weighted_compound": round(impression_weighted_compound, 6),
+                    "mean_pos":                    round(mean_pos, 6),
+                    "mean_neg":                    round(mean_neg, 6),
+                    "mean_neu":                    round(mean_neu, 6),
+                    "total_pos":                   round(total_pos, 6),
+                    "total_neg":                   round(total_neg, 6),
+                    "total_neu":                   round(total_neu, 6),
+                    "pos_neg_ratio":               round(pos_neg_ratio, 6) if pos_neg_ratio is not None else None,
+                    "sentiment_balance":           round(sentiment_balance, 6),
+                    "bullish_ratio":               round(bullish_ratio, 6),
+                    "bearish_ratio":               round(bearish_ratio, 6),
+                    "neutral_ratio":               round(neutral_ratio, 6),
+                    "term_diversity":              term_diversity,
+                    "top_term_ratio":              round(top_term_ratio, 6),
+                }
+
+            bar.set_postfix(ticker=ticker, refresh=False)
+            bar.update(1)
+
+    # ── Write output ──────────────────────────────────────────────────────────
     output_path.parent.mkdir(parents=True, exist_ok=True)
-
+    print("Writing output...")
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(output, f, indent=4)
 
     total_days = sum(len(dates) for dates in output.values())
-    date_span = len(list(_date_range(start, end)))
     print(
         f"Done — merged {len(all_tickers)} tickers × {date_span} days into '{output_path}' "
         f"(file now contains {len(output)} tickers, {total_days} ticker-date entries total)"

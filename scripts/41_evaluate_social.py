@@ -4,14 +4,14 @@ import json
 import yaml
 
 from common.config import load_config
-from pipelines.prediction.ridgeRegression.eval_social_pipeline import run_eval_pipeline
+from pipelines.prediction.lgbm.eval_social_pipeline import run_eval_pipeline
 
 
-# ── Paths — fill these in ─────────────────────────────────────────────────────
+# ── Paths ─────────────────────────────────────────────────────────────────────
 
-SENTIMENT_PATH  = "data/processed/social/social_data.json"   # path to sentiment JSON file
-VOLATILITY_PATH = "data/processed/market/volatility.json"   # path to volatility JSON file
-MODEL_DIR       = "artifacts/models"   # directory where vol_model.pkl will be saved
+SENTIMENT_PATH  = "data/processed/social/social_data.json"
+VOLATILITY_PATH = "data/processed/market/volatility.json"
+MODEL_DIR       = "artifacts/models"
 
 
 # ── Main ──────────────────────────────────────────────────────────────────────

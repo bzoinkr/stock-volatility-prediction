@@ -38,22 +38,30 @@ def _cfg_hash() -> str:
 
 
 def load_state() -> dict | None:
-    """Return saved state if it exists and cfg hasn't changed, else None."""
+    """
+    Return saved state if it exists and cfg/date hash matches, else None.
+    State schema:
+        {
+            "cfg_hash": str,
+            "completed": [ticker, ...]   # all tickers fully processed this session
+        }
+    """
     if not STATE_PATH.exists():
         return None
     with open(STATE_PATH) as f:
         state = json.load(f)
     if state.get("cfg_hash") != _cfg_hash():
-        print("Config has changed since last run — ignoring saved state, starting fresh.")
+        print("Config or date has changed since last run — ignoring saved state, starting fresh.")
         STATE_PATH.unlink()
         return None
     return state
 
 
-def save_state(ticker: str) -> None:
+def _write_state(completed: set) -> None:
+    """Persist the current completed-ticker set to disk."""
     STATE_PATH.parent.mkdir(parents=True, exist_ok=True)
     with open(STATE_PATH, "w") as f:
-        json.dump({"resume_from": ticker, "cfg_hash": _cfg_hash()}, f)
+        json.dump({"cfg_hash": _cfg_hash(), "completed": sorted(completed)}, f, indent=2)
 
 
 def clear_state() -> None:
@@ -80,38 +88,55 @@ def main() -> None:
     with open(KEYWORDS_PATH) as f:
         all_keywords: list = json.load(f)
 
+    # ── Determine which tickers are already done ──────────────────────────────
     state = load_state()
-    if state:
-        resume_from = state["resume_from"]
-        tickers = [entry["ticker"] for entry in all_keywords]
-        if resume_from not in tickers:
-            print(f"Saved ticker '{resume_from}' not found in keywords — starting fresh.")
-            clear_state()
-            random.shuffle(all_keywords)
-        else:
-            idx = tickers.index(resume_from)
-            print(f"Auto-resuming from '{resume_from}' (skipping {idx} ticker(s)).")
-            all_keywords = all_keywords[idx:]
+    completed: set = set(state.get("completed", [])) if state else set()
+
+    if completed:
+        print(f"Resuming — {len(completed)} ticker(s) already completed, skipping them.")
     else:
+        # Fresh run: shuffle for variety across sessions
         random.shuffle(all_keywords)
 
+    # Filter down to only what still needs fetching
+    pending_keywords = [e for e in all_keywords if e["ticker"] not in completed]
+    total_all = len(all_keywords)
+    total_pending = len(pending_keywords)
+
+    if not pending_keywords:
+        print("All tickers already completed. Nothing to do.")
+        clear_state()
+        return
+
+    print(f"{total_pending} ticker(s) remaining out of {total_all}.")
+
+    # ── Write a temp keywords file for the pipeline ───────────────────────────
     temp_keywords_path = KEYWORDS_PATH.with_stem(KEYWORDS_PATH.stem + "_resume")
     with open(temp_keywords_path, "w") as f:
-        json.dump(all_keywords, f, indent=2)
+        json.dump(pending_keywords, f, indent=2)
 
+    # ── Run pipeline, updating completed set after each ticker ────────────────
     try:
-        run_pipeline(temp_keywords_path, OUTPUT_PATH, cfg)
+        run_pipeline(
+            temp_keywords_path,
+            OUTPUT_PATH,
+            cfg,
+            on_ticker_done=lambda ticker: _write_state(completed | {ticker}),
+            completed=completed,
+        )
     except RateLimitError as e:
-        failed_ticker = _extract_ticker(str(e), all_keywords)
+        failed_ticker = _extract_ticker(str(e), pending_keywords)
+        # completed set was already flushed to disk after every successful ticker,
+        # so just report and exit — nothing extra to save.
         if failed_ticker:
-            save_state(failed_ticker)
             print(f"\n429 rate limit hit on '{failed_ticker}'. "
-                  f"State saved — re-run the script to resume from this ticker.")
+                  f"Re-run the script to resume — {len(completed)} ticker(s) already saved.")
         else:
-            print(f"\n429 rate limit hit but could not identify ticker. "
-                  f"Re-run the script to retry.")
+            print(f"\n429 rate limit hit (ticker unidentified). "
+                  f"Re-run the script to resume — {len(completed)} ticker(s) already saved.")
         sys.exit(1)
     else:
+        print(f"\nAll tickers finished.")
         clear_state()
     finally:
         temp_keywords_path.unlink(missing_ok=True)

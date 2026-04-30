@@ -238,15 +238,15 @@ points for most users. Run all commands from the project root.
 
 | Script | Description |
 |---|---|
-| `socialPrediction.py` | Runs volatility predictions using the social pipeline |
-| `newsPrediction.py` | Runs volatility predictions using the news pipeline |
-| `combinePrediction.py` | Blends social and news predictions into a final output |
+| `socialPredict.py` | Runs volatility predictions using the social pipeline |
+| `newsPredict.py` | Runs volatility predictions using the news pipeline |
+| `combinePredict.py` | Blends social and news predictions into a final output |
 | `socialTrain.py` | ⚠️ Retrains the social model — avoid unless necessary |
 
 ```bash
-python cli/socialPrediction.py
-python cli/newsPrediction.py
-python cli/combinePrediction.py
+python cli/socialPredict.py
+python cli/newsPredict.py
+python cli/combinePredict.py
 ```
 
 ---

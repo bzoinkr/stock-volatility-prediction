@@ -8,8 +8,8 @@ universe:
   ticker_symbols: ["NVDA"]
   start_date_news: "2025-03-18" # Train window begin exclusive for news
   start_date: "2026-01-10"      # Train window begin
-  end_date: "2026-04-23"        # Train window end
-  target_date: "2026-04-24"     # Target date for prediction
+  end_date: "2026-04-22"        # Train window end
+  target_date: "2026-04-23"     # Target date for prediction
 
 frequency:
   base: "1D"               # daily base timeline
